@@ -84,6 +84,31 @@ http://dswjshopbasis.tifaweb.com
 <p>
 <img src="gh_e79e7cd855e7_344.jpg" width="200px">
 </p>
+# dsshop微信小程序截图效果
+<p>
+<img src="effect_1.jpg" width="200px">
+</p>
+<p>
+<img src="effect_2.jpg" width="200px">
+</p>
+<p>
+<img src="effect_3.jpg" width="200px">
+</p>
+<p>
+<img src="effect_4.jpg" width="200px">
+</p>
+<p>
+<img src="effect_5.jpg" width="200px">
+</p>
+<p>
+<img src="effect_6.jpg" width="200px">
+</p>
+<p>
+<img src="effect_7.jpg" width="200px">
+</p>
+<p>
+<img src="effect_8.jpg" width="200px">
+</p>
 
 
 # Dsshop环境要求
