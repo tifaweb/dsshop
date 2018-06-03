@@ -1,0 +1,5 @@
+{
+    "navigationBarTitleText": "DSSHOP",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance":50
+}

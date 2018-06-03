@@ -1,0 +1,95 @@
+<view class="container">
+  <view class="page-body" style="padding-bottom:10px;">
+    <!--头-->
+    <view class="page-body-info">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <text class="userinfo-nickname" style="font-size:12px;">账户ID：{{uid}}</text>
+         <button open-type="getUserInfo"  class="bottom-two buy" size="mini" bindgetuserinfo="onGotUserInfo">同步资料</button>
+    </view>
+    <!--头 end-->
+    <!--列表-->
+    <view class="zan-panel">
+      <navigator url="../report/order" class="zan-cell zan-cell--access">
+        
+        <view class="zan-cell__bd">我的订单</view>
+        <view class="zan-cell__ft">查看全部</view>
+      </navigator>
+      
+     
+    </view>
+    <view class="list-order">
+      <navigator url="../report/order?types=1" class="list4">
+        <image class="img"
+          src="../../../../image/send_goods.png"
+          mode="aspectFit"
+        ></image>
+        <view>待付款</view>
+      </navigator>
+      <navigator url="../report/order?types=2" class="list4">
+        <image class="img"
+          src="../../../../image/pending_order.png"
+          mode="aspectFit"
+        ></image>
+        <view>待发货</view>
+      </navigator>
+      <navigator url="../report/order?types=3" class="list4">
+        <image class="img"
+          src="../../../../image/for_goods.png"
+          mode="aspectFit"
+        ></image>
+        <view>待收货</view>
+      </navigator>
+      <view class="list4">
+        <view></view>
+        <view></view>
+      </view>
+    </view>
+    <view class="zan-panel">
+      <navigator url="../withdrawal/order" class="zan-cell zan-cell--access">
+        <view class="zan-icon zan-icon-pending-orders panel-icon"></view>
+        <view class="zan-cell__bd">资金明细</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+      
+    </view>
+    
+    <view class="zan-panel">
+      
+      <navigator url="../address/index" class="zan-cell zan-cell--access">
+        <view class="zan-icon zan-icon-pending-orders panel-icon"></view>
+        <view class="zan-cell__bd">收货地址</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+    </view>
+    <view class="zan-panel">
+      <navigator url="../help/help" class="zan-cell zan-cell--access">
+        <view class="zan-icon zan-icon-pending-evaluate panel-icon"></view>
+        <view class="zan-cell__bd">帮助与反馈</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+      
+      <navigator url="./customer" class="zan-cell zan-cell--access" >
+        <view class="zan-icon zan-icon-chat panel-icon"></view>
+        <view class="zan-cell__bd">在线客服</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+      <navigator url="../about/about" class="zan-cell zan-cell--access">
+        <view class="zan-icon zan-icon-fail panel-icon"></view>
+        <view class="zan-cell__bd">关于</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+      
+    </view>
+     
+     
+    <view class="zan-panel {{permissions}}">
+      <view class="zan-cell zan-cell--access"  bindtap="openSetting">
+        <view class="zan-icon zan-icon-setting  panel-icon"></view>
+        <view class="zan-cell__bd">微信权限设置</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </view>
+    <!--列表 end-->
+  </view>
+</view>

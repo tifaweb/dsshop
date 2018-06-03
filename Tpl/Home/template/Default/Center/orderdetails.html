@@ -1,0 +1,109 @@
+<include file="Index:header" />
+<style>
+.form-horizontal .controls{
+	position: relative;
+	top: 5px;	
+}
+</style>
+<div class="member">
+<!--左边-->
+<include file="left" />
+<!--左边 end-->
+     <div class="memberRight">
+        <div class="member_tab">
+				 <div class="member_tab">
+<a class="on">订单详情</a>
+				</div>
+        </div> 
+        <div class="cart">
+        
+        <table>
+            <thead>
+            <tr>
+              <th>商品信息</th>
+              <th></th>
+              <th>单价(元)</th>
+              <th>数量</th>
+              <th>小计(元)</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            
+              <volist name="details" id="vo">
+              
+              <tr id="cart_{$i}">
+                <td class="sp1">
+                <a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">
+                <img src="__PUBLIC__/uploadify/uploads/commodity/{$vo.goods.zimg}"/></a>
+                <div class="">
+                <p><a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">{$vo.goods.title}</a></p>
+                </div>
+                </td>
+                <td class="sp2">
+                	<P>颜色分类：{$vo.colorname}</P>
+					<p>尺码：{$vo.sizename}</p>
+                </td>
+                <td>{$vo.price}</td>
+                <td >
+                {$vo.cart.nub}
+                </td>
+                <td class="sp4" id="subtotal_{$i}">{$vo.total|number_format=2,'.',','}</td>
+              </tr>
+              </volist>
+              <tr><td colspan="5" style="text-align: right;">合计：<span class="total">￥{$indent.total|number_format=2,'.',','}</span></td></tr>
+          </tbody>
+          
+        </table>
+		</div>
+        <!--详情-->
+        <br/>
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label">订单号：</label>
+            <div class="controls">
+              {$indent.number}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">订单时间：</label>
+            <div class="controls">
+              {$indent.time|date="Y-m-d H:i:s",###}
+            </div>
+          </div>
+          <neq name="indent['information']['recipient']" value="">
+          <div class="control-group">
+            <label class="control-label">收货地址：</label>
+            <div class="controls">
+              {$indent.information.recipient}<neq name="indent['information']['phone']" value="">，{$indent['information']['phone']}</neq><neq name="indent['information']['telephone']" value="">，{$indent['information']['telephone']}</neq>，{$city[$indent['information']['region'][0]]}&nbsp;{$city[$indent['information']['region'][1]]}&nbsp;{$city[$indent['information']['region'][2]]}&nbsp;{$indent.information.address}<gt name="indent['information']['code']" value="0">，{$indent['information']['code']}</gt>
+            </div>
+          </div>
+          </neq>
+          <neq name="indent['express']" value="">
+          <div class="control-group">
+            <label class="control-label">快递公司：</label>
+            <div class="controls">
+              {$linkageValue[$indent['express']]}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">快递单号：</label>
+            <div class="controls">
+              {$indent['cnumber']}
+            </div>
+          </div>
+          </neq>
+          <div class="control-group">
+            <label class="control-label">状态：</label>
+            <div class="controls">
+              {$indent['states']}
+            </div>
+          </div>
+        </form>
+        <!--详情 end-->
+  </div>
+</div>
+
+<!--底部  start-->
+
+<include file="Index:footer" />

@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="page-body">
+    <view class="section feedback">
+      <form bindsubmit="bindFormSubmit">
+        <textarea name="note" auto-height placeholder="请留下您的反馈意见" auto-focus value="{{data}}" maxlength='500'/>
+        <view class="btn-area">
+          <button  type="primary" formType="submit">提交</button>
+        </view>
+      </form>
+    </view>  
+  </view>
+</view>

@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "page/component/index",
+    "page/component/pages/details/makeorder",
+    "page/component/pages/details/car",
+    "page/component/pages/my/my",
+    "page/component/pages/report/order",
+    "page/component/pages/report/details",
+    "page/component/pages/address/index",
+    "page/component/pages/address/add",
+    "page/component/pages/details/details",
+    "page/component/pages/search/search-results",
+    "page/component/pages/share/share",
+    "page/component/pages/withdrawal/order",
+    "page/component/pages/withdrawal/details",
+    "page/component/pages/help/help",
+    "page/component/pages/help/feedback",
+    "page/component/pages/my/customer",
+    "page/component/pages/about/about",
+    "page/component/pages/report/logistics",
+    "page/component/pages/report/report",
+    "page/component/pages/content/content",
+    "page/component/pages/search/search"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "DSSHOP",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "page/component/index",
+      "iconPath": "image/home.png",
+      "selectedIconPath": "image/home-on.png",
+      "text": "首页"
+    }, {
+      "pagePath": "page/component/pages/report/report",
+      "iconPath": "image/classification.png",
+      "selectedIconPath": "image/classification-on.png",
+      "text": "分类"
+    },
+    {
+      "pagePath": "page/component/pages/details/car",
+      "iconPath": "image/shop.png",
+      "selectedIconPath": "image/shop-on.png",
+      "text": "购物车"
+    },
+    {
+      "pagePath": "page/component/pages/my/my",
+      "iconPath": "image/my.png",
+      "selectedIconPath": "image/my-on.png",
+      "text": "我的"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

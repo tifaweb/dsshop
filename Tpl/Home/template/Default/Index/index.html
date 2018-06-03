@@ -1,0 +1,149 @@
+<include file="Index:header" />
+<!-- start slider -->		
+	<link href="__PUBLIC__/jc/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="__PUBLIC__/jc/js/modernizr.custom.28468.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/jc/js/jquery.cslider.js"></script>
+		<!-- Owl Carousel Assets -->
+		<link href="__PUBLIC__/jc/css/owl.carousel.css" rel="stylesheet">
+		     <!-- Owl Carousel Assets -->
+		    <!-- Prettify -->
+		    <script src="__PUBLIC__/jc/js/owl.carousel.js"></script>
+		        <script>
+		    $(document).ready(function() {
+		
+		      $("#owl-demo").owlCarousel({
+		        items : 4,
+		        lazyLoad : true,
+		        autoPlay : true,
+		        navigation : true,
+			    navigationText : ["",""],
+			    rewindNav : false,
+			    scrollPerPage : false,
+			    pagination : false,
+    			paginationNumbers: false,
+		      });
+		
+		    });
+		    </script>
+		   <!-- //Owl Carousel Assets -->
+<!--头部 end -->
+
+<!-- start slider -->
+                <div class="kinMaxShow">
+                <div id="kinMaxShow">
+                    <volist name="shuff" id="ls">
+                        <div><a href="{$ls.url}"><img src="__PUBLIC__/uploadify/uploads/undefined/{$ls.img}"/></a></div>
+                    </volist>
+                </div>
+                </div>
+                <style>
+                @media only screen and (max-width:767px)and (-webkit-min-device-pixel-ratio:2), only screen and (max-width:767px)and (min-resolution:192dpi) {
+                .kinMaxShow{
+                display: none;
+                }
+                }
+                @media only screen and (min-width:480px)and (max-width:767px) {
+                .kinMaxShow{
+                display: none;
+                }
+                }
+                @media only screen and (max-width:479px) {
+                .kinMaxShow {
+                display: none;
+                }
+                }
+                
+                #kinMaxShow .KMSPrefix_kinMaxShow_button{
+                    margin: 0px auto;
+                    width: {$shcount*80}px;
+                    position: relative;
+                    bottom: 20px;
+                }
+                #kinMaxShow .KMSPrefix_kinMaxShow_button{
+                    margin: 0px auto;
+                    width: {$shcount*80}px;
+                    position: relative;
+                }
+                #kinMaxShow .KMSPrefix_kinMaxShow_button li{
+                    display: inline-block;
+                    width: 70px;
+                    height: 10px;
+                    background: none repeat scroll 0% 0% rgb(186, 186, 186);
+                    margin: 0px;
+                    border-radius: 3px;
+                    border: none;
+                    margin-right: 10px;	
+                }
+                #kinMaxShow .KMSPrefix_kinMaxShow_button li.KMSPrefix_kinMaxShow_focus{
+                    background: none repeat scroll 0% 0% rgb(222, 222, 222);
+                    border: none;
+                }
+                
+                </style>
+			</div>
+<!----start-cursual---->
+<div class="wrap">
+<!----start-img-cursual---->
+	<div id="owl-demo" class="owl-carousel">
+    	<volist name="recommend" id="vo">
+		<div class="item" onclick="location.href='__ROOT__/Goods/details/id/{$vo.id}.html';">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="__PUBLIC__/uploadify/uploads/commodity/{$vo.zimg}" >
+			</div>
+			<div class="cau_left">
+				<h4><a href="__ROOT__/Goods/details/id/{$vo.id}.html">品牌<br/>{$vo.fname}</a></h4>
+				<a href="__ROOT__/Goods/details/id/{$vo.id}.html" class="btn">购买</a>
+			</div>
+		</div>	
+        </volist>
+	</div>
+	<!----//End-img-cursual---->
+</div>
+<!-- start main1 -->
+<div class="main_bg1">
+<div class="wrap">	
+	<div class="main1">
+		<h2>人气商品</h2>
+	</div>
+</div>
+</div>
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+		<!-- start grids_of_3 -->
+        <volist name="sentiment" id="v">
+        <if condition="$fd eq 0 ">
+		<div class="grids_of_3">
+        </if>
+			<div class="grid1_of_3">
+				<a href="__ROOT__/Goods/details/id/{$v.id}.html">
+					<img src="__PUBLIC__/uploadify/uploads/commodity/{$v.zimg}" alt=""/>
+					<h3>{$v.title}</h3>
+					<div class="price">
+						<h4>￥{$v.price|number_format=2,'.',','}<span>购买</span></h4>
+					</div>
+					<span class="b_btm"></span>
+				</a>
+			</div>
+            <input name="" type="hidden" value="{$fd++}" />
+            <if condition="$fd eq 3">
+            	<input name="" type="hidden" value="{$fd=0}" />
+            </if>
+       <if condition="$fd eq 0 ">
+            <div class="clear"></div>
+		</div>
+        </if>
+        </volist>
+		
+		<!-- end grids_of_3 -->
+	</div>
+</div>
+</div>	
+<!-- start footer -->
+<include file="Index:footer" />
+<script>
+//首页轮播
+$(function(){$("#kinMaxShow").kinMaxShow();});
+</script>
+<script src="__PUBLIC__/js/jquery.kinMaxShow-1.1.min.js"></script>

@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-body">
+    <!--列表-->
+    <view class="zan-panel"  wx:for="{{goods}}"  wx:key="id">
+      <navigator url="../withdrawal/details?id={{item.id}}" class="zan-cell">
+        <view class="zan-cell__bd">
+          <view class="zan-cell__text">{{item.typename}}</view>
+          <view class="zan-cell__desc">{{item.time}}</view>
+        </view>
+        <view class="zan-cell__ft zan-font-bold">{{item.operation}}</view>
+      </navigator>
+      
+    </view>
+    <!--列表 end-->
+    <!--已经结束-->
+    <view  class="bottom-line" style=" {{bottomline}}">
+      <image src="../../../../image/bottom-line.png" mode="aspectFit"></image>
+      <view>我是有底线的</view>
+    </view>
+    <!--已经结束 end-->
+    <!--没有内容-->
+    <view  class="noContent" style=" {{noContent}}">
+      <image src="../../../../image/noContent.png" mode="aspectFit"  lazy-load="true"></image>
+      <view>没有找到相关记录</view>
+    </view>
+    <!--没有内容 end-->
+  </view>
+</view>

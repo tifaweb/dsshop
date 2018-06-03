@@ -1,0 +1,26 @@
+<div class="left_sidebar">
+        <div class="sellers">
+            <h4>栏目</h4>
+            <div class="single-nav">
+                <ul>
+                	<volist name="site" id="vo">
+                    <if condition="$vo.type eq 2 ">
+                        <if condition="$si['catid'] eq $vo['id']">
+                        <li><a class="on" href="__ROOT__/Site/listTpl/id/{$vo.id}.html">{$vo.title}</a></li>
+                        <else/>
+                        <li><a  href="__ROOT__/Site/listTpl/id/{$vo.id}.html">{$vo.title}</a></li>
+                        </if> 
+                    <else/>
+                        <if condition="$si['catid'] eq $vo['id']">
+                        <li><a class="on"  href="__ROOT__/Site/page/id/{$vo.id}.html">{$vo.title}</a></li></li>
+                        <else/>
+                        <li><a  href="__ROOT__/Site/page/id/{$vo.id}.html">{$vo.title}</a></li></li>
+                        </if>
+                    </if>
+                    </volist>
+                </ul>
+              </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

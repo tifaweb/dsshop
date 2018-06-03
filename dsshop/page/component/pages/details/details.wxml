@@ -1,0 +1,108 @@
+<view class="container">
+  <view class="page-body">
+    <!--主图-->
+    <swiper indicator-dots="true"
+    autoplay="true" interval="5000" duration="500" >
+    <block wx:for="{{goods.img}}" wx:key="key">
+      <swiper-item>
+        <image src="{{uploadImgUrl}}commodity/{{item}}" data-url="{{item}}" bindtap="imgPreview" class="slide-image" lazy-load="true" style="width:100%;height:100%;"/>
+      </swiper-item>
+    </block>
+  </swiper>
+    <!--主图 end-->
+    <!--标题-->
+    <view class="details-title">
+      <view class="title-left">
+        {{goods.title}} </view>
+    </view>
+    
+    <view class="details-now-price">
+      <view class="now-price-left">
+        <view class="now-price-present"><b>¥</b> <span>{{goods.price}}</span></view>
+      </view>
+      <view class="now-price-right">库存{{goods.stock}}件</view>
+      <view class="now-price-right">已售{{goods.sales}}件</view>
+    </view>
+    <!--标题 end-->
+    <view class="details-commission"></view>
+    <!-- 宝贝详情-->
+    <view class="similar-goods">宝贝详情</view>
+    <view class="margin-bottom50">
+      <image wx:for="{{goods.detailsimg}}" wx:key="key" lazy-load="true" mode="widthFix" src="{{item}}"></image>
+      
+    </view>
+    <!-- 宝贝详情 end-->
+  </view>
+</view>
+<!--操作-->
+<view class="bottom immediately">
+   <navigator class="bottom-one nobottom" url="../my/customer">
+    <image src="../../../../image/customer.png" mode="widthFix" style="width:20px;height:20px;"></image>
+    <view class="instructions">客服</view>
+  </navigator>
+  <navigator open-type="switchTab" url="../details/car" class="bottom-one">
+    <image src="../../../../image/shop.png" mode="widthFix"  style="width:20px;height:20px;"></image>
+    <block wx:if="{{cartnum>0}}">
+    <view class="angle-the">{{cartnum}}</view>
+    </block>
+    <view class="instructions">购物车</view>
+  </navigator> 
+  <view class="bottom-two shop" data-value="0" bindtap="toggleBottomPopup">加入购物车</view>
+  <view class="bottom-two buy" data-value="1" bindtap="toggleBottomPopup">立即购买</view>
+</view>
+
+<!--操作 end-->
+<!-- 加入购买车 -->
+<view class="popup-example--bottom zan-popup zan-popup--bottom {{ showBottomPopup ? 'zan-popup--show' : ''}}">
+    <view class="zan-popup__mask" catchtap="toggleBottomPopup"></view>
+    <view class="zan-popup__container">
+      <view class="zan-btns gogoods">
+        <!-- 头 -->
+        <view class="top ">
+          <block wx:if="{{addcart.img}}">
+          <image class="img" src="{{uploadImgUrl}}commodity/{{addcart.zimg}}"  lazy-load="true"></image>
+          </block>
+          <view class="nr">
+            <view class="price">¥{{addcardprice}}</view>
+            <view>库存{{addcardstock}}件</view>
+            <view>{{addcardtyle}}</view>
+          </view>
+          <view class="zan-icon zan-icon-close"  catchtap="toggleBottomPopup"></view>
+        </view>
+        
+        <!-- 头 end-->
+        <!-- 详情 -->
+        <scroll-view scroll-y class="details">
+          <view class="hr"></view>
+          <view class="golist">
+            <view class="title">颜色分类</view>
+            <view class="list">
+              <view wx:for="{{addcart.attribute.color}}" wx:key="key" class="ll {{colorOn[index+1]}} {{addcart.colorstylename[index]}}" data-style="{{addcart.colorstyle[index]}}" data-id="{{index+1}}"  data-value="{{index}}" bindtap="getColorClassification">{{item}}</view>
+              
+            </view>
+          </view>
+          <view class="hr"></view>
+          <view class="golist bottom-list">
+            <view class="title">尺寸</view>
+            <view class="list">
+              <view wx:for="{{addcart.attribute.size}}" wx:key="key" class="ll {{sizeOn[index+1]}} "  data-id="{{index+1}}" data-value="{{index}}" bindtap="getSizeClassification">{{item}}</view>
+            </view>
+          </view>
+          <view class="hr"></view>
+          <view class="amount-list ">
+            <view class="name">购买数量</view>
+              <view class="amount">
+                <view class="reduction {{onNumber[1]}}" data-type="1" catchtap="numberOperation">-</view>
+                <view class="value">{{getnumber}}</view>
+                <view class="add  {{onNumber[2]}}"  data-type="2" catchtap="numberOperation">+</view>
+              </view>
+          </view>
+        </scroll-view>
+        <!-- 详情 end-->
+        <!-- 尾 -->
+        <view class="footer"  bindtap="getGoodsSubmit">确定</view>
+        <!-- 尾 end-->
+      </view>
+    </view>
+  </view>
+<!-- 加入购买车 end-->

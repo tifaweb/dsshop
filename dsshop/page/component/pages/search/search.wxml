@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="page-body">
+    <!--搜索框-->
+    <form >
+    <view class="section">
+      <input class="section-input" placeholder="输入你要搜索的商品" type="text" focus="true" confirm-type="search" bindconfirm="formSubmit" value="{{keyword}}"/>
+
+    </view>
+    </form>
+    <!--搜索框 end-->
+    <!--搜索历史-->
+    <view class="section-history">
+      <view class="section-history-name">搜索历史</view>
+      <view class="section-history-empty"  bindtap="emptykeyword"><span class="zan-icon zan-icon-delete"></span></view>
+    </view>
+    <!--搜索历史 end-->
+    <!--搜索历史记录-->
+    <view class="section-record">
+      <view wx:for="{{keywordArray}}"  wx:key="id">
+        <navigator url="search-results?keyword={{item}}"  class="section-history-value">{{item}}</navigator>
+      </view>
+    </view>
+    <!--搜索历史记录 end-->
+  </view>
+</view>

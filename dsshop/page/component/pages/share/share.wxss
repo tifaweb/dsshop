@@ -1,0 +1,52 @@
+@import "../../../common/lib/weui.wxss";
+.commission{
+  background-color:#F0FFD9;
+  color: #9C0;
+}
+.commission .zan-icon{
+  padding-right:5px;
+}
+.edit-share .title{
+  font-size: 12px;
+  height:35px;
+  line-height: 35px;
+  margin-left:10px;
+}
+.edit-share .section{
+  margin-left:10px;
+  margin-right:10px;
+  font-size:12px;
+  padding:10px 10px;
+  border: 1px solid #e5e5e5;
+}
+.edit-share .section textarea{
+  height:80px;
+}
+.instructions{
+  clear: both;
+  font-size: 12px;
+  margin-left:10px;
+  margin-right:10px;
+  color:#999;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+.onlycopy{
+  color:#1296db;
+  font-size: 12px;
+  margin-right:10px;
+  line-height: 25px;
+  font-weight: bold;
+}
+.page-body{
+  
+  background-color: #fff;
+}
+.canvas{
+  
+  display: none;
+	left: 0px;
+	top: 0px;
+  z-index: 2;
+  background-color: #fff;
+}

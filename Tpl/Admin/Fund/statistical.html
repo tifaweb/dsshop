@@ -1,0 +1,92 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li class="active">资金统计</li>
+</ul>
+<table class="table table-striped table-bordered table-condensed datatable ">
+    <tbody>
+      <tr>
+        <th>充值总金额：</th>
+        <td class="blue">{$array.rechtotal|number_format=2,'.',','}({$array.accrechtotal|number_format=2,'.',','})</td>
+        <td>通过线上线下充值成功的金额，括号内为实际到账金额</td>
+      </tr>
+      <tr>
+        <th>提现总金额：</th>
+        <td class="blue">{$array.withtotal|number_format=2,'.',','}({$array.accwithtotal|number_format=2,'.',','})</td>
+        <td>提现成功的金额，括号内为实际到账金额</td>
+      </tr>
+      <tr>
+        <th>平台流动资金：</th>
+        <td class="blue">{$array.total|number_format=2,'.',','}</td>
+        <td>扣除用户提现金额外的所以用户资金为平台流动资金</td>
+      </tr>
+      <tr>
+        <th>平台预计收益：</th>
+        <td class="blue">1000,00,00</td>
+        <td>平台实际盈利金额=VIP收入+充值手续费+提现手续费+其它扣除的费用+借款管理费+逾期管理费+认证费用</td>
+      </tr>
+    </tbody>
+</table>
+    
+<div>
+</div>
+<!--审核 start-->
+<div id="audit" class="modal hide fade in" >
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>审核</h3>
+    </div>
+    <div class="modal-body">
+    <form method="post"  action='__APP__/TIFAWEB_DSWJCMS/Fund/rechUpda'>
+        <input id="up_id" name="id" type="hidden" value="" />
+        <p class="form-inline">   
+          <label class="radio"><input type="radio" name="type" value="2" checked/> 通过</label>
+          <label class="radio"><input type="radio" name="type" value="3" /> 不通过</label>
+        </p>
+        <div class="span10">
+      	  <img id="verifyImg" src='__APP__/Public/verify/' onClick="changeVerify()" title="点击刷新验证码" data-rel="tooltip" style="cursor:pointer;padding-left: 10px;"/>
+          <input class="input-large" name="proving" type="text"  style="width:50px;margin-top: 10px;" title="验证码" data-rel="tooltip"/>
+          <button class="btn btn-primary" type="submit">
+              确认提交
+          </button>
+      	</div>
+    </form>
+    </div>
+</div>
+<!--审核 end-->
+<!--导出设置 start-->
+<div id="mod" class="modal hide fade in" >
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>导出设置</h3>
+    </div>
+    <div class="modal-body">
+    <form method="post"  action='__APP__/TIFAWEB_DSWJCMS/Fund/moneyExport'>
+        <div class="span10">
+          <button class="btn btn-primary" type="submit">
+              导出
+          </button>
+      	</div>
+    </form>
+    </div>
+</div>
+<!--导出设置 end-->
+<!--底部 -->
+<script>
+function changeVerify(){
+    var timenow = new Date().getTime();
+    document.getElementById('verifyImg').src='__APP__/Public/verify/'+timenow;
+}
+</script>
+<include file="Index:footer" />

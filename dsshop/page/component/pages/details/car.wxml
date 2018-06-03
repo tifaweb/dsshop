@@ -1,0 +1,61 @@
+
+<view>
+  <!-- 购物车列表 -->
+
+  <view class="goods-list " style="{{item.cartstyle}}" wx:for="{{cartList}}"  wx:key="id{{getCheckboxColor[index]}}">
+    <view  class="checkbox"  bindtap="setCheckbox" data-value="{{index}}">
+      <icon type="{{getCheckbox[index]}}" size="24" color="{{getCheckboxColor[index]}}"/>
+    </view>
+    <navigator url="../details/details?id={{item.id}}" class='figure'>
+    <image src="{{uploadImgUrl}}commodity/{{item.zimg}}" mode="aspectFit"></image>
+    </navigator>
+    <view class="information">
+      <navigator url="../details/details?id={{item.id}}" class='title'>{{item.title}}</navigator>
+      <view class='specifications'>{{item.color}};{{item.size}}</view>
+      <view class="price">¥{{item.price}}</view>
+      <view class="calculate">
+        <view class="zan-stepper zan-stepper--small">
+        <view class="zan-stepper__minus {{item.nubclassmin}}" data-type="1" data-id="{{index}}"  bindtap="checkboxPrice">-</view>
+        <input class="zan-stepper__text" type="number" value="{{item.nub}}"></input>
+        <view class="zan-stepper__plus  {{item.nubclassmax}}"  data-type="2" data-id="{{index}}" bindtap="checkboxPrice">+</view>
+        </view>
+      </view>
+    </view>
+    <view class="delete">
+      <view class="zan-icon zan-icon-delete"  data-id="{{index}}" bindtap="deleteCheckbox"></view>
+    </view>
+  </view>
+  
+  <!-- 购物车列表 end-->
+  <!-- 提交 -->
+  
+  <block wx:if="{{cartempty==0}}">
+    <view class="car-submit">
+      <view class="generations"  bindtap="setAllCheckbox">
+        <icon class="lef" type="{{getAllCheckbox}}" size="24" color="{{getAllCheckboxColor}}"/>
+        <view class="lef">全选</view>
+      </view>
+      <view class="total">
+        <view class="amount">
+          <view>合计：</view>
+          <view class="price">¥{{statisticalPrice}}</view>
+        </view>
+        
+        <view class="freight">不含运费</view>
+      </view>
+      <view class="sub"   bindtap="getSettlement">结算（{{statisticalNum}}）</view>
+    </view>
+  </block>
+  <!-- 提交 end -->
+  <!-- 购物车为空 -->
+  <block wx:if="{{cartempty==1}}">
+  <view class="nullcar">
+    <image src="../../../../image/no-shop.png" mode="aspectFit"  lazy-load="true"></image>
+    <view>购物车竟然是空的</view>
+    <button  class="bottom-two buy" size="mini"  bindtap="goshop">去逛逛</button>
+  </view>
+  </block>
+  <!-- 购物车为空 end -->
+</view>
+
+

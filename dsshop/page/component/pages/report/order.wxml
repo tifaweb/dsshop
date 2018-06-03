@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="page-head">
+    <view class="search-fixed-top">
+      <!--日期选择-->
+      <form bindsubmit="formSubmit">
+      <view class="date-time">
+        <view class="name">筛选日期：</view>
+        <view class="weui-cell__bd">
+          <picker mode="date" name="starttime" value="{{start}}" start="2017-01-01" end="{{end}}" bindchange="bindDateChangeStart">
+            <view class="weui-input">{{start}}</view>
+          </picker>
+        </view>
+        <view>至</view>
+        <view class="weui-cell__bd">
+          <picker mode="date" name="endtime" value="{{end}}" start="2017-01-01" end="{{end}}" bindchange="bindDateChangeEnd">
+            <view class="weui-input">{{end}}</view>
+          </picker>
+        </view>
+        <button class="mini-btn" type="primary" size="mini" formType="submit">查询</button>
+      </view>
+      </form>
+      <!--日期选择 end-->
+      <!--选择-->
+      <view class="ds-sorting">
+        <view class="ds-list {{typeOn[0]}}" data-value="0"  bindtap="setType">全部订单</view>
+        <view class="ds-list {{typeOn[1]}}" data-value="1"  bindtap="setType">待付款</view>
+        <view class="ds-list {{typeOn[2]}}" data-value="2"  bindtap="setType">待发货</view>
+        <view class="ds-list {{typeOn[3]}}" data-value="3"  bindtap="setType">待收货</view>
+      </view>
+      <!--选择 end-->
+    </view>
+  </view>
+  <view class="page-body">
+    <!--订单详情-->
+    <view class="order-details">
+      <!--单品-->
+      <view class="zan-panel"  wx:for="{{goods}}"  wx:key="id">
+        <view class="zan-cell">
+          <view class="zan-cell__bd">订单号：{{item.number}}</view>
+          <view class="zan-cell__ft">{{item.time}}</view>
+        </view>
+        <view class="zan-card"  wx:for="{{item.details}}"  wx:key="key" wx:for-item="items">
+          <navigator url="../report/details?id={{item.id}}" class="zan-card__thumb" hover-class="none">
+            <image class="zan-card__img" mode="aspectFit" src="{{uploadImgUrl}}commodity/{{items.goods.zimg}}"></image>
+          </navigator>
+          <navigator url="../report/details?id={{item.id}}" class="zan-card__detail" hover-class="none">
+            <view class="zan-card__detail-row">
+              <view class="zan-card__right-col price">¥ {{items.price}}</view>
+              <view class="zan-card__left-col zan-ellipsis--l2"> {{items.goods.title}} </view>
+            </view>
+            <view class="zan-card__detail-row zan-c-gray-darker">
+              <view class="zan-card__right-col">x{{items.cart.nub}}</view>
+              <view class="zan-card__left-col"> {{items.color}};{{items.size}} </view>
+              <view class="zan-c-red"> {{item.statename}} </view>
+            </view>
+          </navigator>
+        </view>
+        <view class="totalof">共{{item.count}}件商品 合计：¥ {{item.total}}</view>
+        <view class="sub-right">
+          <block wx:if="{{item.state==1}}">
+          <view bindtap="setwxPay" data-value="{{item.number}}" class="subrigh" >支付</view>
+          </block>
+          <view class="subrigh" data-value="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+          <block wx:if="{{item.state==3 || item.state==4 || item.state==6}}">
+          <navigator url="../report/logistics?id={{item.id}}" class="subrigh" >查看物流</navigator>
+          </block>
+        </view>
+      </view>  
+      <!--单品 end-->
+      
+    </view>
+    <!--订单详情 end-->
+    <!--已经结束-->
+    <view  class="bottom-line" style=" {{bottomline}}">
+      <image src="../../../../image/bottom-line.png" mode="aspectFit"></image>
+      <view>我是有底线的</view>
+    </view>
+    <!--已经结束 end-->
+    <!--没有内容-->
+    <view  class="noContent" style=" {{noContent}}">
+      <image src="../../../../image/noContent.png" mode="aspectFit"  lazy-load="true"></image>
+      <view>还没有订单，加把劲吧</view>
+    </view>
+    <!--没有内容 end-->
+  </view>
+</view>

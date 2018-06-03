@@ -1,0 +1,51 @@
+<include file="Index:header" />
+<link rel="stylesheet" href="__PUBLIC__/jc/css/lrtk.css">
+<!--头部 end -->
+<!--主体 -->
+<div id="login">
+    <div class="wrapper">
+        <div class="login">
+            <form name="myform" method="post"  action='__URL__/loging' class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label fa fa-mobile" style="font-size: 22px;top: 10px;"></label>
+                            <input type="text" name="username" placeholder="手机号" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label fa fa-asterisk"></label>
+                            <input id="password" type="password" name="password" placeholder="密码" class="form-control input-medium">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions"><a href="__ROOT__/Logo/forgotpass.html" tabindex="5" class="btn pull-left btn-link text-muted">忘记密码?</a><a href="__ROOT__/Logo/register.html" tabindex="6" class="btn btn-link text-muted">注册</a>
+                    <button type="submit" tabindex="4" class="btn btn-primary">立即登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    $(function() {
+
+        $('#login #password').focus(function() {
+            $('#owl-login').addClass('password');
+        }).blur(function() {
+            $('#owl-login').removeClass('password');
+        });
+    });
+    </script>
+</div>
+<!-- 主体 end-->
+<!--底部 -->
+<include file="Index:footer" />
+<!--底部 end-->

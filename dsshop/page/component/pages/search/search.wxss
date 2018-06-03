@@ -1,0 +1,37 @@
+.section-input{
+  border-radius:15px;
+  height:30px;
+  line-height: 30px;
+  margin:10px 20px 10px 20px;
+  padding:0px 10px 0px 10px;
+  font-size: 12px;
+  background-color: #DEDEDE;
+}
+.section-history .section-history-name{
+  margin-left:20px;
+  font-size:12px;
+  float:left;
+}
+.section-history .section-history-empty{
+  margin-right:20px;
+  font-size:12px;
+  float:right;
+}
+.section-record{
+  margin-left:20px;
+  margin-right:20px;
+  clear: both;
+}
+.section-record .section-history-value{
+  font-size: 12px;
+  border-radius:15px;
+  background-color: #e5e5e5;
+  padding:0px 10px 0px 10px;
+  height:25px;
+  line-height: 25px;
+  float:left;
+  margin-right:5px;
+  margin-top:10px;
+  max-width: 100px;
+  overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap;
+}

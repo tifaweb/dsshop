@@ -1,0 +1,70 @@
+<include file="Index:header" />
+<style>
+.msg {
+	font-size: 14px;
+	line-height: 25px;
+	text-align: center;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+	padding-top: 100px;
+	padding-right: 0px;
+	padding-bottom: 100px;
+	padding-left: 0px;
+}
+.reg {
+    width: 998px;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid #E5E5E5;
+    background: none repeat scroll 0% 0% #FFF;
+}
+.red,.greens{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+.greens{
+	color: #2DA89B;
+}
+.icon-sad2,.icon-smile{
+	font-size: 30px;
+	position: relative;
+	top:4px;
+	right: 20px;
+}
+</style>
+<!--头部 end -->
+<!-- container start --> 
+<div class="reg msg">
+    <div class="jump_top span12">
+    	<div class="span12 loan_search center">
+          	<present name="message">
+            <p class="greens"><i class="icon-smile"></i><?php echo($message); ?></p>
+             <script>window.location.href='<?php echo($jumpUrl); ?>';</script>
+            <else/>
+            <p class="red"><i class="icon-sad2"></i><?php echo($error); ?></p>
+            <p style="display: none;"><a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait">1</b></p>
+            <script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
+            </present>
+            
+      </div>
+  </div>
+</div>
+</div>
+<!-- container end -->
+
+
+<!--底部  start-->
+<include file="Index:footer" />

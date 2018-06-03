@@ -1,0 +1,196 @@
+[ 2014-09-15T10:15:22+08:00 ] 127.0.0.1 /install.php
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.008664s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008760s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.049843s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049938s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001211s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001287s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001050s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001185s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004934s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001400s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001475s ]
+
+[ 2014-09-15T10:15:24+08:00 ] 127.0.0.1 /install.php/Index/install/step/1
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.030884s ]
+INFO: [ route_check ] --END-- [ RunTime:0.030997s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001284s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001373s ]
+NOTIC: 建议使用I方法替代_get
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\87a47085e35556dc3204de01c62ee454.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010323s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010409s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000638s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000623s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000499s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000654s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002619s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000727s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000798s ]
+
+[ 2014-09-15T10:15:25+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000838s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000937s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000694s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000776s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.030529s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030613s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000483s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000475s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000377s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000544s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002080s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000619s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000691s ]
+
+[ 2014-09-15T10:15:26+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001602s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001710s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001323s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-09-15T10:16:57+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000695s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000799s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000559s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000640s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.006686s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006768s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000444s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000441s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000335s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000504s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001916s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000583s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000653s ]
+
+[ 2014-09-15T10:16:58+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001728s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001834s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001201s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001284s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-09-15T10:17:17+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000701s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000799s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000547s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000627s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.006922s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000445s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000446s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000339s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000510s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001931s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000588s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000659s ]
+
+[ 2014-09-15T10:17:17+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001448s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001546s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001228s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001314s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-09-15T10:17:26+08:00 ] 127.0.0.1 /install.php/Index/dbconnect?dbhost=localhost&dbuser=root&dbpwd=&dbname=dswjjds
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001077s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001171s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000682s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000753s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-09-15T10:17:31+08:00 ] 127.0.0.1 /install.php/Index/install/step/3
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000743s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000837s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000649s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2014-09-15T10:17:47+08:00 ] 127.0.0.1 /install.php/Index/install/step/3
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001092s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001183s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000705s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000785s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+

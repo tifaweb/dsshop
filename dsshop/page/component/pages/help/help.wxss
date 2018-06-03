@@ -1,0 +1,17 @@
+.immediately{
+  text-align: center;
+  width:100%;
+  height:45px;
+  line-height: 45px;
+  background-color: #fff;
+  position: fixed;
+	left: 0px;
+	bottom: 0px;
+  color: #1296db;
+  border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #e5e5e5;
+}
+.margin-bottom50{
+  margin-bottom:50px;
+}

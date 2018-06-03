@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="page-body"> 
+    <!--今日/本周-->
+    <view class="page-section">
+      <view class="page-section">
+        <!--一级类目-->
+        <view class="flex-wrp">
+          <view class="flex-item"   wx:for="{{goods}}" wx:key="{{item.id}}">
+            <view class="title {{oneOn[index]}}"  data-value="{{index}}"  bindtap="oneList">{{item.title}}</view>
+              
+            
+          </view>  
+        </view>
+        <scroll-view scroll-y  class="flex-right" style="{{scrollHeight}}" enable-back-to-top scroll-into-view="{{toList}}" scroll-with-animation>
+          <!--二级类目-->
+          <view>
+            <view id="go{{index}}" wx:for="{{goods}}" wx:key="{{item.id}}">
+            
+                <view  wx:for="{{item}}" wx:key="{{itemtow.id}}" wx:for-item="itemtow">
+                  <view class="two">
+                    <view class="title">{{itemtow.title}}</view>
+                    <view class="list">
+                      
+                      <navigator url="../search/search-results?fid={{itemthree.id}}&name={{itemthree.title}}" class="ll" wx:for="{{itemtow.data}}" wx:key="{{itemtow.id}}" wx:for-item="itemthree" hover-class="none">
+                        <image src="{{uploadImgUrl}}goodslist/{{itemthree.img}}"></image>
+                        <view class="name">{{itemthree.title}}</view>
+                      </navigator> 
+                    </view>
+                  </view>
+                </view>
+            </view>
+
+
+
+            <!-- <view class="two">
+              <view class="title">衬衫</view>
+              <view class="list">
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+              </view>
+            </view> 
+            <view class="two">
+              <view class="title">衬衫</view>
+              <view class="list">
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+                <view class="ll">
+                  <image src="../../../../image/list-sleeves.png"></image>
+                  <view class="name">短袖</view>
+                </view>
+              </view>
+            </view>  -->
+          </view>
+        </scroll-view>
+        
+      </view>
+      
+    </view>
+    
+  </view>
+</view>

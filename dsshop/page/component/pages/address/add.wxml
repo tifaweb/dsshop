@@ -1,0 +1,36 @@
+
+<view>
+  <form  bindsubmit="formSubmit">
+    <view class="zan-panel">
+      <view class="zan-cell zan-field">
+        <input class="zan-field__input zan-cell__bd" placeholder="收货人姓名" type="text"  maxlength="50" name="recipient" value="{{Address.information.recipient}}"></input>
+      </view>
+      <view class="zan-cell zan-field">
+        <input class="zan-field__input zan-cell__bd" placeholder="手机号码" type="number" maxlength="11" name="telephone" value="{{Address.information.telephone}}"></input>
+      </view>
+      <view class="zan-cell zan-field">
+        <view class="zan-cell__bd">省市区</view>
+          <view class="zan-cell__ft">
+            <picker mode="region" bindchange="bindRegionChange" name="region"  value="{{cityarray}}">
+              <view class="picker">
+                {{region}}
+              </view>
+            </picker>
+          </view>
+      </view>
+      <view class="zan-cell zan-field">
+        <input class="zan-field__input zan-cell__bd" placeholder="详细地址" type="text"  maxlength="200" name="address"  value="{{Address.information.address}}"></input>
+      </view>
+      <view class="zan-cell zan-field">
+        <input class="zan-field__input zan-cell__bd" placeholder="邮编" type="number"  maxlength="6" name="code"  value="{{Address.information.code}}"></input>
+      </view>
+      
+    </view>
+    <view class="zan-btns">
+        <button
+          class="zan-btn zan-btn--primary" formType="submit">保存</button>
+      </view>
+  </form>
+  
+</view>
+

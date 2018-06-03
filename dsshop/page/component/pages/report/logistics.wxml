@@ -1,0 +1,50 @@
+
+<import src="/dist/steps/index.wxml" />
+<view class="">
+  <!-- 订单号 -->
+  <view class="makeorder">
+    <view class="shipping-address flex-row">
+      <view class="left flex-view-item"><view class="zan-icon zan-icon-underway"></view></view>
+      <view class="address flex-view-item">
+        <view class="top">
+          <view class="top-left">订单号：12312312312312312312312</view>
+        </view>
+        
+      </view>
+    </view>
+    <view class="edge"></view>
+  </view>
+  <!-- 订单号 end-->
+  <!-- 进度条 -->
+  
+    <view wx:if="{{data==2}}">
+      <view>
+        <view  class="noContent" style=" {{noContent}}">
+          <image src="../../../../image/noContent.png" mode="aspectFit"  lazy-load="true"></image>
+          <view>暂无轨迹信息</view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="zan-panel">
+        <view class="zan-steps zan-steps--vsteps zan-steps--3 my-class">
+          <view class="zan-steps__step  {{item.class}}"  wx:for="{{logistics}}"  wx:key="{{index}}">
+            <view class="zan-steps__title" >{{item.AcceptStation}}
+            <view>{{item.AcceptTime}}</view>
+            </view>
+            
+            <view class="zan-steps__icons">
+              <view class="zan-steps__circle"></view>
+            </view>
+            <view class="zan-steps__line"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  
+  <!-- 进度条 end-->
+  
+  
+</view>
+

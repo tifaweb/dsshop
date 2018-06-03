@@ -1,0 +1,40 @@
+<include file="Index:header" />
+<!--头部 end -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+		<h2 class="style top">{$si.title}</h2>
+		<!-- start grids_of_3 -->
+        <volist name="sentiment" id="v">
+        <if condition="$fd eq 0 ">
+		<div class="grids_of_3">
+        </if>
+			<div class="grid1_of_3">
+				<a href="__ROOT__/Goods/details/id/{$v.id}.html">
+					<img src="__PUBLIC__/uploadify/uploads/commodity/{$v.zimg}" alt="" style="width:200px;height:180px;"/>
+                    <h3>{$v.title}</h3>
+					<div class="price">
+						<h4>￥{$v.price|number_format=2,'.',','}<span>购买</span></h4>
+					</div>
+					<span class="b_btm"></span>
+				</a>
+			</div>
+            <input name="" type="hidden" value="{$fd++}" />
+            <if condition="$fd eq 3">
+            	<input name="" type="hidden" value="{$fd=0}" />
+            </if>
+       <if condition="$fd eq 0 ">
+            <div class="clear"></div>
+		</div>
+        </if>
+        </volist>
+        <div class="clear"></div>
+		<!-- end grids_of_3 -->
+        <div class="pagination pagination-centered">
+           <ul>{$page}</ul>
+        </div>
+	</div>
+</div>
+</div>	
+<!--底部  start-->
+<include file="Index:footer" />

@@ -1,0 +1,357 @@
+<include file="Index:header" />
+<style type="text/css">
+			.span1_of_1{margin-left: 0px;}
+            .box{width:440px;margin:0px auto;}
+            .tb-pic a{display:table-cell;text-align:center;vertical-align:middle;}
+            .tb-pic a img{vertical-align:middle;}
+            .tb-pic a{*display:block;*font-family:Arial;*line-height:1;}
+            .tb-thumb{margin:10px 0 0;overflow:hidden;}
+            .tb-thumb li{background:none repeat scroll 0 0 transparent;float:left;height:42px;margin:0 6px 0 0;overflow:hidden;padding:1px;}
+            .tb-s310, .tb-s310 a{height:380px;width:400px;}
+            .tb-s310, .tb-s310 img{max-height:380px;max-width:400px;}
+            .tb-s310 a{*font-size:271px;}
+            .tb-s40 a{*font-size:35px;}
+            .tb-s40, .tb-s40 a{height:40px;width:40px;}
+            .tb-booth{border:1px solid #CDCDCD;position:relative;z-index:1;}
+            .tb-thumb .tb-selected{background:none repeat scroll 0 0 #4CCFC1;height:40px;padding:2px;}
+            .tb-thumb .tb-selected div{background-color:#FFFFFF;border:medium none;}
+            .tb-thumb li div{border:1px solid #CDCDCD;}
+            div.zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:500px;height:200px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
+            div.zoomMask{position:absolute;background:url("__PUBLIC__/jc/images/mask.png") repeat scroll 0 0 transparent;cursor:move;z-index:1;}
+			img {max-width: none}
+			#goods-cart-inform{
+				position: fixed;
+				z-index: 10;
+				left:50%;
+				top: 50%;
+				display: none;
+			}
+			#goods-cart-inform span{width:200px;border: 3px solid #ccc;	padding: 10px;color: #FFF;font-size: 16px;background-color: #999;}
+</style>
+<!--头部 end -->
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+	<!-- start content -->
+	<div class="single">
+			<!-- start span1_of_1 -->
+			<div class="left_content">
+			<div class="span1_of_1">
+				<!-- start product_slider -->
+				<div class="product-view">
+				    <div class="product-essential">
+				        <div class="product-img-box">
+				    <div class="more-views" style="float:left;margin-right: 5px;">
+				        <div class="more-views-container">
+				        <ul>
+				            
+				          </ul>
+				        </div>
+				    </div>
+
+                   
+				<div class="box">
+                    <div class="tb-booth tb-pic tb-s310">
+                        <a href="images/01.jpg">
+                            <img src="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" alt="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" rel="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" class="jqzoom" />
+                        </a>
+                    </div>
+                    <ul class="tb-thumb" id="thumblist">
+                    	<li class="tb-selected">
+                            <div class="tb-pic tb-s40">
+                                <a href="javascript:void(0);">
+                                    <img src="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" mid="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" big="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" style="height: 40px;width: 40px;"/>
+                                </a>
+                            </div>
+                        </li>
+                    	<volist name="goods.img" id="vo">
+                        <li>
+                            <div class="tb-pic tb-s40">
+                                <a href="javascript:void(0);">
+                                    <img src="__PUBLIC__/uploadify/uploads/commodity/{$vo}" mid="__PUBLIC__/uploadify/uploads/commodity/{$vo}" big="__PUBLIC__/uploadify/uploads/commodity/{$vo}" style="height: 40px;width: 40px;"/>
+                                </a>
+                            </div>
+                        </li>
+                        </volist>
+                        
+                    </ul>
+                </div>
+                   <script type="text/javascript" src="__PUBLIC__/jc/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/jc/js/jquery.imagezoom.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(".jqzoom").imagezoom();
+		$("#thumblist li a").click(function() {
+			$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+			$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+			$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+		});
+	});
+</script>
+                   <!--图片 end -->
+				</div>
+				</div>
+				</div>
+				<!-- end product_slider -->
+			</div>
+			<!-- start span1_of_1 -->
+			<div class="span1_of_1_des">
+				  <div class="desc1">
+                  <form id="form" onsubmit="return false">
+					<h3>{$goods.title}</h3>
+					<p class="red">{$goods.instructions}</p>
+                    <p>市场价：￥<span id="unitPriceId" style="text-decoration: line-through;">{$goods.market|number_format=2,'.',','}</span></p>
+					<h5>单价：￥<span id="unit">{$goods.price|number_format=2,'.',','}</span><input id="units" name="price" type="hidden" value="{$goods.price}" /></h5>
+					<div class="available">
+						<div class="tb_skin">
+                            <dl class="mall_detail">
+                                <dt>颜色分类</dt>
+                                <dd>
+                                	<ul id="color">	  
+                                    <input id="A" type="hidden" value="0" name="color"/>   
+                                		<foreach name="goods.attribute.color" item="A"  key="AA">   
+                                        <if condition="$AA eq 0">              	
+                                        <li><a href="javascript:;" class="focus" onclick="switchs(1,{$AA},this)"><span>{$A}</span></a></li>
+                                        <else/>
+                                        <li><a href="javascript:;" onclick="switchs(1,{$AA},this)"><span>{$A}</span></a></li>
+                                        </if>
+                                        </foreach>
+                            		</ul>
+                                </dd>
+                            </dl>
+                            
+                            <dl class="mall_detail">
+                                <dt>尺寸</dt>
+                                <dd><ul id="size">	
+                                <input id="B" type="hidden" value="0" name="size"/>
+                                		<foreach name="goods.attribute.size" item="B"  key="BB">   
+                                        <if condition="$BB eq 0">              	
+                                        <li><a href="javascript:;" class="focus" onclick="switchs(2,{$BB},this)"><span>{$B}</span></a></li>
+                                        <else/>
+                                        <li><a href="javascript:;" onclick="switchs(2,{$BB},this)"><span>{$B}</span></a></li>
+                                        </if>
+                                        </foreach>                        	
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="mall_detail">
+                                <dt>数量</dt>
+                                <dd>
+                                	<ul>
+                                    	<li class="details_price">
+                                        <span class="jie" onclick="calculation(2)">-</span>
+                                        <input type="text" value="1" maxlength="8" name="number" id="number" onBlur="calculation(3)">
+                                        <span class="ja" onclick="calculation(1)">+</span>
+                                        </li>
+                                        <li><em style="" id="stock_em">[库存<span id="stock_num">{$goods.attribute.stock.0}</span>件]</em></li>
+                                    </ul>
+                                	
+                                        
+                                </dd>
+                            </dl>
+                       </div>
+                       <div class="addCart" onclick="addCart()"><img src="__PUBLIC__/uploadify/uploads/commodity/{$goods.zimg}" style="width:45px;height:45px;"/></div>
+                       
+						<div class="btn_form">
+                        <input name="stock" id="stock" type="hidden" value="{$goods.attribute.stock.0}" />
+                        <input name="id" type="hidden" value="{$goods.id}" />
+                        <input name="title" type="hidden" value="{$goods.title}" />
+                        <input name="img" type="hidden" value="{$goods.zimg}" />
+                        <input name="numbers" type="hidden" value="{$goods.number}" />
+                        <input name="attributes" type="hidden" value='{$goods.attributes}' />
+                       	<if condition="$Think.session.user_uid gt 0">
+                        <input type="submit" value="加入购物车" title="" class="green" onclick="cart();"/>
+                        <else/>
+                        <!--<input type="submit" value="加入购物车" title="" class="gray"/>-->
+                        <input type="submit" value="加入购物车" title="" class="green" onclick="window.location.href='__ROOT__/Logo/login.html'"/>
+                        </if>
+							
+                            <!--<div class="af"></div>-->
+						</div>
+						<input type="reset" name="reset" style="display: none;" />
+                        
+						<div class="clear"></div>
+                    </div>
+                    </form>
+					<script>
+					function cart(){
+						var A=$('#A').val();	//颜色
+						var B=$('#B').val();	//尺寸
+						if(!A){
+							alert('请先选择颜色分类');
+							return false;
+						}
+						if(!B){
+							alert('请先选择尺寸');
+							return false;
+						}
+						var data=$("#form input").map(function(){
+						return ($(this).attr("name")+'='+$(this).val());
+						}).get().join("&") ;
+						$.ajax({
+						   type: "POST",
+						   url: "__ROOT__/Goods/ajaxcart.html",
+						   data: data,
+						   success: function(msg){
+							   if(msg.status==1){
+									$('#goods-cart-inform').show();
+									$('#goods-cart-inform span').html(msg.info);
+									setTimeout(function () {
+										location.reload();
+									}, 1000);
+									
+								}else{
+								  alert(msg.info);
+								}
+						   }
+						});
+					}
+					</script>
+			   	 </div>
+			   	</div>
+			   	<div class="clear"></div>
+			   	<!-- start tabs -->
+				   	<section class="tabs">
+			        <label for="tab-1" class="active tablist tab-label-1 " onclick="tabs(1)">商品详情</label>
+			
+			        <label for="tab-2" class="tablist tab-label-2" onclick="tabs(2)">规格参数</label>
+			
+			        <label for="tab-3" class="tablist tab-label-3" onclick="tabs(3)">服务保障</label>
+	          
+				    <div class="clear-shadow"></div>
+					
+			        <div class="content">
+				        <div class="content-1 tabshow">
+				        	{$goods.details}
+							<div class="clear"></div>
+						</div>
+				        <div class="content-2 tabshow">
+							{$goods.specifications}
+                            <div class="clear"></div>
+						</div>
+				        <div class="content-3 tabshow">
+				        	
+							<div class="clear"></div>
+						</div>
+			        </div>
+			        </section>
+		         	<!-- end tabs -->
+					<script>
+                    $(document).ready(function(){
+						$("input[type=reset]").trigger("click");
+						$('.tabshow').hide();
+						$('.content-1').show();
+					});
+					function tabs(id){
+						$('.tablist').removeClass('active');
+						$('.tabshow').hide();
+						$('.tab-label-'+id).addClass('active');
+						$('.content-'+id).show();
+						
+					}
+                    </script>
+			   	</div>
+			   	<!-- start sidebar -->
+			 <div class="left_sidebar">
+					<div class="sellers">
+						<h4>热销产品</h4>
+						<div class="single-nav">
+			                <ul>
+                            	<volist name="sales" id="vo">
+			                   	<li><a href="__ROOT__/Goods/details/id/{$vo.id}.html">{$vo.title}</a></li>
+                                </volist>
+			                </ul>
+			              </div>
+						  <div class="banner-wrap bottom_banner color_link">
+								<a href="#" class="main_link">
+								<figure><img src="__PUBLIC__/jc/images/delivery.png" alt=""></figure>
+								<h5>同城免费测量、安装后付款</h5></a>
+						 </div>
+						 
+					</div>
+				</div>
+					<!-- end sidebar -->
+          	    <div class="clear"></div>
+	       </div>	
+	<!-- end content -->
+	</div>
+</div>
+</div>		
+<!-- start footer -->
+<div id="goods-cart-inform"><span></span></div>
+<include file="Index:footer" />
+<script>
+//选择
+function switchs(type,id,t){
+	var size=$('#B').val();
+	var color=$('#A').val();
+	var goodid='{$goods.id}';
+	if(type==1){	//颜色
+		$('#color a').removeClass('focus');
+		$('#A').val(id);
+		color=id;
+	}else{	//尺寸
+		$('#size a').removeClass('focus');
+		$('#B').val(id);
+		size=id;
+	}
+	$(t).addClass('focus');
+	$.ajax({
+	   type: "POST",
+	   url: "__ROOT__/Goods/ajaxswitch.html",
+	   data: {color:color,size:size,type:type,goodid:goodid},
+	   success: function(msg){
+		   if(msg.status==1){
+			 $('#stock_em').html('[库存<span id="stock_num">'+msg.info+'</span>件]');
+			 $('#unit').html(msg.data.price);
+			  $('#units').val(msg.data.price.replace(/,/gi,''));
+			 $('#unitPriceId').html(msg.data.market);
+		   }else{
+			 alert(msg.info);
+		   }
+	   }
+	});
+}
+//数量
+function calculation(type){
+	var strP=/^\d+$/;
+	var stock=$('#stock').val();//库存
+	var numb=$('#number').val();//数量
+	var A=$('#A').val();	//颜色
+	var B=$('#B').val();	//尺寸
+	if(!A){
+		alert('请先选择颜色分类');
+		return false;
+	}
+	if(!B){
+		alert('请先选择尺寸');
+		return false;
+	}
+	if(type==1){	//加
+		if(parseInt(numb)<stock){
+			$('#number').val(parseInt(numb)+1);
+		}else{
+			$('#number').val(stock);
+		}
+	}else if(type==2){	//减
+		if(numb>1){
+			$('#number').val(parseInt(numb)-1);
+		}else{
+			$('#number').val(1);
+		}
+	}else{	//键入
+	
+		if(strP.test(numb)){		//如果是数字
+		
+			if(parseInt(numb)>stock){
+				$('#number').val(stock);
+			}else if(parseInt(numb)<1){
+				$('#number').val(1);
+			}
+		}else{
+			$('#number').val(1);
+		}
+	}
+}
+</script>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title><if condition="($si['link'] eq '/') OR ($si['link'] eq '')"><else/>{$si['title']}-</if>{$s.sys_name}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{$si['remark']?$si['remark']:$s['sys_describe']}{$so.title}">
+	<meta name="KeyWords" content="{$si['keyword']?$si['keyword']:$s['sys_keyword']}{$so.title}">
+    <meta name="generator" content="Dswjcms! X1.0" />
+    <meta name="author" content="Dswjcms! Team and Tf Team" />
+    <meta name="copyright" content="2015-2016 Tf Inc." />
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <link href="__PUBLIC__/jc/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/jc/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/jc/style.css">
+    <link rel="shortcut icon" href="__PUBLIC__/bootstrap/img/favicon.ico">
+<script type="text/javascript" src="__PUBLIC__/jc/js/jquery.min.js"></script>
+<!-- start top_js_button -->
+<script type="text/javascript" src="__PUBLIC__/jc/js/move-top.js"></script>
+<script type="text/javascript" src="__PUBLIC__/jc/js/easing.js"></script>
+   
+		
+</head>
+<body>
+<!-- start header -->
+<div class="header_btm">
+	<div class="wrap">
+    <div class=" head">
+    <a href="__ROOT__/Site/listTpl/id/1.html">关于我们</a>
+    	<div class="rights">
+        <if condition="$Think.session.user_name eq ''">
+            <a href="__ROOT__/Logo/login.html">登录</a>|<a href="__ROOT__/Logo/register.html">注册</a>
+        <else/>
+            <a href="__ROOT__/Center/order.html">{$Think.session.user_name}</a>|
+            <a href="__ROOT__/Logo/exits.html">退出</a>
+        </if>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="header_bg">
+<div class="wrap">
+	<div class="header">
+		<div class="logo">
+			<a href="/"><img src="__PUBLIC__/uploadify/uploads/logo/{$s.sys_logo}" alt=""/> </a>
+		</div>
+		<div class="h_icon">
+		<ul class="icon1 sub-icon1">
+			<li><a class="active-icon c1" href="__ROOT__/Goods/carts.html"><i ic="cart_total"></i></a>
+				
+                <if condition="$Think.session.amount gt 0 ">
+                <i class="que">{$Think.session.amount}</i>
+                </if>
+			</li>
+		</ul>
+		</div>
+		<div class="h_search">
+    		<form  action="__ROOT__/Goods/index.html" method="get">
+    			<input name="search" type="text" value="{$Think.get.search}" placeholder="商品名">
+    			<input type="submit" value="">
+    		</form>
+            
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+<div class="header_btm">
+<div class="wrap">
+	<div class="header_sub">
+		<div class="h_menu">
+			<ul>
+				<li class="{$active.index}"><a href="/">主页</a></li> |
+				<li class="{$active.buckle}"><a href="__ROOT__/Goods/index/mid/buckle.html">扣板</a></li> |
+                <li class="{$active.appliances}"><a href="__ROOT__/Goods/index/mid/appliances.html">电器</a></li> |
+                <li class="{$active.accessories}"><a href="__ROOT__/Goods/index/mid/accessories.html">配件</a></li> |
+				<li class="{$active.about}"><a href="__ROOT__/Site/listTpl/id/1.html">关于我们</a></li> |
+				<li class="{$active.center}"><a href="__ROOT__/Center/order.html">个人中心</a></li>
+                
+			</ul>
+		</div>
+		
+	<div class="clear"></div>
+</div>
+</div>
+</div>

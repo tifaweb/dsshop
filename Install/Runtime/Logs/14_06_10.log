@@ -1,0 +1,124 @@
+[ 2014-06-10T18:05:08+08:00 ] 127.0.0.1 /install.php
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002165s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002416s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024305s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024564s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001948s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001966s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001655s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002083s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008294s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001910s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002137s ]
+
+[ 2014-06-10T18:05:11+08:00 ] 127.0.0.1 /install.php/Index/install/step/1
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.008298s ]
+INFO: [ route_check ] --END-- [ RunTime:0.011946s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.006055s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006554s ]
+NOTIC: 建议使用I方法替代_get
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\87a47085e35556dc3204de01c62ee454.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.028334s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028631s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001414s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001410s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001053s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002723s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007410s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002718s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003002s ]
+
+[ 2014-06-10T18:05:13+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002434s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002713s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002234s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002551s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang F:\wamp\www\dswjjds\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.021979s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022283s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001972s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002888s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002092s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002347s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010008s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002077s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002304s ]
+
+[ 2014-06-10T18:05:13+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002084s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002909s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001234s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001458s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-06-10T18:05:30+08:00 ] 127.0.0.1 /install.php/Index/dbconnect?dbhost=localhost&dbuser=root&dbpwd=&dbname=dswjjd
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.004034s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004529s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003329s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003707s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-06-10T18:05:36+08:00 ] 127.0.0.1 /install.php/Index/dbconnect?dbhost=localhost&dbuser=root&dbpwd=&dbname=dswjjds
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.004122s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004623s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003460s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003837s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+
+[ 2014-06-10T18:05:43+08:00 ] 127.0.0.1 /install.php/Index/install/step/3
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.005032s ]
+INFO: [ route_check ] --END-- [ RunTime:0.005541s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' F:\wamp\www\dswjjds\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.005131s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005750s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: [2] mysql_fetch_array() expects parameter 1 to be resource, boolean given F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 4897 行.
+NOTIC: [8] Undefined variable: datalists F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 4901 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\dswjjds\Install\Lib\Action\IndexAction.class.php 第 4901 行.
+

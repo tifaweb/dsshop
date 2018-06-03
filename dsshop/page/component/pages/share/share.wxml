@@ -1,0 +1,36 @@
+<view class="container">
+
+  <view class="page-body">
+  
+    <!--佣金-->
+    <view class="zan-panel commission">
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd"><span class="zan-icon zan-icon-points"></span>您的佣金为{{commissionRatio}}%（预计¥{{commission}}）</view>
+        <view class="zan-cell__ft" bindtap="modalTap">规则</view>
+      </view>
+    </view>
+    <!--佣金 end-->
+    <!--编辑分享方案-->
+    <view class="edit-share">
+      <view class="title">编辑分享文案</view>
+      <view class="section">
+        <textarea placeholder="分享方案" auto-height value="{{nr}}"/>
+      </view>
+    </view>
+    <!--编辑分享方案 end-->
+    <!--复制文案-->
+    <view class="zan-pull-right onlycopy"  bindtap="getShareCopy">仅复制分享文案</view>
+    <!--复制方案 end-->
+    <!--说明-->
+    <view class="instructions">点击“获取分享”后，分享所需资源会自动下载到您的手机相册中，所需文案将保存到剪贴板中，您直接粘贴即可获取分享文案</view>
+    <view class="instructions">联盟仅提供技术支持，请您自行确保分享内容真实合法（如不使用店铺内部优惠券、好评返现等虚假描述）</view>
+    <view class="instructions">分享链接默认有效期为15日，为了避免因分享链接失效导致的佣金统计失败，请在购买前进行分享链接获取</view>
+    <!--说明 end-->
+    <!--生成方式-->
+    <view class="btn-area">
+      <button type="primary" bindtap="savePhotoAlbum">获取分享</button>
+    </view>
+    <!--生成方式 end-->
+  </view>
+</view>
+<canvas class="canvas" canvas-id="firstCanvas" style="{{canvasstyle}}"></canvas>

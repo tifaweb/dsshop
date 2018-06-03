@@ -1,0 +1,29 @@
+<import src="/dist/tab/index.wxml" />
+
+<view class="index">
+  <swiper indicator-dots="true"
+    autoplay="true" interval="5000" duration="500" >
+    <block wx:for="{{imgUrls}}" wx:key="key">
+      <swiper-item>
+        
+        <image src="{{uploadImgUrl}}undefined/{{item.img}}" bindtap="durationChange" data-url="{{item.url}}" class="slide-image" lazy-load="true" style="width:100%;height:100%;"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--搜索框-->
+  <view class="search-box">
+    <navigator url="pages/search/search">搜索商品</navigator>
+  </view>
+  <!--搜索框 end-->
+  <!--商品列表-->
+  <view class="goods-list">
+    <navigator url="pages/details/details?id={{item.id}}"  class="list"  wx:for="{{goods}}"  wx:key="id">
+      <view class="ll">
+        <view class="img"><image src="{{uploadImgUrl}}commodity/{{item.img}}"  mode="widthFix"></image></view>
+        <view class="title">{{item.title}}</view>
+        <view class="price">￥{{item.price}}</view>
+      </view>
+    </navigator>
+  </view>
+  <!--商品列表 end-->
+</view>

@@ -1,0 +1,67 @@
+<include file="Index:header" />
+<link rel="stylesheet" href="__PUBLIC__/jc/css/lrtk.css">
+<link rel="stylesheet" href="__PUBLIC__/css/style.css">
+<!--头部 end -->
+<!--主体 -->
+<div id="login">
+    <div class="wrapper">
+        <div class="login">
+             <form id="myform" name="myform" method="post" action='__URL__/rPassword' class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label fa fa-mobile" style="font-size: 22px;top: 10px;"></label>
+                            <input type="text" id="phone" name="user" datatype="m" nullmsg="请输入手机号！" placeholder="手机号"  maxlength="11" ajaxurl="__URL__/ajaxverify" class="form-control input-medium">
+                        </div>
+                        <div class="Validform_checktip"></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label fa "><span class="icon-sort-numerically" style="position: relative;top: -5px;"></span></label>
+                            <input type="text" class="form-control input-medium" name="proving" placeholder="验证码" maxlength="4" datatype="*" style="width:50%;height:15px;"><img class="CaptchaImage" id="verifyImg" src='__APP__/Public/verify/' onClick="changeVerify()" title="点击刷新验证码" data-rel="tooltip" style="cursor:pointer;padding-left: 10px;"/>
+                        </div>
+                        <div class="Validform_checktip"></div>
+                    </div>
+                    
+                </div>
+                <div class="form-actions"><a href="__ROOT__/Logo/login.html" tabindex="6" class="btn btn-link text-muted">登陆</a>
+                    <button type="submit" tabindex="4" class="btn btn-primary">下一步</button>
+                </div>
+                <input id="vnumber" type="hidden" value="" />
+            </form>
+        </div>
+    </div>
+    
+</div>
+<!-- 主体 end-->
+<!--底部 -->
+
+<script src="__PUBLIC__/jquery/Validform_v5.3.2min.js"></script>
+<script language="JavaScript">
+ $(function(){
+	//$(".form-horizontal").Validform();  //就这一行代码！;
+
+	$("#myform").Validform({
+		tiptype:2,
+		datatype:{
+			"me" : /^[\u4E00-\u9FA5\uf900-\ufa2d\w]{2,16}$/,
+		}
+	});
+})
+</script>
+<script type="text/javascript">
+function changeVerify(){
+		var timenow = new Date().getTime();
+		document.getElementById('verifyImg').src='__APP__/Public/verify/'+timenow;
+	}
+</script>
+<include file="Index:footer" />
+<!--底部 end-->

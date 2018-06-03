@@ -1,0 +1,348 @@
+<include file="Index:header" />
+<style>
+.cart{
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #EFEFEF;
+	border-right-color: #EFEFEF;
+	border-bottom-color: #EFEFEF;
+	border-left-color: #EFEFEF;	
+	
+}
+.cart .cart_right{
+	padding: 20px;
+	padding-left: 30%;
+	color: #666;
+}
+.cart table{width:100%;font-family: "微软雅黑";font-size: 12px;}
+.cart thead tr{
+	background-color: #666;
+	text-align: left;
+	color: #FFF;
+}
+.cart thead tr th{
+	padding: 5px;	
+}
+.cart thead tr th input{
+	position: relative;
+	top: 2px;	
+}
+.cart tbody{
+	background-color: #FCFCFC;
+	
+}
+.cart tbody tr{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #EFEFEF;
+}
+.cart tbody tr td{
+	color: #666;
+	padding-top: 20px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+.cart tbody tr td a{
+	color: #666;
+}
+.cart tbody tr td a:hover{
+	color: #4CCFC1;
+}
+.cart tbody tr .sp1 img{
+	float: left;
+	border: 1px solid #EBEBEB;
+	margin-right: 10px;
+	width:86px;
+	height:85px;
+}
+.cart tbody tr .sp1 input{
+	float: left;
+	margin-right: 5px;
+}
+.cart tbody tr td .icon-bin{
+	font-size: 18px;
+	position: relative;
+	top: 5px;
+}
+.cart tbody tr .sp2{
+	color: #999;	
+}
+.cart tbody tr .sp4{color: #F40;font-family: Verdana,Tahoma,arial;font-weight: 700;}
+.cart tbody tr .sp3{
+	position: relative;
+	top: 20px;
+}
+.cart tbody tr .sp3 span{
+	  display: block;
+	  font-size: 20px;
+	  color: #808080;
+	  _display: inline;
+	  float: left;
+	  width: 26px;
+	  height: 32px;
+	  border: 1px solid #e8e8e8;
+	  line-height: 32px;
+	  padding: 0;
+	  vertical-align: top;
+	  text-align: center;
+	  overflow: hidden;
+	  cursor:pointer
+}
+.cart tbody tr .sp3 .ja{
+	border-left-style: none;
+}
+.cart tbody tr .sp3 input{
+	float: left;
+	  display: inline;
+	  margin: 0;
+	  padding: 0;
+	  width: 48px;
+	  height: 32px;
+	  font-size: 16px;
+	  line-height: 32px;
+	  text-align: center;
+	  color: #666;
+	  border: 1px solid #e8e8e8;
+	  outline: 0;
+	  background: #fff;
+	  ime-mode: disabled;
+	  margin-left: -1px;
+}
+.know{
+	border: 1px solid #EFEFEF;
+	margin-top: 10px;
+	padding: 10px;
+	clear: both;
+	color: #666;
+	font-family: "微软雅黑";
+}
+.know #total{
+	font-weight: 700;
+	font-size: 22px;
+	padding: 0px 3px;
+	color: #EC4444;	
+}
+.know .payment{
+	font-family: "Source Sans Pro", sans-serif;
+	cursor: pointer;
+	border: medium none;
+	outline: medium none;
+	display: inline-block;
+	font-size: 1em;
+	color: #FFF;
+	text-transform: capitalize;
+	transition: all 0.3s ease-in-out 0s;
+	padding-right: 34px;
+	padding-left: 34px;
+	background-color: #EC4444;
+	margin-top: 10px;
+	line-height: 35px;
+}
+.know .payment:hover {
+    background-color: #DA3333;
+}
+.know .greens{
+	background-color: #4CCFC1;
+}
+.know .greens:hover {
+	background-color: #33BFB1;
+}
+.know .yellow{
+	background-color: #F90;
+}
+.know .yellow:hover {
+	background-color: #EA8C00;
+}
+.know .red{
+	font-size: 12px;	
+}
+.know li{
+	line-height: 35px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	padding: 5px;
+}
+.know li span{
+	float:left;
+	width:100px;
+	text-align: right;
+	margin-right: 10px;
+}
+.print{
+	position: relative;
+	top: 5px;
+	height:37px!important;
+}
+.print:hover{
+	text-decoration: none;	
+}
+.total {
+    font-weight: 700;
+    font-size: 22px;
+    padding: 0px 3px;
+    color: #EC4444;
+}
+</style>
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS/Goods/records.html">订单管理</a> <span class="divider">/</span>
+      </li>
+      <li class="active">订单详情</li>
+    <div  class="pull-right"> <a class="ajax-link" href="__APP__/TIFAWEB_DSWJCMS/Goods/records.html" >返回订单管理</a></div>
+</ul>
+	
+ 
+ 	<div class="cart">
+        
+        <table>
+            <thead>
+            <tr>
+              <th>商品信息</th>
+              <th></th>
+              <th>单价(元)</th>
+              <th>数量</th>
+              <th>小计(元)</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            
+              <volist name="details" id="vo">
+              
+              <tr id="cart_{$i}">
+                <td class="sp1">
+                    <a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">
+                <img src="__PUBLIC__/uploadify/uploads/commodity/{$vo.goods.zimg}"/></a>
+                <div class="">
+                <p><a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">{$vo.goods.title}</a></p>
+                </div>
+                </td>
+                <td class="sp2">
+                	<P>颜色分类：{$vo.colorname}</P>
+					<p>尺码：{$vo.sizename}</p>
+                </td>
+                <td>{$vo.price}</td>
+                <td >
+                {$vo.cart.nub}
+                </td>
+                <td class="sp4" id="subtotal_{$i}">{$vo.total|number_format=2,'.',','}</td>
+              </tr>
+              </volist>
+              <tr><td colspan="5" style="text-align: right;">合计：<span class="total">￥{$indent.total|number_format=2,'.',','}</span></td></tr>
+          </tbody>
+          
+        </table>
+		</div>
+         <form method="post"  action='__APP__/TIFAWEB_DSWJCMS/Goods/delivery.html'> 
+         <input name="id" type="hidden" value="{$Think.get.id}" />
+         <div class="know">
+        <ul>
+		  <li><span>订单号：</span>{$indent.number}</li>
+          <li><span>订单时间：</span>{$indent.time|date="Y-m-d H:i:s",###}</li>
+          <li><span>所在地区：</span>
+          <div id="area">
+            
+            <div id="cct">
+            {$city[$indent['information']['region'][0]]}&nbsp;{$city[$indent['information']['region'][1]]}&nbsp;{$city[$indent['information']['region'][2]]}&nbsp;<a href="javascript:void(0)" onclick="$('#area select').attr('name','region[]');$('#cct').hide();$('#cct_select').show();">更换</a>
+            </div>
+            <div id="cct_select" style="display:none">
+            <select id="province"   style="width:100px;"></select><select id="city" style="width:110px;" ></select><select id="county"  style="width:140px;" ></select>
+            </div>
+            
+            </div>
+          </li>
+          <li><span>详细地址：</span><input name="address" type="text"  placeholder="详细地址" value="{$indent.information.address}"/></li>
+          <li><span>收货人：</span><input name="recipient" type="text"  placeholder="收货人" value="{$indent.information.recipient}"/></li>
+          <li><span>邮政编码：</span><input name="code" type="text"  placeholder="邮政编码" value="{$indent.information.code}"/></li>
+          <li><span>手机号码：</span><input name="phone" type="text"  placeholder="手机号码" value="{$indent.information.phone}"/></li>
+          <li><span>电话号码：</span><input name="telephone" type="text"  placeholder="电话号码" value="{$indent.information.telephone}"/></li>
+         
+          <li><span>状态：</span>
+          {$indent['states']}
+          </li>
+           <li><span>快递公司：</span>
+           <select name="express" class="span2">
+                <option value="">请选择</option>
+                <foreach name="linkageValue" item="vo">
+                <eq name="indent['express']" value="$key">
+                <option value="{$key}" selected>{$vo}</option>
+                <else/>
+                <option value="{$key}">{$vo}</option>
+                </eq>
+                
+                </foreach>
+                </select>
+           </li>
+           <li><span>快递单号：</span><input name="cnumber" type="text"  placeholder="快递单号" value="{$indent.cnumber}"/></li>
+        </ul>
+           <div style="text-align: right;">
+           <if condition="$indent['state'] eq 2">
+           <button class="payment" type="submit">
+              保存
+            </button>
+             <button class="payment" type="submit" name="delivery" value="1">
+              确认发货
+            </button>
+            <input name="total" type="hidden" value="{$indent.total}" />
+            <input name="uid" type="hidden" value="{$indent.uid}" />
+            <input name="number" type="hidden" value="{$indent.number}" />
+            <button class="payment greens" type="submit" name="cancel" value="2">
+              取消订单
+            </button>
+           <elseif condition="$indent['state'] eq 1"/>
+           <button class="payment" type="submit">
+              保存
+            </button>
+            <button class="payment greens" type="submit" name="cancel" value="1">
+              取消订单
+            </button>
+            <elseif condition="$indent['state'] eq 3"/>
+            <button class="payment" type="submit">
+              保存
+            </button>
+			<button class="payment yellow" type="submit " name="collection" value="2">
+              关闭交易
+            </button>
+           </if>
+           </div>
+        </div>
+    </form>
+<div>
+</div>
+<!--底部 -->
+			
+<include file="Index:footer" />
+<script src="__PUBLIC__/js/region.js"></script>
+			<script src="__PUBLIC__/js/jq_area.js"></script>
+            <script>
+            $(function(){
+                $("#area").area({cache:region});
+				$('#province').prepend("<option value='' selected>请选择</option>");
+				$('#city').html("<option value='' selected>请选择</option>");
+				$('#county').html("<option value='' selected>请选择</option>");
+            });
+            </script>

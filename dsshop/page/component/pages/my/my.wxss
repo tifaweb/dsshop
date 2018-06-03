@@ -1,0 +1,41 @@
+.userinfo-avatar {
+  border-radius: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.page-body-info{
+  background-color: #FFFFFF;
+  
+  padding:50rpx 0 50rpx 0;
+}
+.panel-icon{
+  color: #d81e06;
+  margin-right: 5px;
+}
+/*订单状态*/
+.list-order{
+  position:relative;
+  display:flex;
+  background-color: #FFF;
+  
+}
+.list-order .list4{
+  padding:12px 15px;
+  flex:1;
+  text-align: center;	
+}
+.list-order .list4 image{
+  width:24px;
+  height:24px;
+}
+.list-order .list4 view{
+  font-size: 12px;
+}
+.bottom-two.buy {
+  background:#d81e06;
+  color: #fff;
+}

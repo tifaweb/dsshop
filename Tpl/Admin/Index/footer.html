@@ -1,0 +1,88 @@
+
+			<!-- content ends -->
+			</div><!--/#content.span10-->
+		</div><!--/fluid-row-->
+
+		<hr>
+		<footer>
+			{$Think.config.DS_POWERED}
+			<p class="pull-right">开发：<a href="http://www.tifaweb.com" target="_blank">宁波天发网络技术组</a></p>
+            
+		</footer>
+	{$ajax_list}
+	</div><!--/.fluid-container-->
+	<!-- external javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- jQuery -->
+	<script src="__PUBLIC__/bootstrap/js/jquery-1.7.2.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="__PUBLIC__/bootstrap/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <!-- bootstrap-->
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- library for cookie management -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.cookie.js"></script>
+	<!-- calander plugin -->
+	<script src='__PUBLIC__/bootstrap/js/fullcalendar.min.js'></script>
+	<!-- data table plugin -->
+	<script src='__PUBLIC__/bootstrap/js/jquery.dataTables.min.js'></script>
+
+	<!-- select or dropdown enhancer -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.chosen.min.js"></script>
+	<!-- checkbox, radio, and file input styler -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.uniform.min.js"></script>
+	<!-- plugin for gallery image view -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.colorbox.min.js"></script>
+    <!-- editor -->
+	<script src="__PUBLIC__/editor/kindeditor-min.js"></script>
+	<!-- rich text editor library -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.cleditor.min.js"></script>
+	<!-- notification plugin -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.noty.js"></script>
+	<!-- file manager library -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.elfinder.min.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/elfinder.zh_CN.js"></script>
+	<!-- star rating plugin -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="__PUBLIC__/bootstrap/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	<script src="__PUBLIC__/bootstrap/js/charisma.js"></script>
+    <!-- JS验证 -->
+    <script src="__PUBLIC__/jquery/Validform_v5.3.2min.js"></script>
+     
+<script>
+{$endjs}
+function changeVerify(){
+    var timenow = new Date().getTime();
+    document.getElementById('verifyImg').src='__APP__/Public/verify/'+timenow;
+}
+</script>
+
+<script language="JavaScript">
+ $(function(){
+	//$(".form-horizontal").Validform();  //就这一行代码！;
+
+	$(".form-horizontal").Validform({
+		datatype:{
+			"me" : /^[\u4E00-\u9FA5\uf900-\ufa2d\w]{1,}$/,
+		}
+	});
+})
+//计划任务
+window.onload = Schedule();
+function Schedule(){
+$.post("__ROOT__/Api/Autos/timing", {id:1} );
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<include file="Index:header" />
+<link rel="stylesheet" href="__PUBLIC__/jc/about.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/css/style.css">
+<!--头部 end -->
+<div class="site">
+        <a href="/">
+            首页
+        </a>
+        &gt; 找回密码
+    </div>
+    <div class="reg">
+        <div style="background: none repeat scroll 0% 0% rgb(255, 255, 255);" id="regbmg">
+          <form class="form-horizontal" name="myform" method="post" action='__URL__/rsPassword'>
+            <ul id="secondpager" style="">
+                <li class="snone">
+                    <label>
+                        新密码：
+                    </label>
+                    <div class="controls">
+                      <input style="width:250px;" type="password" maxlength="16" name="passw" placeholder="新密码">
+                    </div>
+                </li>
+                <li class="">
+                    <label>
+                        　确认密码：
+                    </label>
+                    <div class="controls">
+                      <input style="width:250px;" type="password" maxlength="16" name="password" placeholder="确认密码">
+                    </div>
+                </li>
+                <li class="formBtn">
+                <input name="uid" type="hidden" value="{$Think.get.uid}" />
+                        <button type="submit"  class="btnRed_F" style="border: none;float:left;" >提交</button>
+                    </li>
+            </ul>
+            </form>
+        </div>
+    </div>
+
+<!-- 主体 end-->
+<!--底部 -->
+ <script language="JavaScript">
+	function changeVerify(){
+		var timenow = new Date().getTime();
+		document.getElementById('verifyImg').src='__APP__/Public/verify/'+timenow;
+	}
+</script>
+<include file="Index:footer" />
+<!--底部 end-->

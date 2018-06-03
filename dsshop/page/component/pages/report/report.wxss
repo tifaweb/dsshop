@@ -1,0 +1,47 @@
+.page-section{
+  display:-webkit-flex;
+}
+.flex-wrp{
+  line-height: 35px;
+  -webkit-flex: 1;
+  background: #fff;
+  height:300px;
+}
+.flex-item{
+  
+  font-size: 30rpx;
+  text-align: center;
+}
+.flex-item .title{
+  color: #888888;
+}
+.flex-item .title.on{
+  color: #d81e06;
+}
+.flex-right{
+  margin-left:10px;
+  -webkit-flex:2;
+}
+.flex-right .two{
+  clear: both;
+}
+.flex-right .title{
+  line-height: 35px;
+  font-weight: bold;	
+}
+.flex-right .list .ll image{
+  width:45px;
+  height:45px;
+  border: 1px solid #e6e6e6;
+  padding: 5px;
+  background: #fff;
+}
+.flex-right .list .ll{
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+}
+.flex-right .list .ll .name{
+  text-align: center;
+  font-size: 12px;
+}

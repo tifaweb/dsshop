@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="page-body">
+    <!--进出账-->
+    <view class="zan-panel">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">出账金额</view>
+        <view class="zan-cell__ft zan-font-bold  zan-font-22">{{goods.operation}}</view>
+      </view>
+    </view>
+    <!--进出账 end-->
+    <!--详情-->
+    <view class="zan-panel">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">类型</view>
+        <view class="zan-cell__ft">{{goods.typename}}</view>
+      </view>
+      <view class="zan-cell">
+        <view class="zan-cell__bd">时间</view>
+        <view class="zan-cell__ft">{{goods.time}}</view>
+      </view>
+      
+      <view class="zan-cell">
+        <view class="zan-cell__bd">余额</view>
+        <view class="zan-cell__ft">{{goods.balance}}</view>
+      </view>
+      <view class="zan-cell">
+        <view class="zan-cell__bd">操作说明</view>
+        <view class="zan-cell__ft" style="max-width:250px">{{goods.actionname}}</view>
+      </view>
+    </view>
+    <!--详情 end-->
+  </view>
+</view>

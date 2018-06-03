@@ -1,0 +1,362 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS/Goods.html">商品管理</a> <span class="divider">/</span>
+      </li>
+      <li class="active">添加</li>
+    <div  class="pull-right"> <a class="ajax-link" href="__APP__/TIFAWEB_DSWJCMS/Goods.html" >返回商品管理</a></div>
+</ul>
+<form method="post"  action='__APP__/TIFAWEB_DSWJCMS/Goods/editgo'>
+<input name="id" type="hidden" value="{$Think.get.id}" />
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+        <tr>
+            <td><span class="red">*</span>商品名称：</td>
+            <td><input name="title" type="text" class="span5" placeholder="请输入商品名称..." value="{$list.title}"  maxlength="30"></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>编号： </td>
+            <td><input name="number" type="text" class="span2" placeholder="请输入编号..." value="{$list.number}"  maxlength="11"></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>主图：</td>
+            <td>
+                <div id="file_up_content">
+                   <if condition="$Think.get.id gt 0">
+                    <input type="hidden" value="{$list.zimg}" name="i_img"></input>
+                    <img style="width:150px;height:150px;" src="__PUBLIC__/uploadify/uploads/commodity/{$list.zimg}"></img>
+                    </if>
+                </div>
+                <input class="folder" type="hidden" value="commodity"/>
+                 <input class="file_url" type="hidden" value="__PUBLIC__/uploadify/uploads/commodity/"/>
+                <input data-no-uniform="true" type="file" id="file_upone" />            
+            </td>
+        </tr>
+        <tr>
+            <td>标签： </td>
+            <td><input name="keyword" type="text" class="span8" placeholder="以半角逗号分割','，标签可用于属性筛选"  value="{$list.keyword}" maxlength="100" ></td>
+        </tr>
+        <tr>
+            <td>说明： </td>
+            <td><input name="instructions" type="text" class="span8" placeholder="可为空..."  value="{$list.instructions}" maxlength="50"></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>颜色： </td>
+            <td>
+            	<table class="table table-bordered" style="width:400px;">
+                  <thead>
+                    <tr>
+                      <th>名称</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="addA">
+                  	<foreach name="list.attribute.color" item="v"  key="k">
+                    <tr id="deleteA_{$k+1}">
+                      <td><input name="nameA[]" type="text" onBlur="update(1,{$k+1},this)" value="{$v}"/><input name="valueA" type="hidden" value="{$k+1}" /></td>
+                      <if condition="$k eq 0 ">
+                      <td>无</td>
+                      <else/>
+                      <td><a href="javascript:void(0)" onclick="dele(1,{$k+1})">删除</a></td>
+                      </if>
+                      
+                    </tr>
+                    </foreach>
+                  </tbody>
+                </table>
+                <a href="javascript:void(0)" onclick="add(1)">添加</a>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>尺寸： </td>
+            <td>
+            	<table class="table table-bordered" style="width:400px;">
+                  <thead>
+                    <tr>
+                      <th>名称</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="addB">
+                  	<foreach name="list.attribute.size" item="b"  key="B">
+                    <tr id="deleteB_{$B+1}">
+                      <td><input id="nameB{$B+1}" name="nameB[]" type="text"  value="{$b}" onBlur="update(2,{$B+1},this)"/><input name="valueB" type="hidden" value="{$B+1}" /></td>
+                      <if condition="$B eq 0 ">
+                      <td>无</td>
+                      <else/>
+                      <td><a href="javascript:void(0)" onclick="dele(2,{$B+1})">删除</a></td>
+                      </if>
+                    </tr>
+                    </foreach>
+                  </tbody>
+                </table>
+                <a href="javascript:void(0)" onclick="add(2)">添加</a>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>属性： </td>
+            <td>
+            	<table class="table"  id="D">
+                  <thead>
+                    <tr>
+                      <th>颜色</th>
+                      <th>尺寸</th>
+                      <th>市场价</th>
+                      <th>价格</th>
+                      <th>库存</th>
+                    </tr>
+                  </thead>
+                  {$list.attributes}
+                </table>
+            </td>
+        </tr>
+        <style>
+        	#D tbody{
+				  border: 1px solid #dddddd;
+				  border-collapse: inherit !important;
+			}
+        </style>
+        <script>
+			var A={$list['ccount']+1};
+			var B={$list['scount']+1};
+			var AA=0;
+			function add(type){
+				if(type==1){	//颜色
+					$('#addA').append('<tr id="deleteA_'+A+'"><td><input name="nameA[]" type="text" onBlur="update(1,'+A+',this)"/><input name="valueA[]" type="hidden" value="'+A+'" /></td><td><a href="javascript:void(0)" onclick="dele(1,'+A+')">删除</a></td></tr>');
+					//列
+					var i=1;
+					$("input[name=valueB]").each(function() {
+						if(i>1){
+						var v=$(this).val(); 
+						AA+='<tr class="F'+i+'"> <td class="G'+v+'">'+$('#nameB'+v).val()+'</td><td><input name="market[]" type="text" /></td><td><input name="price[]" type="text" /></td><td><input name="stock[]" type="text" /></td></tr>';
+						}
+						i++;
+					});
+					v='';
+					i=1;
+					
+					
+					$('#D').append('<tbody class="EE C'+A+'"><tr class="E F1"><td rowspan="'+(B-1)+'" class="C" id="C'+A+'"></td><td class="G1">'+$('#nameB1').val()+'</td><td><input name="market[]" type="text" /></td><td><input name="price[]" type="text" /></td><td><input name="stock[]" type="text" /></td></tr>'+AA+'</tbody>');
+					AA=0;
+					A++;
+				}else{	//尺寸
+					$('#addB').append('<tr id="deleteB_'+B+'"><td><input name="nameB[]"  id="nameB'+B+'" type="text" onBlur="update(2,'+B+',this)"/><input name="valueB" type="hidden" value="'+B+'" /></td><td><a href="javascript:void(0)" onclick="dele(2,'+B+')">删除</a></td></tr>');
+					$('.C').attr('rowspan',B);
+					
+					$('.EE').append('<tr class="F'+B+'"> <td  class="G'+B+'"></td><td><input name="market[]" type="text" /></td><td><input name="price[]" type="text" /></td><td><input name="stock[]" type="text" /></td></tr>');
+					B++;
+				}
+			}
+			function dele(type,id){
+				if(id>1){
+					if(type==1){	//颜色
+						$('#deleteA_'+id).remove();
+						$('.C'+id).remove();
+						//A=parseInt(A)-1;
+					}else{
+						$('#deleteB_'+id).remove();
+						$('.F'+id).remove();
+						var CC=$('.C').attr('rowspan');
+						B--;
+						CC=parseInt(CC)-1;
+						//B=parseInt(B)-1;
+						$('.C').attr('rowspan',CC);
+					}
+				}
+			}
+			//更新数据
+			function update(type,id,value){
+				if(type==1){	//颜色
+					$('#C'+id).html($(value).val());
+				}else{
+					$('.G'+id).html($(value).val());
+				}
+			}
+		</script>
+        <tr>
+            <td><span class="red">*</span>商品图片：</td>
+            <td>
+                <ul class="thumbnails" id="file_content">
+                <foreach name="list.img" item="vo" key="kid">
+                    <li id="i{$kid}">
+                        <div class="top"><a class="icon icon-color icon-close" onclick="intExit({$kid},'{$vo}')"></a></div>
+                        <a id="feila{$kid}" >
+                        <img id="feil{$kid}" src="__PUBLIC__/uploadify/uploads/commodity/{$vo}" style="width:150px;height:150px;">
+                        </a>
+                        <input name="img[]" type="hidden"  value="{$vo}"/>
+                    </li>
+                </foreach>
+                </ul>  
+                <input id="file_url" type="hidden" value="__PUBLIC__/uploadify/uploads/commodity/"/>
+                <input id="folder" type="hidden" value="commodity"/>
+                <input type="hidden" id="folder_id" value="{$kid}"/>
+                <input data-no-uniform="true" type="file" name="file_goods" id="file_goods" />           
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>所属类目：</td>
+            <td>
+            	<span  id="fid">
+            	{$arr}
+                </span>
+                <a data-toggle="modal" href="#audit" onclick="ajaxcategory()">添加</a>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>上架/下架：</td>
+            <td class="form-inline">
+            <if condition="$list.state eq 0">
+                <label class="radio"><input type="radio" name="state" value="0" checked/> 上架</label>
+                <label class="radio"><input type="radio" name="state" value="1" /> 下架</label>
+            <else/>
+            	<label class="radio"><input type="radio" name="state" value="0" /> 上架</label>
+                <label class="radio"><input type="radio" name="state" value="1" checked/> 下架</label>
+            </if>
+            </td>
+        </tr>
+        <tr>
+            <td>排序：</td>
+            <td><input name="sort" type="text" class="span1"   value="{$list.sort}" maxlength="11"></td>
+        </tr>
+        <tr>
+            <td>人气：</td>
+            <td><input name="sentiment" type="text" class="span1"  value="{$list.sentiment}" maxlength="11"></td>
+        </tr>
+        <tr>
+            <td>推荐：</td>
+            <td class="form-inline">
+            <if condition="$list.recommend eq 0">
+                <label class="radio"><input type="radio" name="recommend" value="0" checked/> 否</label>
+                <label class="radio"><input type="radio" name="recommend" value="1" /> 是</label>
+            <else/>
+            	<label class="radio"><input type="radio" name="recommend" value="0" /> 否</label>
+                <label class="radio"><input type="radio" name="recommend" value="1" checked/> 是</label>
+            </if>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>规格：</td>
+            <td><textarea class="editor2" name="specifications" style="width:700px;height:300px;">
+			{$list.specifications}
+            </textarea></td>
+        </tr>
+        <tr>
+            <td>内容：</td>
+            <td><textarea class="editor" name="details" style="width:700px;height:300px;">{$list.details}</textarea></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+<div class="span4">
+
+</div>
+<div class="span5">
+          <button class="btn btn-primary" type="submit">
+              确认修改
+          </button>
+</div>
+</div>
+</form>
+<script>
+function intExit(id,img)
+{
+	$('#i'+id).empty();
+	$.post("__APP__/TIFAWEB_DSWJCMS/Goods/pathExit", {img:'./Public/uploadify/uploads/commodity/'+img} );
+}
+</script>
+<!--底部 -->
+<script>
+
+function intExit(id,img)
+{
+	$('#i'+id).empty();
+	$.post("__URL__/pathExit", {img:'./Public/uploadify/uploads/goods/'+img} );
+}
+	function ajaxcategory(){
+		var loading='<div class="invest_loading"><div><img src="__PUBLIC__/bootstrap/img/ajax-loaders/ajax-loader-1.gif"/></div></div>';
+		$("#ajaxcategory").html(loading);
+		$.ajax({
+			type: "POST",
+			url: '__APP__/TIFAWEB_DSWJCMS/Goods/ajaxcategory.html',
+			success: function(msg){
+			   $('#ajaxcategory').html(msg);
+			}
+		});
+	}
+	function addcategory(){
+		var loading='<div><div><img src="__PUBLIC__/bootstrap/img/ajax-loaders/ajax-loader-1.gif"/></div></div>';
+		$("#fid").html(loading);
+		$('#audit').modal('hide');
+		var data=$(".form input").map(function(){
+		return ($(this).attr("name")+'='+$(this).val());
+		}).get().join("&") ;
+		var datas=$(".form select").map(function(){
+		return ($(this).attr("name")+'='+$(this).val());
+		}).get().join("&") ;
+		if(datas){
+			data=data+'&'+datas;
+		}
+		$.ajax({
+			type: "POST",
+			data: data,
+			url: '__APP__/TIFAWEB_DSWJCMS/Goods/addcategory.html',
+			success: function(msg){
+			   $('#fid').html(msg);
+			}
+		});
+	}
+</script>
+<include file="Index:footer" />
+<div id="audit" class="modal hide fade">
+    
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>添加栏目</h3>
+    </div>
+    
+    <div id="ajaxcategory"></div>
+    
+</div>
+<script>
+$(document).ready(function(){
+	var editor;
+	KindEditor.ready(function(K) {
+			editor = K.create('.editor2');
+	});
+	
+})
+
+</script>
+<script>
+//类目选择
+function ajaxGoodslist(t,v){
+	var p=$(t).parent().attr('data');
+	p=parseInt(p)-1;
+	$("#fid select").each(function(){
+	   if($(this).attr('data')<=p){
+			$(this).remove(); 
+	   }
+	});
+	$.ajax({
+	   type: "POST",
+	   url: "__APP__/TIFAWEB_DSWJCMS/Goods/ajaxGoodslist.html",
+	   data: {v:v,p:p},
+	   success: function(msg){
+		  $('#fid').append(msg.info);
+	   }
+	});
+}
+</script>

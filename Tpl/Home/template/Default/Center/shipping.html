@@ -1,0 +1,133 @@
+<include file="Index:header" />
+<div class="member">
+<!--左边-->
+<include file="left" />
+<!--左边 end-->
+     <div class="memberRight">
+        <div class="member_tab">
+				 <div class="member_tab">
+<a class="on" href="__ROOT__/Center/shipping.html">收货地址</a>
+				</div>
+        </div> 
+        <div class="member_tab_info">
+        	<switch name="mid" >
+            <case value="">
+            <!--收货地址 start-->
+            <div class="alert alert-info">
+                    <p><a href="__ROOT__/Center/shipping/mid/edit.html" class="red">添加收货地址</a></p>
+                </div>
+             <table class="table table-striped ">
+            <thead>
+            <tr>
+              <th style="width:10%">收货人</th>
+              <th style="width:20%">所在地区</th>
+              <th style="width:30%">详细地址</th>
+              <th style="width:10%">邮编</th>
+              <th style="width:10%">电话/手机</th>
+              <th style="width:10%">操作</th>
+              <th style="width:10%"></th>
+            </tr>
+            </thead>
+            
+            <tbody>
+             <volist name="delivery" id="vo">
+            <tr>
+            	<td>{$vo.information.recipient}</td>
+                <td>{$city[$vo['information']['region'][0]]}&nbsp;{$city[$vo['information']['region'][1]]}&nbsp;{$city[$vo['information']['region'][2]]}</td>
+                <td>{$vo.information.address}</td>
+                <td>{$vo.information.code}</td>
+                <td>{$vo.information.phone}<br/>{$vo.information.telephone}</td>
+                <td><a href="__ROOT__/Center/shipping/mid/edit/id/{$vo.id}.html">修改</a>&nbsp;<a href="javascript:void(0)" onclick="if(confirm('是否要删除？'))window.location.href='__ROOT__/Center/delShinpping/id/{$vo.id}.html'">删除</a></td>
+                <eq name="vo.default" value="1">
+                <td class="red">默认地址</td>
+                <else/>
+                <td><div  class="reds"><a href="__ROOT__/Center/defaultShipping/id/{$vo.id}.html" class="red">设为默认</a></div></td>
+                </eq>
+                
+            </tr>
+            </volist>
+        </table>
+        <script>
+		$('tr').mousemove(function(){
+			$('.reds').hide();
+			$(this).children('td').children('.reds').show();
+		});
+		
+		</script>
+            <!--收货地址 end-->
+            </case>
+            <case value="edit">
+            <!--收货地址添加/修改 start-->
+            <form method="post"  action='__URL__/editShipping'>
+                <div class="alert alert-info">
+            		<a class="close" data-dismiss="alert">×</a>
+                    <p>电话号码、手机号选填一项,其余均为必填项！</p>
+                </div>
+                <table class="table">
+                    <tbody>
+                         <tr>
+                            <td><span class="red">*</span>所在地区：</td>
+                            <td id="area">
+                            <gt name="delivery.information.region.0" value="0">
+                            <div id="cct">
+                            {$city[$delivery['information']['region'][0]]}&nbsp;{$city[$delivery['information']['region'][1]]}&nbsp;{$city[$delivery['information']['region'][2]]}&nbsp;<a href="javascript:void(0)" onclick="$('#area select').attr('name','region[]');$('#cct').hide();$('#cct_select').show();">更换</a>
+                            </div>
+                            <div id="cct_select" style="display:none">
+                            <select id="province"   style="width:100px;"></select><span>省</span><select id="city" style="width:110px;" ></select><span>市</span><select id="county"  style="width:140px;" ></select>
+                            </div>
+                            <else/>
+                            	<select id="province"  name="region[]" style="width:100px;"></select><span>省</span><select id="city" style="width:110px;"  name="region[]"></select><span>市</span><select id="county"  style="width:140px;" name="region[]"></select>
+                            </gt>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td><span class="red">*</span>详细地址：</td>
+                            <td><input name="address" type="text"  placeholder="不需要写省市区" maxlength="100" value="{$delivery.information.address}"/></td>
+                         </tr>
+                         <tr>
+                            <td>邮政编码：</td>
+                            <td><input name="code" type="text"  placeholder="邮编号码，可为空" maxlength="10" value="{$delivery.information.code}"/></td>
+                         </tr>
+                         <tr>
+                            <td><span class="red">*</span>收货人姓名：</td>
+                            <td><input name="recipient" type="text"  placeholder="长度不超过25"  maxlength="25"  value="{$delivery.information.recipient}"/></td>
+                         </tr>
+                         <tr>
+                            <td>手机号码：</td>
+                            <td><input name="phone" type="text"  placeholder="收货人的手机号码"  maxlength="11" value="{$delivery.information.phone}"/></td>
+                         </tr>
+                         <tr>
+                            <td>电话号码：</td>
+                            <td><input name="telephone" type="text"  placeholder="收货人的电话号码"  maxlength="15"  value="{$delivery.information.telephone}"/></td>
+                         </tr>
+                         <tr>
+                            <td></td>
+                            <td>
+                            <input name="did" type="hidden" value="{$Think.get.id}" />
+                            <button class="btn btn-primary" type="submit">
+                              确认提交
+                          </button>
+                            </td>
+                         </tr>
+                    </tbody>
+                </table>
+            <!--收货地址添加/修改 end-->
+            <script src="__PUBLIC__/js/region.js"></script>
+			<script src="__PUBLIC__/js/jq_area.js"></script>
+            <script>
+            $(function(){
+                $("#area").area({cache:region});
+				$('#province').prepend("<option value='' selected>请选择</option>");
+				$('#city').html("<option value='' selected>请选择</option>");
+				$('#county').html("<option value='' selected>请选择</option>");
+            });
+            </script>
+            </case>
+            <default />空
+        </switch>
+        </div>
+      </div>
+</div>
+
+<!--底部  start-->
+<include file="Index:footer" />

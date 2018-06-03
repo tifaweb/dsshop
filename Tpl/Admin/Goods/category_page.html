@@ -1,0 +1,70 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS/Goods/category.html">类目管理</a> <span class="divider">/</span>
+      </li>
+      <li class="active">添加/编辑</li>
+    <div  class="pull-right"> <a class="ajax-link" href="__APP__/TIFAWEB_DSWJCMS/Goods/category.html" >返回类目管理</a></div>
+</ul>
+<form method="post"  action='__APP__/TIFAWEB_DSWJCMS/Goods/categorySub'>
+<input name="id" type="hidden" value="{$Think.get.id}" />
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+        <tr>
+            <td>上级类目：</td>
+            <td>
+            <select name="pid" class="span2">
+            <option value="">顶级类目</option>
+            {$arr}
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>类目名： </td>
+            <td><input name="title" type="text" placeholder="请输入类目名..." value="{$list.title}"  maxlength="30"></td>
+        </tr>
+        <tr>
+            <td>缩略图： </td>
+            <td>
+                <div id="file_up_content">
+                    <if condition="$Think.get.id gt 0 && $list.img neq ''">
+                        <input type="hidden" value="{$list.img}" name="i_img"></input>
+                        <img style="width:150px;height:150px;" src="__PUBLIC__/uploadify/uploads/goodslist/{$list.img}"></img>
+                    </if>
+                </div>
+                <input class="folder" type="hidden" value="goodslist"/>
+                <input class="file_url" type="hidden" value="__PUBLIC__/uploadify/uploads/goodslist/"/>
+                <input data-no-uniform="true" type="file" id="file_upone" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>排序： </td>
+            <td><input name="sorting" type="text"  value="{$list.sorting}"  maxlength="11"></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+<div class="span4">
+
+</div>
+<div class="span5">
+          <button class="btn btn-primary" type="submit">
+              提交
+          </button>
+</div>
+</div>
+</form>
+<include file="Index:footer" />

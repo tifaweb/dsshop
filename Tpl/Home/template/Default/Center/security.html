@@ -1,0 +1,54 @@
+<include file="Index:header" />
+<div class="member">
+<!--左边-->
+<include file="left" />
+<!--左边 end-->
+     <div class="memberRight">
+        <div class="member_tab">
+				 <div class="member_tab">
+<a <eq name="mid" value="password"> class="on"</eq> href="__ROOT__/Center/security/mid/password.html">修改登陆密码</a>
+				</div>
+        </div> 
+        <div class="member_tab_info">
+        	<switch name="mid" >
+            <case value="password">
+            <!--修改登陆密码 start-->
+            <form method="post"  action='__URL__/updaPass'>
+                <div class="alert alert-info">
+            		<a class="close" data-dismiss="alert">×</a>
+                    <p>请不要在网吧、公共场合修改密码！</p>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>原始密码：</td>
+                            <td><input name="passwd" type="password"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="__ROOT__/Logo/forgotpass.html">忘记密码？</a></td>
+                         </tr>
+                         <tr>
+                            <td>新密码：</td>
+                            <td><input name="passw" type="password"/></td>
+                         </tr>
+                         <tr>
+                            <td>确认密码：</td>
+                            <td><input name="password" type="password"/></td>
+                         </tr>
+                         <tr>
+                            <td></td>
+                            <td>
+                            <button class="btn btn-primary" type="submit">
+                              确认提交
+                          </button>
+                            </td>
+                         </tr>
+                    </tbody>
+                </table>
+            <!--修改登陆密码 end-->
+            </case>
+            <default />空
+        </switch>
+        </div>
+      </div>
+</div>
+
+<!--底部  start-->
+<include file="Index:footer" />

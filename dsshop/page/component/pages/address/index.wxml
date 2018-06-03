@@ -1,0 +1,31 @@
+
+<view>
+  <!-- 地址列表 -->
+  <radio-group class="radio-group" bindchange="radioChange">
+  <view class="addresslist" wx:for="{{addressList}}"  wx:key="id{{index}}">
+    <view class="top">
+      <view class="left">{{item.information.recipient}}</view>
+      <view class="right">{{item.information.telephone}}</view>
+    </view>
+    <view class="address">{{item.city}} {{item.information.address}}</view>
+    <view class="end">
+      <view class="left">
+        <label class="radio">
+          <radio value="{{item.id}}" color="#d81e06"  checked="{{item.checked}}"/>设为默认
+        </label>
+      </view>
+      <view class="right">
+        <navigator url="./add?id={{item.id}}" class='title ll'>编辑</navigator>
+        <view class=" ll"  bindtap="deleteAddress" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view> 
+  </radio-group>
+  <!-- 地址列表 end -->
+  <!-- 新增 -->
+  <navigator url="./add" class='new'>
+    新增收货地址
+  </navigator>
+  <!-- 新增 end -->
+</view>
+

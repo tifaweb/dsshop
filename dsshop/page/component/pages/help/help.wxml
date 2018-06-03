@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="page-body">
+    <!--列表-->
+    <view class="zan-panel margin-bottom50">
+      <navigator url="../content/content?id={{item.id}}" class="zan-cell zan-cell--access" wx:for="{{article}}"  wx:key="id">
+        <view class="zan-cell__bd">{{item.title}}</view>
+        <view class="zan-cell__ft"></view>
+      </navigator>
+    </view>
+    <!--列表 end-->
+  </view>
+</view>
+<!--我要反馈-->
+<navigator url="./feedback" class="immediately">我要反馈</navigator>
+<!--我要反馈 end-->

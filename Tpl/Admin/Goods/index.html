@@ -1,0 +1,70 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li class="active">商品管理</li>
+    <div  class="pull-right"> <a href="__APP__/TIFAWEB_DSWJCMS/Goods/addgoo.html" >添加新商品</a></div>
+</ul>
+<table class="table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>编号</th>
+                <th>商品名</th>
+                <th>市场价</th>
+                <th>价格</th>
+                <th>栏目</th>
+                <th>状态</th>
+                <th>人气</th>
+                <th style="width:100px;">排序</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+                <volist name="list" id="vo">
+                <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.number}</td>
+                <td>{$vo.title}</td>
+                <td>{$vo.market|number_format=2,'.',','}元</td>
+                <td>{$vo.price|number_format=2,'.',','}元</td>
+                <td>{$vo.fname}</td>
+                <td class="form-inline">
+                <if condition="$vo.state eq 0">
+               <label class="radio"><input type="radio" name="state{$vo.id}" value="0" class="noty" checked  onclick='var state=$(this).val();$.post("__APP__/TIFAWEB_DSWJCMS/Goods/savegoo", { id: {$vo.id},state:state} );'/> 上架</label>
+              <label class="radio"><input type="radio" name="state{$vo.id}" value="1" class="noty" onclick='var state=$(this).val();$.post("__APP__/TIFAWEB_DSWJCMS/Goods/savegoo", { id: {$vo.id},state:state} );'/> 下架</label>
+               <else />
+               <label class="radio"><input type="radio" name="state{$vo.id}" value="0" class="noty" onclick='var state=$(this).val();$.post("__APP__/TIFAWEB_DSWJCMS/Goods/savegoo", { id: {$vo.id},state:state} );'/> 上架</label>
+              <label class="radio"><input type="radio" name="state{$vo.id}" value="1" checked class="noty" onclick='var state=$(this).val();$.post("__APP__/TIFAWEB_DSWJCMS/Goods/savegoo", { id: {$vo.id},state:state} );'/> 下架</label>
+              </if>
+                </td>
+                <td>{$vo.sentiment}</td>
+                <td>
+                  <input name="sort" type="text" value="{$vo.sort}" class="span8 notys" onblur='var sort=$(this).val();$.post("__APP__/TIFAWEB_DSWJCMS/Goods/savegoo", { id: {$vo.id},sort:sort} );'/>
+                </td>
+                <td>
+                    <a href="__APP__/TIFAWEB_DSWJCMS/Goods/editgoo/id/{$vo.id}.html" data-rel="tooltip" class="icon icon-color icon-edit" title="编辑"></a>
+                    <a href="#" data-rel="tooltip" class="icon icon-color icon-trash"title="删除" onclick="if(confirm('是否要删除？'))window.location.href='__APP__/TIFAWEB_DSWJCMS/Goods/delego/id/{$vo.id}'"></a>
+                </td>
+              </tr>
+</volist>
+            </tbody>
+          </table>
+<div class="pagination pagination-centered">
+          <ul>{$page}</ul>
+          </div>
+<div>
+</div>
+<!--底部 -->
+<include file="Index:footer" />
+

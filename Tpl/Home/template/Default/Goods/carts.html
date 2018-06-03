@@ -1,0 +1,302 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+	<!-- start content -->
+        
+        <if condition="$Think.session.amount gt 0 ">
+        <!--内容-->
+        <form id="forms"> 
+        <div class="cart">
+        
+        <table>
+            <thead>
+            <tr>
+              <th style="width:30%">商品信息</th>
+              <th style="width:20%"></th>
+              <th style="width:13%">单价(元)</th>
+              <th style="width:14%">数量</th>
+              <th style="width:13%">小计(元)</th>
+              <th style="width:10%">操作</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            
+              <volist name="cart" id="vo">
+              
+              <tr id="cart_{$i}">
+                <td class="sp1">
+                <input id="items_{$i}" value="{$i}" name="items" type="checkbox" data="{$key}"  checked>
+                <a href="__ROOT__/Goods/details/id/{$vo.id}.html">
+                <img src="__PUBLIC__/uploadify/uploads/commodity/{$vo.img}"/></a>
+                <div class="">
+                <p><a href="__ROOT__/Goods/details/id/{$vo.id}.html">{$vo.title}</a></p>
+                </div>
+                </td>
+                <td class="sp2">
+                	<P>颜色分类：{$vo.colorname}</P>
+					<p>尺码：{$vo.sizename}</p>
+                </td>
+                <td>{$vo.price}</td>
+                <td class="sp3">
+                <span class="jie" onclick="calculation(2,{$i},{$vo.stock})">-</span>
+                <input id="number_{$i}" type="text" value="{$vo.number}" maxlength="8" name="number" onBlur="calculation(3,{$i},{$vo.stock})">
+                <span class="ja" onclick="calculation(1,{$i},{$vo.stock})">+</span>
+                </td>
+                <td class="sp4" id="subtotal_{$i}">{$vo.total|number_format=2,'.',','}</td>
+                <td><a href="javascript:;" class="icon-trash"  onclick="empty({$i})"></a></td>
+              </tr>
+              <input name="" type="hidden" value="{$i+1}" />
+              </volist>
+             
+          </tbody>
+          
+        </table>
+		</div>
+        
+        </form>
+       
+        <ul class="cart_settlement">
+        	<li class="sp1">
+            <input class="checkAll" type="checkbox" checked onclick="generations(this)">全选
+            </li>
+            <li class="sp2">
+            <a href="javascript:;" onclick="empty()">清空选中商品</a>
+            </li>
+            <li class="sp3">
+            已选商品<span id="number">{$carts.amount}</span>件
+            </li>
+            <li class="sp4">
+            合计：<span id="total">￥{$carts.total}</span>
+            </li>
+            <li class="sp5">
+            <a href="javascript:;" class="active" id="subscribe">购买</a>
+            </li>
+        </ul>
+        <input id="numbers" name="number" type="hidden" value="{$carts.amount}" />
+        <input id="totals" name="total" type="hidden" value="{$carts.total}" />
+         
+        <script>
+		//数量
+		function calculation(type,id,stock){
+			var numb=$('#number_'+id).val();//数量
+			var t='';//真实数量
+			var v=$('#items_'+id).attr("data");//唯一ID
+			if(type==1){	//加
+				if(parseInt(numb)<stock){
+					$('#number_'+id).val(parseInt(numb)+1);
+					t=parseInt(numb)+1;
+				}else{
+					$('#number_'+id).val(stock);
+					t=stock;
+				}
+			}else if(type==2){	//减
+				if(numb>1){
+					$('#number_'+id).val(parseInt(numb)-1);
+					t=parseInt(numb)-1;
+				}else{
+					$('#number_'+id).val(1);
+					t=1;
+				}
+			}else{	//键入
+				
+				if(!isNaN(numb)){		//如果是数字
+					if(parseInt(numb)>stock){
+						$('#number_'+id).val(stock);
+						t=stock;
+					}else if(parseInt(numb)<1){
+						$('#number_'+id).val(1);
+						t=1;
+					}else{
+						t=numb;
+					}
+				}else{
+					$('#number_'+id).val(1);
+					t=1;
+				}
+			}
+			//数据处理
+			$.ajax({
+			   type: "POST",
+			   url: "__ROOT__/Goods/cartCalculation.html",
+			   data: {v:v,t:t},	//v数量,t唯一ID
+			   success: function(msg){
+				   msg = eval("(" + msg + ")");
+				   if(msg.status==1){
+					   $('#subtotal_'+id).html(msg.subtotal);
+					   $('#totals').val(msg.total);
+					   $('#total').html('￥'+msg.total);
+				   }else{
+				   		alert('误操作');
+				   }
+			   }
+			});
+		}
+		 $(function() {
+			 //初始复选框全选
+			 $("input[name='items']").attr("checked", true);
+			 $(".checkAll").attr("checked", true);
+			 $("#numbers").val('{$carts.amount}');
+			 $("#totals").val('{$carts.total}');
+            var $subBox = $("input[name='items']");
+			var type='';
+			
+            $subBox.click(function(){
+				var number=$('#numbers').val();
+				var total=$('#totals').val();
+                $(".checkAll").attr("checked",$subBox.length == $("input[name='items']:checked").length ? true : false);
+				if ($(this).attr("checked")) {	//选中
+					type=1;
+				}else{
+					type=0;
+				}
+				$.ajax({
+				   type: "POST",
+				   url: "__ROOT__/Goods/cartCalculate.html",
+				   data: {type:type,number:number,total:total,data:$(this).attr("data")},
+				   success: function(msg){
+					   msg = eval("(" + msg + ")");
+					   $('#numbers').val(msg.number);
+					   $('#totals').val(msg.total);
+					   $('#number').html(msg.number);
+					   $('#total').html('￥'+msg.total);
+					   if($(".sp5 a").attr("class")!="active"){
+							$(".sp5 a").addClass('active');
+					   }
+					   if(msg.number==0){
+							$(".sp5 a").removeClass('active');
+					   }
+				   }
+				});
+            });
+			
+			//购买
+			$('#subscribe').click(function(){
+				var data='';
+				if($(this).attr("class")=="active"){
+					$("input[name=items]").each(function() {  
+						if ($(this).attr("checked")) { 
+							data=data+','+$(this).attr("data"); 
+							
+						}  
+					});
+					var name=$('#name').val();
+					var address=$('#address').val();
+					$.ajax({
+					   type: "POST",
+					   url: "__ROOT__/Goods/cartSubscribe.html",
+					   data: {data:data,name:name,address:address},
+					   success: function(msg){
+						  if(msg.status==1){
+					      	window.location.href='__ROOT__/Goods/subscribe/id/'+msg.info+'.html';
+						  }else{
+						  	alert(msg.info);
+						  }
+					   }
+					});
+				}
+			});
+        });
+		function generations(t){
+			var type='';
+			if ($(t).attr("checked")) {
+				$("input[name=items]").each(function() {
+					type=1;
+					$(this).attr("checked", true);
+				});
+			} else {
+				$("input[name=items]").each(function() {
+					type=0;
+					$(this).attr("checked", false);
+				});
+			}
+			$.ajax({
+			   type: "POST",
+			   url: "__ROOT__/Goods/cartGenerations.html",
+			   data: {type:type},
+			   success: function(msg){
+				   msg = eval("(" + msg + ")");
+				   $('#numbers').val(msg.number);
+				   $('#totals').val(msg.total);
+				   $('#number').html(msg.number);
+				   $('#total').html('￥'+msg.total);
+				   if($(".sp5 a").attr("class")!="active"){
+				   		$(".sp5 a").addClass('active');
+				   }
+				   if(msg.number==0){
+				   		$(".sp5 a").removeClass('active');
+				   }
+			   }
+			});
+			
+		}
+		//删除
+		function empty(id){
+			var value='';
+			var data='';
+			if(id>0){	//单条删除
+				data=$('#items_'+id).attr("data");
+				state=$('#items_'+id).attr("checked");
+				if(state){
+					state=1;
+				}else{
+					state='';
+				}
+				$('#cart_'+id).remove();
+				dispose(1,data,state);
+			}else{
+				
+				$("input[name=items]").each(function() {  
+					if ($(this).attr("checked")) { 
+						value=$(this).val(); 
+						data=data+','+$(this).attr("data"); 
+						$('#cart_'+value).remove();  
+					}  
+					
+				});
+				if(data){
+					dispose(0,data);
+				}
+			}
+		}
+		//数据处理
+		//type 1单条0多选
+		//data 数据
+		//state 是否被选中
+		function dispose(type,data,state){
+			$.ajax({
+			   type: "POST",
+			   url: "__ROOT__/Goods/cartDispose.html",
+			   data: {type:type,data:data,state:state},
+			   success: function(msg){
+				   msg = eval("(" + msg + ")");
+				   if(msg.status==1){
+				   }else{
+					   $('#numbers').val(msg.amount);
+					   $('#totals').val(msg.total);
+					   $('#number').html(msg.amount);
+					   $('#total').html('￥'+msg.total);
+				   }
+			   }
+			});
+			
+		}
+		</script>
+        <!--内容--end-->
+        <else/>
+        <div class="cart">
+            <div class="cart_right">
+            <p>购物车空空的哦，赶快去选购心仪的商品吧！</p>
+            <a href="/" class="green btn_sub">马上选购</a>
+            </div>
+        </div>
+        </if>
+        
+  	</div>
+</div>
+</div>
+<!-- start footer -->
+<include file="Index:footer" />

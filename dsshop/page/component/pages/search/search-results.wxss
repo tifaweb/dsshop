@@ -1,0 +1,167 @@
+.ds-sorting{
+  margin-top: 20rpx;
+  display:-webkit-flex;
+}
+.page-head{
+  padding:0 0;
+  padding-bottom:70px;
+
+}
+.ds-sorting .ds-list{
+  -webkit-flex: 1;
+  font-size: 12px;
+  text-align: center;
+  border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #e5e5e5;
+	border-bottom-color: #e5e5e5;
+  height:30px;
+  line-height: 30px;
+  position: relative;
+}
+.ds-sorting .ds-list.on{
+  color: #1296db;
+}
+.triangle-up {
+    position: absolute;
+    top:10px;
+    width: 0;
+    margin-left:2px;
+    height: 0;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #999;
+    border-left: 4px solid transparent;
+}
+.triangle-up.on{
+  border-bottom: 4px solid #1296db;
+}
+.triangle-down {
+    position: absolute;
+    bottom: 10px;
+    margin-left:2px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid #999;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.triangle-down.on{
+  border-top: 4px solid #1296db;
+}
+.search-coupons{ 
+	border-bottom-width: 1px;	
+	border-bottom-style: solid;
+	border-bottom-color: #e5e5e5;
+  height:45px;
+  line-height: 45px;
+  font-size: 14px;
+  padding-left:20px;
+  padding-right:20px;
+}
+.search-coupon-name{
+  float:left;
+}
+.search-coupon-switch{
+  float:right;
+}
+.zan_right_middle{
+  position: absolute;
+	top: 30px;
+  right:0px;
+  
+}
+.zan_right_middle image{
+  display: block;
+  width:35px;
+  height:35px;
+  float:right;
+  margin-right: 20px;
+}
+.make{
+  color: #1296db;
+  text-align: center;
+  clear: both;
+  width:100%;
+  font-size: 12px;
+  margin-right: 20px;
+}
+.similar-goods{
+  margin-top:5px;
+   color: #9b9b9b;
+   text-align: center;
+}
+.immediately{
+  text-align: center;
+  width:100%;
+  height:45px;
+  line-height: 45px;
+  background-color: #1296db;
+  position: fixed;
+	left: 0px;
+	bottom: 0px;
+  color: #FFF;
+}
+.zan-panel{
+  border-top-width:0px;
+}
+.search-fixed-top{
+  width:100%;
+  position: fixed;
+	left: 0px;
+	top: 0px;
+  z-index: 999;
+  background-color: #FFF;
+}
+.search-nr{
+  position: relative;
+  margin-top:20px;
+}
+.section-input{
+  border-radius:15px;
+  height:30px;
+  line-height: 30px;
+  margin:10px 20px 10px 20px;
+  padding:0px 10px 0px 10px;
+  font-size: 12px;
+  background-color: #DEDEDE;
+}
+/* 没有找到内容 */
+.noContent{
+  display: none;
+  margin: 0 0;
+  padding-top:80px;
+  text-align: center;
+
+}
+.noContent view{
+  font-size: 12px;
+  color: #dbdbdb;
+  font-weight: bold;
+}
+
+.noContent image{
+  width:60px;
+  height:60px;
+}
+/* 底线 */
+.bottom-line{
+  display: none;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin: 0 0;
+  text-align: center;
+
+}
+.bottom-line view{
+  font-size: 12px;
+  color: #dbdbdb;
+}
+
+.bottom-line image{
+  width:25px;
+  height:25px;
+}

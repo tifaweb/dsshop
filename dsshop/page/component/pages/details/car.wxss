@@ -1,0 +1,148 @@
+.goods-list{
+  background: #fff;
+  display:-webkit-flex;
+  border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #eeeeee;
+  padding-bottom: 30rpx;
+  padding-top:30rpx;
+  
+}
+.goods-list .checkbox{
+  -webkit-flex: 1;
+  height:80px;
+  line-height: 80px;
+  padding-left: 20rpx;
+}
+.goods-list .figure{
+  -webkit-flex: 2;
+}
+.goods-list .figure image{
+  width:80px;
+  height:80px;
+}
+.goods-list .information{
+  -webkit-flex: 8;
+  font-size: 12px;
+  margin-left:20rpx;
+}
+.goods-list .information .title{
+  font-size: 14px;
+  line-height: 18px;
+}
+.goods-list .information .specifications{
+  color: #BEBEBE;
+}
+.goods-list .information .price{
+  color: #d81e06;
+  font-size: 14px;
+  font-weight: bold;
+}
+.goods-list .information{
+  position: relative;
+}
+.goods-list .information .calculate{
+  position: absolute;
+	right:0px;
+  bottom: 10rpx;
+}
+.goods-list .delete{
+  -webkit-flex: 1;
+  text-align: center;
+}
+.goods-list .delete .zan-icon-delete{
+  color: #8a8a8a;
+}
+.zan-stepper .zan-stepper__text {
+	border: 1rpx solid #cdcdcd;
+	
+}
+.zan-stepper view{
+  border: 1rpx solid #cdcdcd;
+}
+/*底部*/
+.car-submit{
+  width:100%;
+  height:45px;
+  line-height: 45px;
+  position: fixed;
+	left: 0px;
+	bottom: 0px;
+  display:-webkit-flex;
+  background: #fff;
+  color: #515151;
+  border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #e6e6e6;
+  font-size: 12px;
+}
+.car-submit .generations{
+  -webkit-flex: 1;
+  
+}
+.car-submit .generations .lef{
+  float:left;
+}
+.car-submit .generations icon{
+  line-height: 70px;
+  padding-right:10rpx;
+  padding-left: 20rpx;
+}
+.car-submit .total{
+  -webkit-flex: 2;
+  text-align: right;
+  margin-top:10rpx;
+}
+.car-submit .total .amount{
+  float:right;
+  line-height: 20px;
+  
+}
+.car-submit .total .amount view{
+  float:left;
+  font-size: 10px;
+}
+.car-submit .total .amount .price{
+  font-size: 14px;
+  color: #d81e06;
+}
+.car-submit .total .freight{
+  float:right;
+  clear: both;
+  line-height: 12px;
+  font-size: 10px;
+  color:#cdcdcd;
+}
+.car-submit .sub{
+  margin-left:20rpx;
+  padding-left:20rpx;
+  -webkit-flex: 1;
+  text-align: center;
+  background: #d81e06;
+  color: #fff;
+  font-size: 14px;
+}
+.car-submit .sub:active{
+  background: #B81C05;
+}
+/*购物车是空的*/
+
+.nullcar{
+  margin: 0 0;
+  padding-top:80px;
+  text-align: center;
+
+}
+.nullcar view{
+  font-size: 14px;
+  color: #dbdbdb;
+}
+
+.nullcar image{
+  width:60px;
+  height:60px;
+}
+.bottom-two.buy {
+  background:#d81e06;
+  color: #fff;
+}

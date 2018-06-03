@@ -1,0 +1,30 @@
+<include file="Index:header" />
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+	<!-- start service -->
+	  <div class="service">
+		<div class="ser-main">
+			<h4>{$si['title']}</h4>
+            <div  class="about_list">
+			<ul class="list">
+            <volist name="list" id="vo">
+             <li>
+                <span><a href="__ROOT__/Site/article/id/{$vo.id}.html">{$vo.title}</a></span>
+                <span class="fright">【{$vo.addtime|date="Y-m-d",###}】</span>
+            </li>
+            </volist>
+            </ul>
+            <div class="pagination pagination-centered">
+                  <ul>{$page}</ul>
+                  </div>
+            </div>
+            </div>
+        
+		<include file="right" />
+	</div>
+</div>
+</div>		
+
+<!--底部  start-->
+<include file="Index:footer" />

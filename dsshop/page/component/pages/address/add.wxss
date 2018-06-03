@@ -1,0 +1,10 @@
+.zan-btn--primary{
+  background: #d81e06;
+
+}
+.zan-btn--primary::after{
+  border: none;
+}
+.zan-btn--primary:active{
+  background: #B81C05;
+}

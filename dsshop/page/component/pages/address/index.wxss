@@ -1,0 +1,65 @@
+.addresslist{
+  background: #fff;
+  padding-left:20rpx;
+  padding-right:20rpx;
+  clear: both;
+  padding-bottom:80rpx;
+  margin-bottom: 20rpx;
+}
+.addresslist .top{
+  float:left;
+  width:100%;
+  margin-top:10rpx;
+  
+}
+.addresslist .top .left{
+  float:left;
+  
+}
+.addresslist .top .right{
+  float:right;
+}
+.addresslist .address{
+  font-size: 12px;
+  line-height: 35px;
+  border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #EFEFEF;
+}
+.addresslist .end{
+  clear: both;
+  padding-top:20rpx;
+}
+.addresslist .end .right{
+  float:right;
+}
+.addresslist .end .left{
+  float:left;
+  font-size: 12px;
+  line-height: 25px;
+}
+.addresslist .end .right .ll{
+  float:left;
+  border: 1px solid #CCC;	
+  border-radius:5px;
+  font-size: 12px;
+  padding-left:30rpx;
+  padding-right:30rpx;
+  margin-right:10rpx;
+  height:25px;
+  line-height: 25px;
+
+}
+/*底部*/
+.new{
+  width:100%;
+  height:45px;
+  line-height: 45px;
+  position: fixed;
+	left: 0px;
+	bottom: 0px;
+  text-align: center;
+  background: #d81e06;
+  font-size: 14px;
+  color: #fff;
+}

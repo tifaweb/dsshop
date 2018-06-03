@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="page-head">
+    <view class="search-fixed-top">
+      <!--搜索框-->
+      <form >
+      <view class="section">
+        <input class="section-input" placeholder="搜索商品" type="text" confirm-type="search" disabled="true"  value="{{value}}" bindtap="getnavigateBack"/>
+      </view>
+      </form>
+      <!--搜索框 end-->
+      <!--排序-->
+      <view class="ds-sorting">
+        <view class="ds-list {{orderOn[0]}}" data-value="0"  bindtap="setOrder">综合</view>
+        <view class="ds-list {{orderOn[1]}}" data-value="1"  bindtap="setOrder">新品</view>
+        <view class="ds-list {{orderOn[2]}}{{orderOn[3]}}" bindtap="setOrder"  data-value="{{dataValue}}">价格 
+          <div class="triangle-up {{orderOn[3]}}"></div>
+          <div class="triangle-down {{orderOn[2]}}"></div>
+        </view>
+        <view class="ds-list {{orderOn[4]}}"  data-value="4" bindtap="setOrder">销量</view>
+      </view>
+      <!--排序 end-->
+      
+      <!--商品结果-->
+    </view>
+  </view>
+  <view class="page-body">
+    
+    <view class="search-nr">
+    <!--单品-->
+    <view class="zan-panel" wx:for="{{goods}}"  wx:key="id">
+    <navigator url="../details/details?id={{item.id}}">
+      <view class="zan-card">
+        <view class="zan-card__thumb">
+          <image class="zan-card__img" src="{{uploadImgUrl}}commodity/{{item.zimg}}" lazy-load="true" mode="aspectFit"></image>
+        </view>
+        <view class="zan-card__detail">
+          <view class="zan-card__detail-row">
+            <view class=" zan-ellipsis--l2" style="font-size:25rpx;margin-top:20px;">{{item.title}}</view>
+          </view>
+          <view class="zan-card__detail-row zan-c-gray-darker">
+            <view class="zan-card__left-col" style="font-size:22rpx">
+              现价 ¥{{item.price}}<view class="zan-card__right-col">销量 {{item.sales}} 件</view>
+            </view>
+          </view>
+          
+        </view>
+        
+      </view>
+      </navigator>
+    </view>
+    <!--单品 end-->
+    </view>
+    <!--商品结果 end-->
+    <!--已经结束-->
+    <view  class="bottom-line" style=" {{bottomline}}">
+      <image src="../../../../image/bottom-line.png" mode="aspectFit"></image>
+      <view>我是有底线的</view>
+    </view>
+    <!--已经结束 end-->
+    <!--没有内容-->
+    <view  class="noContent" style=" {{noContent}}">
+      <image src="../../../../image/noContent.png" mode="aspectFit"  lazy-load="true"></image>
+      <view>没有找到相关宝贝</view>
+    </view>
+    <!--没有内容 end-->
+  </view>
+    
+</view>

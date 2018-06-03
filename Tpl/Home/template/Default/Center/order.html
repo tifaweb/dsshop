@@ -1,0 +1,93 @@
+<include file="Index:header" />
+<div class="member">
+<!--左边-->
+<include file="left" />
+<!--左边 end-->
+     <div class="memberRight">
+        <div class="member_tab">
+				 <div class="member_tab">
+<a <eq name="mid" value=""> class="on"</eq> href="__ROOT__/Center/order.html">我的订单</a>
+				</div>
+        </div> 
+        <div class="member_tab_info">
+        	<input id="datasort" type="hidden" value="2" />
+         <table class="table order_table" id="table">
+            <thead>
+              <tr>  
+                <th style="width:30%">宝贝</th>
+                <th>单价(元)</th>
+                <th>数量</th>
+                <th>小计(元)</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+                {$arr}
+            
+        </table>
+        <div class="pagination pagination-centered">
+              <ul>{$page}</ul>
+              </div>
+        </div>
+     </div>
+</div>
+
+<div id="edit" class="modal hide fade in" style="top:20%">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h2 id="title"></h2>
+    </div>
+    <div class="modal-body">
+    <p  id="mail_nr"></p>
+        
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" data-dismiss="modal">确定</button>
+    </div>
+</div>
+</div>
+<!--底部  start-->
+<script>
+function mail(id){
+	$("#mail_nr").load("__URL__/standLetter", {id:id});	
+}
+</script>
+<script>
+//AJAX分页
+$(function(){ 
+	$(".pagination-centered a").click(function(){ 
+		var loading='<div class="invest_loading"><div><img src="__PUBLIC__/bootstrap/img/ajax-loaders/ajax-loader-1.gif"/></div><div>加载中...</div> </div>';
+		$("#table").html(loading);
+		$.get($(this).attr("href"),function(data){ 
+			$("body").html(data); 
+		}) 
+		return false; 
+	}) 
+}) 
+</script>
+<include file="Index:footer" />
+<div id="screening" class="modal hide fade in" >
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>取消订单</h3>
+    </div>
+    <div class="modal-body">
+    <form method="post" action="__ROOT__/Center/cancelOrder.html">
+       <table class="table">
+        <tbody>
+          <tr>
+          <td>理由：</td>
+          <td>
+                <textarea name="note" placeholder="请输入取消理由"></textarea>
+                <input id="id" name="id" type="hidden" value="" />
+          </td>
+          </tr>
+         
+        </tbody>
+       	</table>
+          <button class="btn btn-primary" type="submit" style="width:100%">
+              确定
+          </button>
+    </form>
+    </div>
+</div>

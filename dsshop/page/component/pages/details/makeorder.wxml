@@ -1,0 +1,101 @@
+
+<view>
+  <!-- 收货地址 -->
+  <view wx:if="{{addresson ==1}}"> 
+    <!-- 有设置默认收货地址 -->
+    <view class="makeorder">
+      <navigator url="../address/index" class="shipping-address flex-row">
+        <view class="left flex-view-item"><view class="zan-icon zan-icon-location"></view></view>
+        <view class="address flex-view-item">
+          <view class="top">
+            <view class="top-left">收货人：{{addressdata.information.recipient}}</view>
+            <view class="top-right">{{addressdata.information.telephone}}</view>
+          </view>
+          <view class="end">
+            <view>收货地址：{{addressdata.city}} {{addressdata.information.address}}</view>
+          </view>
+        </view>
+        <view class="right flex-view-item"><view class="zan-icon zan-icon-arrow"></view></view>
+      </navigator>
+      <view class="edge"></view>
+    </view>
+  </view>
+  <view wx:else>
+    <!-- 没有设置默认收货地址 -->
+    <view class="makeorder">
+      <navigator url="../address/index" class='shipping-address flex-row'>
+        <view class="left flex-view-item"><view class="zan-icon zan-icon-location"></view></view>
+        <view class="address flex-view-item" style="line-height: 40px;">请点击选择或添加收货地址</view>
+        <view class="right flex-view-item"><view class="zan-icon zan-icon-arrow"></view></view>
+      </navigator>
+      <view class="edge"></view>
+    </view> 
+  </view>
+
+  <!-- 收货地址 end-->
+  <!-- 商品列表 -->
+  <view class="zan-panel">
+    <view class="zan-card" wx:for="{{cartList}}"  wx:key="id{{index}}">
+      <view class="zan-card__thumb">
+        <image class="zan-card__img"
+          src="{{uploadImgUrl}}commodity/{{item.zimg}}"
+          mode="aspectFit"
+        ></image>
+      </view>
+      <view class="zan-card__detail">
+        <view class="zan-card__detail-row">
+          <view class="zan-card__right-col price">¥ {{item.price}}</view>
+          <view class="zan-card__left-col zan-ellipsis--l2">
+             {{item.title}}
+          </view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__right-col">x{{item.nub}}</view>
+          <view class="zan-card__left-col">
+            {{item.color}};{{item.size}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品列表 end-->
+  <!-- 运费 -->
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">运费</view>
+      <view class="zan-cell__ft red">¥0</view>
+    </view>
+  </view>
+  <!-- 运费 end-->
+  <!-- 买家留言 -->
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">买家留言</view>
+      <view class="zan-cell__ft"><input placeholder="选填"/></view>
+    </view>
+  </view>
+  <!-- 买家留言 end-->
+  <!-- 支付方式 -->
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">支付方式</view>
+      <view class="zan-cell__ft wxpay_list"><image src="../../../../image/wxpay.png" mode="aspectFit" class="wxpay"></image></view>
+    </view>
+  </view>
+  <!-- 支付方式 end-->
+  <!-- 提交 -->
+  <view class="car-submit">
+    
+    <view class="total">
+      <view class="amount">
+        <view>共</view><view class="price"> {{statisticalNum}} </view><view>件，</view>
+        <view>总金额</view>
+        <view class="price"> ¥{{statisticalPrice}} </view>
+      </view>
+    </view>
+    <view class="sub"    bindtap="getGenerateOrders">提交订单</view>
+  </view>
+  <!-- 提交 -->
+</view>
+

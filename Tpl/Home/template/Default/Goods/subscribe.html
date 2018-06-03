@@ -1,0 +1,80 @@
+<include file="Index:header" />
+<!--头部 end -->
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+	<!-- start content -->
+        <!--内容-->
+        <div class="cart">
+        
+        <table>
+            <thead>
+            <tr>
+              <th style="width:40%">商品信息</th>
+              <th style="width:20%"></th>
+              <th style="width:13%">单价(元)</th>
+              <th style="width:14%">数量</th>
+              <th style="width:13%">小计(元)</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            
+              <volist name="details" id="vo">
+              
+              <tr id="cart_{$i}">
+                <td class="sp1">
+                <a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">
+                <img src="__PUBLIC__/uploadify/uploads/commodity/{$vo.goods.zimg}"/></a>
+                <div class="">
+                <p><a href="__ROOT__/Goods/details/id/{$vo.goods.id}.html">{$vo.goods.title}</a></p>
+                </div>
+                </td>
+                <td class="sp2">
+                	<P>颜色分类：{$vo.colorname}</P>
+					<p>尺码：{$vo.sizename}</p>
+                </td>
+                <td>{$vo.price}</td>
+                <td >
+                    {$vo.cart.nub}
+                </td>
+                <td class="sp4" id="subtotal_{$i}">{$vo.total|number_format=2,'.',','}</td>
+              </tr>
+              </volist>
+             
+          </tbody>
+          
+        </table>
+		</div>
+        <form method="post"  action='__ROOT__/Goods/depositOperation.html'> 
+       <div class="cart_address">
+       <h2>确认收货地址<span style="color: #666;">(在新页面添加地址后，请刷新当前页)</span></h2>
+       		<div>
+            	<volist name="delivery" id="v">
+                <label class="radio <eq name='v.default' value='1'>red</eq>"><input type="radio" name="default" value="{$v.id}" class="noty" <eq name="v.default" value="1">checked </eq>/>{$city[$v['information']['region'][0]]}&nbsp;{$city[$v['information']['region'][1]]}&nbsp;{$city[$v['information']['region'][2]]}&nbsp;{$v.information.address}（{$v.information.recipient}&nbsp;收）{$v.information.phone}&nbsp;{$v.information.telephone}</label>
+                </volist>
+                <label class="radio"><a href="__ROOT__/Center/shipping/mid/edit.html" target="_blank">其它地址</a></label>
+            </div>
+       </div>
+        
+        <div class="know">
+			<p class="total">合计：<span id="total">￥{$indent.total|number_format=2,'.',','}</span></p>
+            <p>
+            <button class="payment" type="submit">
+              确定支付
+            </button>
+            </p>
+        </div>
+        <input name="id" type="hidden" value="{$Think.get.id}" />
+         <input name="number" type="hidden" value="{$indent.number}" />
+        <input name="deposit" type="hidden" value="{$indent['total']}" />
+        </form>
+        <!--内容--end-->
+        
+        
+  	</div>
+</div>
+</div>
+<!-- start footer -->
+<include file="Index:footer" />

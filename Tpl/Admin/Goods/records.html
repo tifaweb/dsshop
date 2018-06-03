@@ -1,0 +1,136 @@
+<include file="Index:header" />
+<style>
+.order_table tr:hover  td{
+	background-color: inherit!important;
+	
+}
+.order_table{font-family: "微软雅黑";	}
+.order_table .order{
+	background-color: #E8E8E8;
+	
+}
+.order_table .order td{
+	height: 20px;
+	
+}
+.order_table .order td b{
+	margin-right: 20px;
+	font-weight: bold;
+}
+.order_table .goods td{
+	border: 1px solid #E4E4E4;
+}
+.order_table .goods .title a{
+	float: left;
+}
+.order_table .goods .title .t_r{float:left;}
+.order_table .goods .title .t_c{
+	color: #999;
+	margin-left: 5px;
+	position: relative;
+	top: 5px;
+}
+.order_table .goods .title a img{
+	width:80px;
+	height:51px;
+}
+.order_table .goods .title .t{
+	margin-left: 5px;
+}
+</style>
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/Admin.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li class="active">订单管理</li>
+      <div  class="pull-right">
+      <a href="#screening" data-toggle="modal">筛选</a>&nbsp;&nbsp;
+      <a data-toggle="modal"  data-rel="tooltip" href="#mod">导出</a></div>
+</ul>
+<table class="table order_table" id="table">
+    <thead>
+      <tr>  
+        <th style="width:30%">宝贝</th>
+        <th>单价(元)</th>
+        <th>数量</th>
+        <th>小计(元)</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+        {$arr}
+    
+</table>
+<div class="pagination pagination-centered">
+      <ul>{$page}</ul>
+      </div>
+</div>
+
+<div>
+</div>
+<!--底部 -->
+<div id="screening" class="modal hide fade in" >
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>筛选</h3>
+    </div>
+    <div class="modal-body">
+    <form method="get">
+       <table class="table">
+        <tbody>
+          <tr>
+          <td>查询：</td>
+          <td>
+             	<input name="title" type="text" placeholder="订单号..." value="{$Think.get.title}">
+          </td>
+          </tr>
+          <tr>
+          <td>状态：</td>
+          <td>
+                <select name="state">  
+                	<option value='' >全部</option> 
+                    <option value='1' <eq name="Think.get.state" value="1">selected="selected"</eq>>等待支付</option>
+                    <option value='2' <eq name="Think.get.state" value="2">selected="selected"</eq>>等待配送</option>
+                    <option value='3' <eq name="Think.get.state" value="3">selected="selected"</eq>>等待收货</option>
+                    <option value='4' <eq name="Think.get.state" value="4">selected="selected"</eq>>交易成功</option>
+                    <option value='5' <eq name="Think.get.state" value="5">selected="selected"</eq>>交易取消</option>
+                </select>  
+          </td>
+          </tr>
+          <tr>
+          <td>操作时间：</td>
+          <td>
+             	<input name="starttime" type="text" id="starttime" style="width:150px;" value='{$Think.get.starttime}'/>
+                &nbsp;-&nbsp;
+                <input name="endtime" type="text" id="endtime" style="width:150px;" value='{$Think.get.endtime}'/>
+          </td>
+          	
+          </tr>
+        </tbody>
+       	</table>
+        <div class="pull-right">
+          <button class="btn btn-primary" type="submit">
+              确定
+          </button>
+      	</div>
+    </form>
+    </div>
+</div>
+<include file="Index:footer" />
+<!-- 日期选择器 -->
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/jquery.datetimepicker.css">
+  <script src="__PUBLIC__/js/jquery.datetimepicker.js"></script>
+<script>
+$('#starttime').datetimepicker({lang:'ch',timepicker:false,format:'Y-m-d',});
+$('#endtime').datetimepicker({lang:'ch',timepicker:false,format:'Y/m/d'});
+</script>
+

@@ -1,0 +1,92 @@
+
+<view>
+  <!-- 收货地址 -->
+  <view class="makeorder">
+    <view class="shipping-address flex-row">
+      <view class="left flex-view-item"><view class="zan-icon zan-icon-location"></view></view>
+      <view class="address flex-view-item">
+        <view class="top">
+          <view class="top-left">收货人：{{goods.information.recipient}}</view>
+          <view class="top-right">{{goods.information.telephone}}</view>
+        </view>
+        <view class="end">
+          <view>收货地址：{{goods.city}} {{goods.information.address}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="edge"></view>
+  </view>
+  <!-- 收货地址 end-->
+  <!-- 商品列表 -->
+  <view class="zan-panel">
+    <view class="zan-card" wx:for="{{goods.details}}"  wx:key="id{{index}}">
+      <view class="zan-card__thumb">
+        <image class="zan-card__img"
+          src="{{uploadImgUrl}}commodity/{{item.goods.zimg}}"
+          mode="aspectFit"
+        ></image>
+      </view>
+      <view class="zan-card__detail">
+        <view class="zan-card__detail-row">
+          <view class="zan-card__right-col price">¥ {{item.price}}</view>
+          <view class="zan-card__left-col zan-ellipsis--l2">
+             {{item.goods.title}}
+          </view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__right-col">x{{item.cart.nub}}</view>
+          <view class="zan-card__left-col">
+            {{item.color}};{{item.size}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品列表 end-->
+  <!-- 运费 -->
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">运费</view>
+      <view class="zan-cell__ft red">¥0</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">实付款（含运费）</view>
+      <view class="zan-cell__ft red">¥{{goods.price}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">订单编号</view>
+      <view class="zan-cell__ft">{{goods.number}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">创建时间</view>
+      <view class="zan-cell__ft">{{goods.time}}</view>
+    </view>
+    <view wx:if="{{goods.paymenttime>0}}">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">付款时间</view>
+        <view class="zan-cell__ft">{{goods.paymenttime}}</view>
+      </view>
+    </view>
+    <view wx:if="{{goods.deliverytime>0}}">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">发货时间</view>
+        <view class="zan-cell__ft">{{goods.deliverytime}}</view>
+      </view>
+    </view>
+    <view wx:if="{{goods.endtime>0}}">
+      <view class="zan-cell">
+        <view class="zan-cell__bd">收货时间</view>
+        <view class="zan-cell__ft">{{goods.endtime}}</view>
+      </view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">状态</view>
+      <view class="zan-cell__ft">{{goods.statename}}</view>
+    </view>
+  </view>
+  <!-- 运费 end-->
+  
+  
+</view>
+

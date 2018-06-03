@@ -1,0 +1,222 @@
+[ 2015-03-30T13:46:35+08:00 ] 127.0.0.1 /install.php
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001706s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001864s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.013462s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013613s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001395s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001400s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001248s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001522s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005931s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001528s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001662s ]
+
+[ 2015-03-30T13:46:38+08:00 ] 127.0.0.1 /install.php/Index/install/step/1
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001654s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001814s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001647s ]
+NOTIC: 建议使用I方法替代_get
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang G:\wamp\www\p2csupport\Install\Runtime\Cache\GROUP_NAME\87a47085e35556dc3204de01c62ee454.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.011909s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012054s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000723s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000754s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000610s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000912s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003380s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000887s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001065s ]
+
+[ 2015-03-30T13:46:39+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001012s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001174s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000853s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000991s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang G:\wamp\www\p2csupport\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.007937s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008079s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000540s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000573s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000420s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000710s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002618s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000692s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000827s ]
+
+[ 2015-03-30T13:46:39+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000820s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000984s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000675s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000810s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2015-03-30T13:46:42+08:00 ] 127.0.0.1 /install.php/Index/dbconnect?dbhost=localhost&dbuser=root&dbpwd=&dbname=p2csupport
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000832s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000982s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000678s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000791s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+
+[ 2015-03-30T13:46:42+08:00 ] 127.0.0.1 /install.php/Index/install/step/3
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000810s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000956s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000813s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: [2] mysql_fetch_array() expects parameter 1 to be resource, boolean given G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 131 行.
+NOTIC: [8] Undefined variable: datalists G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 135 行.
+NOTIC: [2] Invalid argument supplied for foreach() G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 135 行.
+
+[ 2015-03-30T13:47:16+08:00 ] 127.0.0.1 /install.php
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001438s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001593s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012142s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012293s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001149s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001212s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000989s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001286s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005012s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001296s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001435s ]
+
+[ 2015-03-30T13:47:18+08:00 ] 127.0.0.1 /install.php/Index/install/step/1
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001400s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001563s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001240s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001381s ]
+NOTIC: 建议使用I方法替代_get
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang G:\wamp\www\p2csupport\Install\Runtime\Cache\GROUP_NAME\87a47085e35556dc3204de01c62ee454.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012015s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012157s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000723s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000755s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000602s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000914s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003380s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000936s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001079s ]
+
+[ 2015-03-30T13:47:19+08:00 ] 127.0.0.1 /install.php/Index/install/step/2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001063s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001223s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000994s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: [8] Use of undefined constant _ - assumed '_' G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 85 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: s_lang G:\wamp\www\p2csupport\Install\Runtime\Cache\GROUP_NAME\3408f6ad4ffc3e79a8293ef096cbd320.php 第 4 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008051s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008190s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000556s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000587s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000423s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000680s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002612s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000687s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000815s ]
+
+[ 2015-03-30T13:47:19+08:00 ] 127.0.0.1 /install.php/Index/install/include/dedeajax2.js
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000820s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000983s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000715s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001137s ]
+NOTIC: 建议使用I方法替代_get
+
+[ 2015-03-30T13:47:22+08:00 ] 127.0.0.1 /install.php/Index/dbconnect?dbhost=localhost&dbuser=root&dbpwd=&dbname=p2csupport
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000798s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000946s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000786s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_get
+
+[ 2015-03-30T13:47:26+08:00 ] 127.0.0.1 /install.php/Index/install/step/3
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000798s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000944s ]
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' G:\wamp\www\p2csupport\framework\Lib\Core\App.class.php 第 61 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000832s ]
+NOTIC: 建议使用I方法替代_get
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: [2] mysql_fetch_array() expects parameter 1 to be resource, boolean given G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 131 行.
+NOTIC: [8] Undefined variable: datalists G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 135 行.
+NOTIC: [2] Invalid argument supplied for foreach() G:\wamp\www\p2csupport\Install\Lib\Action\IndexAction.class.php 第 135 行.
+

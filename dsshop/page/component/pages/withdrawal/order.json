@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "资金明细",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}
