@@ -81,10 +81,13 @@ http://dswjshopbasis.tifaweb.com
 5、项目对外发布，上线运营
 
 # dsshop微信小程序演示地址
+
 <p>
 <img src="gh_e79e7cd855e7_344.jpg" width="200px">
 </p>
+
 # dsshop微信小程序截图效果
+
 <p>
 <img src="effect_1.jpg" width="200px">
 </p>
