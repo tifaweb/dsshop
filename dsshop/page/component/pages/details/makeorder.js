@@ -8,6 +8,13 @@ Page({
 
   },
   onLoad: function (options) {
+    
+    if (options.type==1){
+      this.setData({
+        type: options.type,
+      });
+    }
+    
     this.getaddress();
     this.getCarList();
 
@@ -44,19 +51,32 @@ Page({
   },
   //获取购物车列表
   getCarList() {
-    var getcart = wx.getStorageSync('getcart'), getcartselected = wx.getStorageSync('getcartselected'), cartdata = {}, getCheckbox = {}, getCheckboxColor = {}, getid = {}, that = this;
-    
-    if (!getcart) {
-      console.log('非法操作');
-      return false;
-    }
+    var getcart = wx.getStorageSync('getcart'), getgoods = wx.getStorageSync('getgoods'), getcartselected = wx.getStorageSync('getcartselected'), cartdata = {}, getCheckbox = {}, getCheckboxColor = {}, getid = {}, that = this;
+    if (this.data.type==1){ //直接购买
+      
+      if (!getgoods) {
+        console.log('非法操作');
+        return false;
+      }
 
-    for (var i in getcart) {
-      if (getcartselected.hasOwnProperty(i)){
+      for (var i in getgoods) {
         getid[i] = i;
       }
       
+    }else{  //购物车
+      if (!getcart) {
+        console.log('非法操作');
+        return false;
+      }
+
+      for (var i in getcart) {
+        if (getcartselected.hasOwnProperty(i)) {
+          getid[i] = i;
+        }
+
+      }
     }
+    
     
     wx.request({
       url: getUrl + 'getCarGoods',
@@ -70,32 +90,39 @@ Page({
         
         if (res.data.status == 1) {
 
-          var getdata = res.data.info, price = 0, nub = 0;
-
-          for (var i in getcart) {
-            if (getcartselected.hasOwnProperty(i)) {
-              var getdatas = {} = getdata[getcart[i]['id']];
+          var getdata = res.data.info, price = 0, nub = 0, ordgetcart;
+          if (that.data.type == 1){
+            ordgetcart = getgoods;
+          }else{
+            ordgetcart = getcart;
+          }
+          
+          for (var i in ordgetcart) {
+            if (getcartselected.hasOwnProperty(i) || that.data.type ==1) {
+              var getdatas = {} = getdata[ordgetcart[i]['id']];
 
               cartdata[i] = {};
               cartdata[i]['id'] = getdatas['id'];
               cartdata[i]['title'] = getdatas['title'];
               cartdata[i]['zimg'] = getdatas['zimg'];
-              cartdata[i]['color'] = getdatas['attribute']['color'][getcart[i]['color']];
-              cartdata[i]['size'] = getdatas['attribute']['size'][getcart[i]['size']];
-              cartdata[i]['p'] = parseInt(getcart[i]['color']) * getdatas['attribute']['size'].length + parseInt(getcart[i]['size']); //键名
+              cartdata[i]['color'] = getdatas['attribute']['color'][ordgetcart[i]['color']];
+              cartdata[i]['size'] = getdatas['attribute']['size'][ordgetcart[i]['size']];
+              cartdata[i]['p'] = parseInt(ordgetcart[i]['color']) * getdatas['attribute']['size'].length + parseInt(ordgetcart[i]['size']); //键名
 
-              cartdata[i]['nub'] = getcart[i]['nub'];  //当前购物车数量
+              cartdata[i]['nub'] = ordgetcart[i]['nub'];  //当前购物车数量
               cartdata[i]['price'] = getdatas['attribute']['price'][cartdata[i]['p']]//价格
               price += parseInt(cartdata[i]['price']);
               nub+=1;
             }
           }
+          
           //console.log(price);
           that.setData({
             cartList: cartdata,
             statisticalPrice: that.fmoney(price, 2),
             statisticalNum: nub,
           });
+          
         } else {
           wx.showToast({
             title: res.data.info,
@@ -137,8 +164,8 @@ Page({
   },
   //提交订单
   getGenerateOrders() {
-    var getcart = wx.getStorageSync('getcart'), getid = {},getcartselected = wx.getStorageSync('getcartselected'), addressid = this.data.addressid;
-    if (!addressid){
+    var getcart = wx.getStorageSync('getcart'), getgoods = wx.getStorageSync('getgoods'), getid = {},getcartselected = wx.getStorageSync('getcartselected'), addressid = this.data.addressid;
+    if (!addressid) {
       wx.showToast({
         title: '请选择收货信息',
         icon: 'none',
@@ -146,12 +173,21 @@ Page({
       })
       return false;
     }
-    for (var i in getcart) {
-      if (getcartselected.hasOwnProperty(i)) {
-        getid[i] = getcart[i];
+    if (this.data.type == 1) { //直接购买
+      for (var i in getgoods) {
+        getid[i] = getgoods[i];
       }
+    }else{
+      
+      for (var i in getcart) {
+        if (getcartselected.hasOwnProperty(i)) {
+          getid[i] = getcart[i];
+        }
 
+      }
     }
+    
+    //console.log(getid);
     wx.request({
       url: getUrl + 'getGenerateOrders',
       data: {

@@ -2,8 +2,8 @@ const uploadImgUrl = require('../../../../config').uploadImgUrl
 const getUrl = require('../../../../config').getUrl
 Page({
   data: {
-    region:'请选择区域'
-    
+    region:'请选择区域',
+    cityarray:[]
   },
   onLoad: function (options) {
     var title,that=this;

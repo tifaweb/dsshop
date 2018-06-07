@@ -140,7 +140,7 @@ App({
               code: data.code
             },
             success: function (res) {
-              
+              //console.log(res);
               if (res.data.status == 1) {  //成功
                 self.globalData.openid = res.data.info.openid;
                 self.globalData.uid = res.data.info.id;
@@ -208,6 +208,31 @@ App({
     //   key: "getcart",
     //   data: setcart
     // })
+  },
+  /**
+   * 购买处理
+   * id   商品ID
+   * color  颜色
+   * size   尺寸
+   * nub    数量
+   */
+  setgoods(id, color, size, nub) {
+    //wx.removeStorageSync('getgoods')
+    var code, setcart = {};
+    if (wx.getStorageSync('getgoods')) {
+      setcart = wx.getStorageSync('getgoods');
+    }
+
+    code = id + '-' + color + '-' + size;
+
+    setcart[code] = {};
+    setcart[code]['nub'] = nub;
+
+    setcart[code]['id'] = id;
+    setcart[code]['color'] = color;
+    setcart[code]['size'] = size;
+    wx.setStorageSync('getgoods', setcart);
+    
   },
 })
 

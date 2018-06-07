@@ -37,7 +37,8 @@
                         </td>
                         <td>
                             <select name="type">
-                                    <option value="0">首页轮播</option>
+                                    <option value="0" <neq name="ed.type" value="1">selected</neq>>首页轮播</option>
+                                    <option value="1" <eq name="ed.type" value="1">selected</eq>>微信小程序轮播</option>
                             </select>
                         </td>
                       </tr>

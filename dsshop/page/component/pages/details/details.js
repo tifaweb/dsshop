@@ -250,7 +250,12 @@ Page({
       })
       
     }else{  //购买
-
+      var app = getApp();
+      app.setgoods(this.data.getid, colorValue, sizeValue, numberValue);
+      //直接下单
+      wx.navigateTo({
+        url: 'makeorder?type=1'
+      })
     }
     this.setData({
       showBottomPopup: !this.data.showBottomPopup,

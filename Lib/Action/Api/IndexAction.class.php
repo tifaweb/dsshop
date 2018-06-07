@@ -15,8 +15,8 @@ class IndexAction extends CommAction {
     //微信openid获取
     public function getwxopenID(){
         if(I('get.code')){
-            $data['appid']='wxc31e70f47087660b';    //小程序appid
-            $data['secret']='5a8d778a3ca34748dcea69ea7f40a4a4'; //小程序secret
+            $data['appid']='';    //小程序appid
+            $data['secret']=''; //小程序secret
             $data['js_code']=I('get.code');
             $data['grant_type']="authorization_code";
             $Curl=$this->Curl($data,'https://api.weixin.qq.com/sns/jscode2session');

@@ -32,6 +32,10 @@ dsshop是一套轻量级的网上购物系统，通过dsshop可以快速搭建�
 
 2、微信小程序后端需要搭建在服务器上才可在微信小程序中被配置
 
+# Dsshop版本说明
+
+2018年06月07日	2.4.1发布，修复部分BUG	
+
 
 # Dsshop使用要求
 
@@ -76,9 +80,11 @@ http://dswjshopbasis.tifaweb.com
 
 3、导入项目成功后，需要修改config.js，在微信开发者工具中，点击config.js文件，找到“var host = "填写自己的服务器地址"”，修改地址为服务器地址（即服务器访问的dsshop项目地址）
 
-4、修改代码里的信息，然后上传，微信小程序后台提示
+4、修改dsshop（PHP端），路径：Lib\Action\Api\IndexAction.class.php里的getwxopenID方法，将小程序appid和小程序secret填写上去
 
-5、项目对外发布，上线运营
+5、修改代码里的信息，然后上传，微信小程序后台提示
+
+6、项目对外发布，上线运营
 
 # dsshop微信小程序演示地址
 
