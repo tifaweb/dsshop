@@ -72,7 +72,7 @@
   <view class="zan-panel">
     <view class="zan-cell">
       <view class="zan-cell__bd">买家留言</view>
-      <view class="zan-cell__ft"><input placeholder="选填"/></view>
+      <view class="zan-cell__ft"><input  style="width:200px;" placeholder="选填"/></view>
     </view>
   </view>
   <!-- 买家留言 end-->
