@@ -64,6 +64,9 @@
           <block wx:if="{{item.state==3 || item.state==4 || item.state==6}}">
           <navigator url="../report/logistics?id={{item.id}}" class="subrigh" >查看物流</navigator>
           </block>
+          <block wx:if="{{item.state==3}}">
+          <view bindtap="setConfirmReceipt" data-value="{{item.id}}" class="subrigh" >确认收货</view>
+          </block>
         </view>
       </view>  
       <!--单品 end-->

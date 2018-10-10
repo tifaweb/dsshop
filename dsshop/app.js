@@ -217,7 +217,7 @@ App({
    * nub    数量
    */
   setgoods(id, color, size, nub) {
-    //wx.removeStorageSync('getgoods')
+    wx.removeStorageSync('getgoods')
     var code, setcart = {};
     if (wx.getStorageSync('getgoods')) {
       setcart = wx.getStorageSync('getgoods');

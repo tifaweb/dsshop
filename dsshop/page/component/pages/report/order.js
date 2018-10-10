@@ -192,6 +192,36 @@ Page({
       scrollTop: 0,
     })
   },
+    //确认收货
+    setConfirmReceipt: function (e){
+        wx.request({
+            url: getUrl + 'setConfirmReceipt',
+            data: {
+                openid: wx.getStorageSync('openid'),
+                verify: wx.getStorageSync('verify'),
+                uid: wx.getStorageSync('id'),
+                id: e.currentTarget.dataset.value,
+            },
+            success: function (res) {
+
+                if (res.data.status == 1) {
+                    wx.showToast({
+                        title: res.data.info,
+                        icon: 'success',
+                    })
+
+                    that.getOrderList();
+
+                } else {
+                    wx.showToast({
+                        title: res.data.info,
+                    })
+                }
+
+
+            }
+        })
+    },
   //删除订单
   deleteOrder: function (e) {
     var that = this

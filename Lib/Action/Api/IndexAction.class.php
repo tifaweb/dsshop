@@ -773,6 +773,29 @@ class IndexAction extends CommAction {
     }
 
     /**
+     * 确认收货
+     */
+    public function setConfirmReceipt(){
+        if(I('get.openid')){
+            if(!I('get.id')){
+                $this->ajaxReturn(0,'参数有误',0);
+            }
+            $user=M('user')->where(array('id'=>I('get.uid')))->find();
+            if(MD5($user['openid'].DS_ENTERPRISE.$user['id'].DS_EN_ENTERPRISE) !=I('get.verify')){
+                $this->ajaxReturn(0,'账号不匹配',0);
+            }else{
+                M('indent')->where(array('id'=>I('get.id')))->save(array('state'=>4));
+                $this->ajaxReturn(1,'收货成功',1);
+
+            }
+
+        }else{
+            $this->ajaxReturn(0,0,0);
+        }
+
+    }
+
+    /**
      * 删除订单
      */
     public function deleteOrder(){

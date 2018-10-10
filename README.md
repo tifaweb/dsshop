@@ -36,6 +36,8 @@ dsshop是一套轻量级的网上购物系统，通过dsshop可以快速搭建�
 
 2018年06月07日	2.4.1发布，修复部分BUG	
 
+2018年10月10日	2.4.2发布，修复直接购买、确认收货等BUG问题	
+
 
 # Dsshop使用要求
 
@@ -85,6 +87,21 @@ http://dswjshopbasis.tifaweb.com
 5、修改代码里的信息，然后上传，微信小程序后台提示
 
 6、项目对外发布，上线运营
+
+# 微信支付相关
+
+1、修改Lib\Plugin\wxpay\WxPay.Config.php中的微信支付配置信息
+
+2、当报curl出错，错误码:60错误时
+
+请修改Lib\Plugin\wxpay\wxPayApi.class.php中
+537行curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,TRUE);
+改为
+curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
+
+538行curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,2);
+改为
+curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);
 
 # dsshop微信小程序演示地址
 
