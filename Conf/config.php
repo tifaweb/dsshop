@@ -54,7 +54,7 @@ return array(
 	'DS_ENTERPRISE'			=>	'Dswjcms独立商城系统',
 	'DS_EN_ENTERPRISE'		=>	'dsshop',
 	'DS_TOP_POWERED'		=>	'Powered by Dswjcms!',
-	'DS_POWERED'			=>	'<p class="pull-left">Powered by <strong><a href="http://www.dswjcms.com" target="_blank">Dswjcms!</a></strong> <em>X2.4.2</em><br/>&copy; 2003-2018<a href="http://www.tifaweb.com" target="_blank">Tf Inc.</a></p>',
+	'DS_POWERED'			=>	'<p class="pull-left">Powered by <strong><a href="http://www.dswjcms.com" target="_blank">Dswjcms!</a></strong> <em>X2.4.3</em><br/>&copy; 2003-2018<a href="http://www.tifaweb.com" target="_blank">Tf Inc.</a></p>',
 	
 	
 );

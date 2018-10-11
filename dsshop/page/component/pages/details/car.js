@@ -220,6 +220,8 @@ Page({
       cartList[id]['nubclassmin'] = '';
       
     }
+	getcart[id]['nub'] = cartList[id]['nub'];
+    wx.setStorageSync('getcart', getcart);
     //console.log(cartList[id]);
     this.setData({
       cartList: cartList,

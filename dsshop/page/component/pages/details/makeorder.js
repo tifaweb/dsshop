@@ -111,7 +111,7 @@ Page({
 
               cartdata[i]['nub'] = ordgetcart[i]['nub'];  //当前购物车数量
               cartdata[i]['price'] = getdatas['attribute']['price'][cartdata[i]['p']]//价格
-              price += parseInt(cartdata[i]['price']);
+              price += parseInt(cartdata[i]['price'])* parseInt(cartdata[i]['nub']);
               nub+=1;
             }
           }
