@@ -316,10 +316,16 @@ class IndexAction extends CommAction {
 
             
             foreach($cart as $id=>$n){
-                    $details[$id]['goods']=M('goods')->where(array('id'=>$n['id']))->find();
-                    $details[$id]['goods']['img']=json_decode($details[$id]['goods']['img'], true);
-                    $details[$id]['goods']['attribute']=json_decode($details[$id]['goods']['attribute'], true);
-                    $details[$id]['cart']=$n;
+                $details[$id]['goods']=M('goods')->where(array('id'=>$n['id']))->find();
+                $details[$id]['goods']['img']=json_decode($details[$id]['goods']['img'], true);
+                $details[$id]['goods']['attribute']=$attribute=json_decode($details[$id]['goods']['attribute'], true);
+                $details[$id]['cart']=$n;
+                //更新库存
+                $p=$n['color']*count($attribute['size'])+$n['size'];
+                $attribute['stock'][$p]=$attribute['stock'][$p]-1;
+                M('goods')->where(array('id'=>$n['id']))->save(array('attribute'=>json_encode($attribute)));
+                unset($p);
+                unset($attribute);
             }
             $add['uid']=I('get.uid');
             $add['number']=$this->orderNumber();
@@ -785,6 +791,12 @@ class IndexAction extends CommAction {
                 $this->ajaxReturn(0,'账号不匹配',0);
             }else{
                 M('indent')->where(array('id'=>I('get.id')))->save(array('state'=>4));
+                //增加销量
+                $indent= M('indent')->where(array('id'=>I('get.id')))->find();
+                $details=json_decode($indent['details'], true);
+                foreach($details as $id=>$d){
+                    M('goods')->where(array('id'=>$d['goods']['id']))->setInc('sales',1);
+                }
                 $this->ajaxReturn(1,'收货成功',1);
 
             }
@@ -807,7 +819,22 @@ class IndexAction extends CommAction {
             if(MD5($user['openid'].DS_ENTERPRISE.$user['id'].DS_EN_ENTERPRISE) !=I('get.verify')){
                 $this->ajaxReturn(0,'账号不匹配',0);
             }else{
+                //增加库存
+                $indent=M('indent')->where(array('id'=>I('get.id')))->find();
                 M('indent')->where(array('id'=>I('get.id')))->save(array('state'=>8));
+                if($indent['state']==1 || $indent['state']==2){
+                    $details=json_decode($indent['details'], true);
+                    foreach($details as $id=>$d){
+                        $p=$d['cart']['color']*count($d['attribute']['size'])+$d['cart']['size'];
+                        $goods=M('goods')->where(array('id'=>$d['goods']['id']))->find();
+                        $attribute=json_decode($goods['attribute'], true);
+                        $attribute['stock'][$p]=$attribute['stock'][$p]+1;
+                        M('goods')->where(array('id'=>$d['goods']['id']))->save(array('attribute'=>json_encode($attribute)));
+                        unset($goods);
+                        unset($attribute);
+                        unset($p);
+                    }
+                }
                  $this->ajaxReturn(1,'删除成功',1);
 
             }
