@@ -197,7 +197,7 @@ Page({
   //购买数量操作
   checkboxPrice(e) {
     //e.currentTarget.dataset.type
-    var num, getonNumber, id = e.currentTarget.dataset.id, cartList = this.data.cartList;
+    var num, getonNumber, id = e.currentTarget.dataset.id, cartList = this.data.cartList, getcart = wx.getStorageSync('getcart');
     
     if (e.currentTarget.dataset.type == 1) {
       if (cartList[id]['nub'] == 1) {
