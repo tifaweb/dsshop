@@ -55,7 +55,7 @@
             </view>
           </navigator>
         </view>
-        <view class="totalof">共{{item.count}}件商品 合计：¥ {{item.total}}</view>
+        <view class="totalof">共{{item.count}}件商品 合计：¥ {{item.total}}(运费:{{item.expressfee}})</view>
         <view class="sub-right">
           <block wx:if="{{item.state==1}}">
           <view bindtap="setwxPay" data-value="{{item.number}}" class="subrigh" >支付</view>

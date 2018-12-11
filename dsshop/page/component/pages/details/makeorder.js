@@ -5,7 +5,8 @@ Page({
     statisticalPrice: '0.00',  //默认总计
     statisticalNum: 0, //默认总计数量
     uploadImgUrl: uploadImgUrl,
-
+    arrayvalue: 0,
+    arrayIndex: 0,
   },
   onLoad: function (options) {
     
@@ -15,12 +16,90 @@ Page({
       });
     }
     
-    this.getaddress();
-    this.getCarList();
+    // this.getaddress();
+    // this.getCarList();
 
   },
   onShow:function(){  //设置默认收货地址后重新加载
+    var array = [];
+    array[0] = '快递 免邮';
+    this.setData({
+      array: array,
+    });
     this.getaddress();
+    this.getCarList();
+    
+  },
+  //获取快递费
+  getExpress(id){
+    var that = this;
+    wx.request({
+      url: getUrl + 'getExpress',
+      data: {
+        openid: wx.getStorageSync('openid'),
+        verify: wx.getStorageSync('verify'),
+        uid: wx.getStorageSync('id'),
+        idarr: id.join(",")
+      },
+      success: function (res) {
+        var array = [],arrayval=[], statisticalPrice = that.data.price;
+        if (res.data.status == 1) {
+          if (typeof (res.data.info.express) != 'undefined'){
+            if (res.data.info.express === 0){
+              array.push('快递 包邮')
+            }else{
+              array.push('快递 ¥ ' + that.fmoney(res.data.info.express, 2))
+            }
+            arrayval.push(res.data.info.express);
+          }
+          if (typeof (res.data.info.ems) != 'undefined') {
+            if (res.data.info.ems === 0) {
+              array.push('EMS 包邮')
+            } else {
+              array.push('EMS ¥ ' + that.fmoney(res.data.info.ems, 2))
+            }
+            arrayval.push(res.data.info.ems);
+          }
+          if (typeof (res.data.info.snailmail) != 'undefined') {
+            if (res.data.info.snailmail === 0) {
+              array.push('平邮 包邮')
+            } else {
+              array.push('平邮 ¥ ' + that.fmoney(res.data.info.snailmail, 2))
+            }
+            arrayval.push(res.data.info.snailmail);
+          }
+          if (typeof (res.data.info.logistics) != 'undefined') {
+            if (res.data.info.logistics === 0) {
+              array.push('物流 包邮')
+            } else {
+              array.push('物流 ¥ ' + that.fmoney(res.data.info.logistics, 2))
+            }
+            arrayval.push(res.data.info.logistics);
+          }
+          that.setData({
+            array: array,
+            checkedtemplate: arrayval[0], //选中的运费价格
+            arrayval: arrayval,
+            statisticalPrice: that.fmoney(statisticalPrice + arrayval[0], 2)
+          });
+        } else if (res.data.status == 2){
+          
+        }else {
+          
+          console.log(res.data.info);
+        }
+        
+      }
+    })
+  },
+  //设置选择的类目
+  onAreaChange: function (e) {
+    var arrayval = this.data.arrayval, statisticalPrice = this.data.price
+    this.setData({
+      arrayIndex: e.detail.value,
+      checkedtemplate: arrayval[e.detail.value], //选中的运费价格
+      statisticalPrice: this.fmoney(statisticalPrice + arrayval[e.detail.value], 2)
+    })
   },
   //获取收货地址
   getaddress(){
@@ -68,7 +147,7 @@ Page({
         console.log('非法操作');
         return false;
       }
-
+      
       for (var i in getcart) {
         if (getcartselected.hasOwnProperty(i)) {
           getid[i] = i;
@@ -87,7 +166,7 @@ Page({
         uid: wx.getStorageSync('id'),
       },
       success: function (res) {
-        
+        //console.log(res.data.info);
         if (res.data.status == 1) {
 
           var getdata = res.data.info, price = 0, nub = 0, ordgetcart;
@@ -96,12 +175,14 @@ Page({
           }else{
             ordgetcart = getcart;
           }
-          
+          var expressid=[]
           for (var i in ordgetcart) {
+            
             if (getcartselected.hasOwnProperty(i) || that.data.type ==1) {
               var getdatas = {} = getdata[ordgetcart[i]['id']];
 
               cartdata[i] = {};
+              expressid.push(getdatas['lid']);
               cartdata[i]['id'] = getdatas['id'];
               cartdata[i]['title'] = getdatas['title'];
               cartdata[i]['zimg'] = getdatas['zimg'];
@@ -116,13 +197,14 @@ Page({
             }
           }
           
-          //console.log(price);
           that.setData({
             cartList: cartdata,
             statisticalPrice: that.fmoney(price, 2),
+            price: price,
             statisticalNum: nub,
           });
           
+          that.getExpress(expressid);//快递费
         } else {
           wx.showToast({
             title: res.data.info,
@@ -179,6 +261,7 @@ Page({
       }
     }else{
       
+
       for (var i in getcart) {
         if (getcartselected.hasOwnProperty(i)) {
           getid[i] = getcart[i];
@@ -187,7 +270,6 @@ Page({
       }
     }
     
-    //console.log(getid);
     wx.request({
       url: getUrl + 'getGenerateOrders',
       data: {
@@ -196,6 +278,7 @@ Page({
         openid: wx.getStorageSync('openid'),
         verify: wx.getStorageSync('verify'),
         uid: wx.getStorageSync('id'),
+        expressfee: this.data.checkedtemplate,  //快递费
       },
       success: function (res) {
 

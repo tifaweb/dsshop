@@ -15,8 +15,8 @@ class IndexAction extends CommAction {
     //微信openid获取
     public function getwxopenID(){
         if(I('get.code')){
-            $data['appid']='';    //小程序appid
-            $data['secret']=''; //小程序secret
+            $data['appid']='wxc31e70f47087660b';    //小程序appid
+            $data['secret']='5a8d778a3ca34748dcea69ea7f40a4a4'; //小程序secret
             $data['js_code']=I('get.code');
             $data['grant_type']="authorization_code";
             $Curl=$this->Curl($data,'https://api.weixin.qq.com/sns/jscode2session');
@@ -313,8 +313,6 @@ class IndexAction extends CommAction {
     public function getGenerateOrders(){
         if(I('get.openid')){
             $cart=json_decode($_GET['cart'], true);
-
-            
             foreach($cart as $id=>$n){
                 $details[$id]['goods']=M('goods')->where(array('id'=>$n['id']))->find();
                 $details[$id]['goods']['img']=json_decode($details[$id]['goods']['img'], true);
@@ -329,6 +327,7 @@ class IndexAction extends CommAction {
             }
             $add['uid']=I('get.uid');
             $add['number']=$this->orderNumber();
+            $add['expressfee']=I('get.expressfee');
             $add['state']=1;
             $add['details']=json_encode($details);
 
@@ -353,6 +352,7 @@ class IndexAction extends CommAction {
             $data['img']=json_decode($goods['img'], true);
             array_unshift($data['img'],$data['zimg']);
             $data['attribute']=json_decode($goods['attribute'], true);
+            $data['deliverytime']=M('logistics')->where(array('id'=>$goods['lid']))->getField('deliverytime');//发货时间
             //设置颜色/尺寸状态
             foreach($data['attribute']['color'] as $id=> $color){
                 $colorStyle=0;
@@ -418,7 +418,7 @@ class IndexAction extends CommAction {
                 $data[$g['id']]['title']=$g['title'];
                 $data[$g['id']]['id']=$g['id'];
                 $data[$g['id']]['zimg']=$g['zimg'];
-
+                $data[$g['id']]['lid']=$g['lid'];
                 $data[$g['id']]['attribute']=json_decode($g['attribute'], true);
             }
             $this->ajaxReturn(1,$data,1);
@@ -548,7 +548,7 @@ class IndexAction extends CommAction {
                             unset($p);
                         }
                         $indent[$id]['count']=count($details);  //商品总数
-                        $indent[$id]['total']=number_format($total,2,'.',',');  //合计
+                        $indent[$id]['total']=number_format($total+$o['expressfee'],2,'.',',');  //合计
                         unset($total);
                     }
                     if(($Page->firstRow+$Page->listRows) ==$count){ //当查询数量正好被每页显示数量相同时，结束查询
@@ -777,7 +777,7 @@ class IndexAction extends CommAction {
             $this->ajaxReturn(0,'非法操作',0);
         }
     }
-
+    
     /**
      * 确认收货
      */
@@ -835,7 +835,7 @@ class IndexAction extends CommAction {
                         unset($p);
                     }
                 }
-                 $this->ajaxReturn(1,'删除成功',1);
+                $this->ajaxReturn(1,'删除成功',1);
 
             }
 
@@ -997,7 +997,7 @@ class IndexAction extends CommAction {
                 if(count($details)>1){
                     $title=$title.'等多件';
                 }
-
+                $total=$total+$indent['expressfee'];
                 $total=$total*100;  //合计单位：分
                 $WxPayApi = new WxPayApi();
                 $inputObj = new WxPayUnifiedOrder();
@@ -1006,12 +1006,12 @@ class IndexAction extends CommAction {
                 $data['place']['SetOut_trade_no']=$this->orderNumber();
                 $inputObj->SetOut_trade_no($data['place']['SetOut_trade_no']); //商户订单号
                 $data['place']['SetBody']=$title;
-                $inputObj->SetBody($title); //商品描述
-                //$inputObj->SetBody('测试'); //商品描述
+                //$inputObj->SetBody($title); //商品描述
+                $inputObj->SetBody('支付测试所用，支付概不退款'); //商品描述
 
                 $data['place']['SetTotal_fee']=$total;
+                //$inputObj->SetTotal_fee($total); //金额（单位为分
                 $inputObj->SetTotal_fee($total); //金额（单位为分
-                //$inputObj->SetTotal_fee('1'); //金额（单位为分
                 $data['place']['SetTrade_type']='JSAPI';
                 $inputObj->SetTrade_type('JSAPI'); //交易类型，小程序为JSAPI
                 $data['place']['SetNotify_url']='https://'.$_SERVER['SERVER_NAME'] . '/Api/Index/setwxPayNotify';
@@ -1058,6 +1058,108 @@ class IndexAction extends CommAction {
         $notify->Handle(false);
     }
 
+    /**
+     * 计算快递费
+     */
+    public function getExpress(){
 
+        if(I('get.openid')){
+            if(!I('get.idarr')){
+                $this->ajaxReturn(0,'模板参数有误',0);
+            }
+            $delivery=M('delivery')->where(array('uid'=>I('get.uid'),'default'=>1))->find();
+            if($delivery){  //如果用户没有填写过配送信息，不做处理
+                $information=json_decode($delivery['information'], true);
+                //$region=$information['region']['1'];
+                //获取商品运费模板
+                $idarr=explode(",",I('get.idarr'));
+                $count=count($idarr);   //保存商品数量
+                $idarr=array_unique($idarr);    //筛选出模板ID
+                if($idarr){
+                    if(count($idarr)>1){    //购买的商品存在多个配送模板，结果按贵的收取
 
+                        foreach($idarr as $id=>$i){
+                            $logistics=M('logistics')->where(array('id'=>$i[0]))->find();
+                            $getExpressPriceResult=array();
+                            if($logistics['pinkage']==1){   //卖家承担运费不做处理
+                                $freightway=json_decode($logistics['freightway'], true);
+                                $getExpressPrice=$this->getExpressPrice($freightway,$information['region'],$count);
+                                foreach($getExpressPrice as $s=>$g){
+                                    if($g>$getExpressPriceResult[$s]){  //新的值比原来的值大则替换
+                                        $getExpressPriceResult[$s]=$g;
+                                    }
+                                }
+                                unset($getExpressPrice);
+                            }else{
+                                $getExpressPriceResult=array(
+                                    'express'   =>  0,
+                                    'ems'       =>  0,
+                                    'snailmail' =>  0,
+                                    'logistics' =>  0,
+                                );
+                            }
+
+                        }
+                    }else{  //购买的商品只有一种配送模板
+                        $logistics = M('logistics')->where(array('id' => $idarr[0]))->find();
+
+                        if($logistics['pinkage']==1) {   //卖家承担运费不做处理
+                            $freightway = json_decode($logistics['freightway'], true);
+                            $getExpressPrice = $this->getExpressPrice($freightway, $information['region'], $count);
+                            foreach($getExpressPrice as $s=>$g){
+                                $getExpressPriceResult[$s]=$g;
+                            }
+                        }else{
+                            $getExpressPriceResult=array(
+                                'express'   =>  0,
+                                'ems'       =>  0,
+                                'snailmail' =>  0,
+                                'logistics' =>  0,
+                            );
+                        }
+                    }
+                    $this->ajaxReturn(1, $getExpressPriceResult, 1);
+                }else{
+                    $this->ajaxReturn(0,'模板ID有误',0);
+                }
+
+            }else{
+                $this->ajaxReturn(1,'不处理',2);
+            }
+        }else{
+            $this->ajaxReturn(0,'openid错误',0);
+        }
+    }
+
+    //获取配送价格
+    // freightway   配送模板
+    // $region      用户收货地址array(0:省份1市)
+    // count    商品数量
+    protected function getExpressPrice($freightway,$region,$count){
+        unset($freightway['other']);
+        foreach ($freightway as $id=>$f){
+            $default=$f['default'];
+            unset($f['default']);
+            foreach($f as $is=>$express){
+                $shipto=explode(",",$express['shipto']);
+                if(in_array($region[0],$shipto) or in_array($region[1],$shipto)){   //判断省或市是否在数组里
+                    if($count>$express['number']){ //在大于首件时
+                        $arr[$id]= $express['charge']+ceil(($count-$express['number'])/$express['renewal'])*$express['renew'];
+                    }else{  //小于首件时只收首件费用
+                        $arr[$id]=$express['charge'];
+                    }
+                    break;
+                }
+            }
+            if(!$arr[$id]){ //查找的地区不在模板中，按默认费用收取
+                if($count>$default['piece']){ //在大于首件时
+                    $arr[$id]=$default['cost']+ceil(($count-$default['piece'])/$default['addpiece'])*$default['addcost'];
+                }else{  //小于首件时只收首件费用
+                    $arr[$id]=$default['cost'];
+                }
+            }
+            unset($default);
+        }
+        return $arr;
+    }
 }

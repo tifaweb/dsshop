@@ -214,7 +214,17 @@
                 <a data-toggle="modal" href="#audit" onclick="ajaxcategory()">添加</a>
             </td>
         </tr>
-        
+        <tr>
+            <td>设置运费：</td>
+            <td>
+                <select name="lid" class="span2">
+                    <option value="" >请选择</option>
+                    <foreach name="logistics" item="vo">
+                    <option value="{$vo.id}" <if condition="$vo['id'] eq $list['lid']">selected</if>>{$vo.title}</option>
+                    </foreach>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td>上架/下架：</td>
             <td class="form-inline">

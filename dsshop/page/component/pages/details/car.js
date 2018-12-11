@@ -11,6 +11,7 @@ Page({
     cartempty:1,
   },
   onShow: function (options) {
+    wx.removeStorageSync('getcartselected');
     //更新底部购物车角标
     var app = getApp();
     app.getCarAngle();
@@ -106,7 +107,6 @@ Page({
   },
   //勾选产品
   setCheckbox(e){
-    //console.log(this.data.getCheckbox);
     var getCheckbox = this.data.getCheckbox, getCheckboxColor = this.data.getCheckboxColor, checkboxData = this.data.checkboxData, getAllCheckbox = this.data.getAllCheckbox, getAllCheckboxColor = this.data.getAllCheckboxColor;
     
     if (getCheckbox[e.currentTarget.dataset.value] =='circle'){
@@ -260,7 +260,8 @@ Page({
   },
   //结算购物车
   getSettlement(e){
-    //console.log(this.data.checkboxData);
+    
+
     if (JSON.stringify(this.data.checkboxData) == "{}"){
       wx.showToast({
         title: '请选择商品',
@@ -268,7 +269,23 @@ Page({
         duration: 2000
       })
       return false;
+    }else{
+      var checkboxData = this.data.checkboxData;
+      for (var i in checkboxData) {
+        if (checkboxData[i] == ""){
+          delete checkboxData[i];
+        }
+      }
+      if (JSON.stringify(checkboxData) == "{}") {
+        wx.showToast({
+          title: '请选择商品',
+          icon: 'none',
+          duration: 2000
+        })
+        return false;
+      }
     }
+    
     wx.setStorageSync('getcartselected', this.data.checkboxData);
     wx.navigateTo({
       url: '../details/makeorder'

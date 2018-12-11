@@ -2,7 +2,6 @@ const openIdUrl = require('./config').openIdUrl
 const userinfoUrl = require('./config').userinfoUrl
 const getUrl = require('./config').getUrl
 
-
 App({
   
   onLaunch: function () {
@@ -21,7 +20,6 @@ App({
     var that = this
     
     if (!wx.getStorageSync('openid')) { //判断是否登录过
-      
       that.getUserOpenId();
     } else {
       wx.checkSession({ //登录验证
@@ -161,7 +159,7 @@ App({
                 //获取通知角标
                 //self.getNoticeAngle();
               } else {
-                //console.log('拉取openid失败');
+                console.log('拉取openid失败');
               }
             },
             fail: function (res) {

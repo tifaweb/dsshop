@@ -22,6 +22,9 @@
       </view>
       <view class="now-price-right">库存{{goods.stock}}件</view>
       <view class="now-price-right">已售{{goods.sales}}件</view>
+      <block wx:if="{{goods.deliverytime > 0}}">
+      <view class="now-price-right">{{goods.deliverytime}}天内发货</view>
+      </block>
     </view>
     <!--标题 end-->
     <view class="details-commission"></view>

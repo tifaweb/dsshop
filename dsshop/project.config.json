@@ -5,10 +5,11 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.2.5",
 	"appid": "",
 	"projectname": "dsshop",
 	"isGameTourist": false,

@@ -206,6 +206,17 @@
             
         </tr>
         <tr>
+            <td>设置运费：</td>
+            <td>
+                <select name="lid" class="span2">
+                    <option value="" >请选择</option>
+                    <foreach name="logistics" item="vo">
+                        <option value="{$vo.id}">{$vo.title}</option>
+                    </foreach>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>上架/下架：</td>
             <td class="form-inline">
                 <label class="radio"><input type="radio" name="state" value="0" checked/> 上架</label>

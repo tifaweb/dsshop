@@ -62,11 +62,22 @@
   <!-- 商品列表 end-->
   <!-- 运费 -->
   <view class="zan-panel">
-    <view class="zan-cell">
-      <view class="zan-cell__bd">运费</view>
-      <view class="zan-cell__ft red">¥0</view>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">运费</view>
+        <view class="zan-cell__ft">
+          <picker
+            mode="selector"
+            class="zan-field__input zan-cell__bd"
+            range="{{ array }}"
+            value="{{ arrayvalue }}"
+            bindchange="onAreaChange"
+          >
+            {{ array[arrayIndex] }}
+          </picker>
+        </view>
+      </view>
+      
     </view>
-  </view>
   <!-- 运费 end-->
   <!-- 买家留言 -->
   <view class="zan-panel">

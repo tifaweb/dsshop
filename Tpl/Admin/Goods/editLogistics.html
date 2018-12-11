@@ -1,0 +1,498 @@
+<include file="Index:header" />
+<style>
+    .caption{
+        background-color: darkorange;
+        line-height: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #fff;
+    }
+    .caption .left{
+        float:left;
+
+    }
+    .caption .left input{
+        line-height: 35px;
+        margin-top:5px;
+        float:left;
+    }
+    .caption .left label{
+        float:left;
+        line-height: 35px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .caption .right{
+        float:right;
+    }
+    .caption .right .time{
+        float:left;
+        margin-right:20px;
+    }
+    .caption .right .operate{
+        float:left;
+    }
+    #ajaxlogistics{
+        height:400px;
+        overflow-y: auto;
+        clear: both;
+    }
+    #ajaxlogistics li{
+        cursor:pointer;
+        float:left;
+        width:150px;
+        line-height: 45px;
+        position: relative;
+    }
+    #ajaxlogistics li dl{
+        top:20px;
+        display: none;
+        border: 1px solid #FC0;
+        clear: both;
+        position: absolute;
+        z-index: 999;
+        background-color: #fff;
+    }
+    #ajaxlogistics li dd{
+        line-height: 25px;
+        margin-right: 5px;
+    }
+
+</style>
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS/Goods/logistics.html">物流管理</a> <span class="divider">/</span>
+      </li>
+      <li class="active">模板详情</li>
+    <div  class="pull-right"> <a class="ajax-link" href="__APP__/TIFAWEB_DSWJCMS/Goods/logistics.html" >返回物流管理</a></div>
+</ul>
+<form id="form" method="post"  action="__APP__/TIFAWEB_DSWJCMS/Goods/setLogistics" onsubmit="return checkForm()">
+    <input name="id" type="hidden"  value="{$Think.get.id}">
+    <input name="copy" type="hidden"  value="{$Think.get.copy}">
+    <input name="checkedlist" type="hidden"  value='{$logistics["other"]["checkedlist"]}'>
+    <input name="checkedarr" type="hidden"  value='{$logistics["other"]["checkedarr"]}'>
+
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+        <tr>
+            <td style="width:80px;"><span class="red">*</span>模板名称：</td>
+            <td><input name="title" type="text" class="span5" placeholder="请输入模板名称..." maxlength="30" value="{$logistics.title}"></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>宝贝地址：</td>
+            <td>
+                <select name="location" id="location">
+                    <option value="" >请选择</option>
+
+                    <volist name="newcity" id="vo">
+                        <option value="{$vo.id}" <if condition="$vo['id'] eq $logistics['location'][0]">selected</if>>{$vo.city}</option>
+                    </volist>
+                </select>
+                <select name="city" id="city">
+                    <option value="" >请选择</option>
+                    {$logistics['city'][0]['id']}
+                    <volist name="logistics['city']" id="v">
+
+                        <option value="{$v.id}" <if condition="$v['id'] eq $logistics['location'][1]">selected</if>>{$v.city}</option>
+                    </volist>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>发货时间：</td>
+            <td><input name="deliverytime" type="text" class="span2" placeholder="可不填写" maxlength="2"  value="{$logistics.deliverytime}">天以内</td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>是否包邮：</td>
+            <td class="form-inline">
+                <label class="radio"><input type="radio" name="pinkage" value="1"  <if condition="$logistics.pinkage eq 1 or $logistics.pinkage eq ''">checked</if>/> 自定义运费</label>
+                <label class="radio"><input type="radio" name="pinkage" value="2" <eq name="logistics.pinkage" value="2">checked</eq>/> 卖家承担运费</label>
+            </td>
+        </tr>
+        <tr>
+            <td>运费方式：</td>
+            <td id="freightway">
+                <div class="list"  value="1">
+                    <div class="title">
+                        <label class="radio"><input type="checkbox" name="express" value="1" onclick="addway(this)" <neq name="logistics.freightway.express" value="">checked</neq>/> 快递</label>
+                    </div>
+                    <if condition="$logistics['freightway']['express'] neq ''">
+                        <div class="kuaidi">
+                            <table class="table table-bordered "><caption class="caption"><div class="left"><label>默认运费</label></div><div class="left"><input style="width:80px" name="piece1" type="text" maxlength="5" value="{$logistics.freightway.express.default.piece}"><label>件内</label></div><div class="left"><input style="width:80px" name="cost1" type="text" maxlength="5"  value="{$logistics.freightway.express.default.cost}"><label>元，</label></div><div class="left"><label>每增加</label><input style="width:80px" name="addpiece1" type="text" maxlength="5"  value="{$logistics.freightway.express.default.addpiece}"><label>件，</label></div><div class="left"><label>增加运费</label><input style="width:80px" name="addcost1" type="text" maxlength="5"  value="{$logistics.freightway.express.default.addcost}"><label>元</label></div></caption><thead class="thead"><tr><th style="width:40%">运送到</th><th>首件数(件)</th><th>首费（元）</th><th>续件数(件)</th><th>续费（元）</th><th>操作</th></tr>
+                            <php>unset($logistics['freightway']['express']['default']);</php>
+                            <foreach name="logistics.freightway.express" item="vo">
+                                <tr class="index1"><td><div>{$vo.shiptos}</div><div><a data-toggle="modal" href="#editlocation" onclick="editlocation(this,1)">编辑</a></div></td><td><input style="width:80px" name="number1[]" type="text" maxlength="5" value="{$vo.number}"></td><td><input style="width:80px" name="charge1[]" type="text" maxlength="5"  value="{$vo.charge}"></td><td><input style="width:80px" name="renewal1[]" type="text" maxlength="5" value="{$vo.renewal}"></td><td><input style="width:80px" name="renew1[]" type="text" maxlength="5" value="{$vo.renew}"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist1[]" type="hidden"  value="{$vo.shipto}"></tr>
+                            </foreach>
+                            </thead></table>
+                        </div>
+                        <div class="kuaidiadd">
+                            <a href="javascript:void(0)" onclick="addway(this,1)">为指定地区城市设置运费</a>
+                        </div>
+                    <else/>
+                        <div class="kuaidi"></div>
+                        <div class="kuaidiadd"></div>
+                    </if>
+
+                </div>
+                <div class="list" value="2">
+                    <div class="title">
+                        <label class="radio"><input type="checkbox" name="ems" value="1" onclick="addway(this)" <neq name="logistics.freightway.ems" value="">checked</neq>/> EMS</label>
+                    </div>
+                    <if condition="$logistics['freightway']['ems'] neq ''">
+                        <div class="kuaidi">
+                            <table class="table table-bordered "><caption class="caption"><div class="left"><label>默认运费</label></div><div class="left"><input style="width:80px" name="piece2" type="text" maxlength="5" value="{$logistics.freightway.ems.default.piece}"><label>件内</label></div><div class="left"><input style="width:80px" name="cost2" type="text" maxlength="5"  value="{$logistics.freightway.ems.default.cost}"><label>元，</label></div><div class="left"><label>每增加</label><input style="width:80px" name="addpiece2" type="text" maxlength="5"  value="{$logistics.freightway.ems.default.addpiece}"><label>件，</label></div><div class="left"><label>增加运费</label><input style="width:80px" name="addcost2" type="text" maxlength="5"  value="{$logistics.freightway.ems.default.addcost}"><label>元</label></div></caption><thead class="thead"><tr><th style="width:40%">运送到</th><th>首件数(件)</th><th>首费（元）</th><th>续件数(件)</th><th>续费（元）</th><th>操作</th></tr>
+                            <php>unset($logistics['freightway']['ems']['default']);</php>
+                            <foreach name="logistics.freightway.ems" item="vo">
+                                <tr class="index2"><td><div>{$vo.shiptos}</div><div><a data-toggle="modal" href="#editlocation" onclick="editlocation(this,2)">编辑</a></div></td><td><input style="width:80px" name="number2[]" type="text" maxlength="5" value="{$vo.number}"></td><td><input style="width:80px" name="charge2[]" type="text" maxlength="5"  value="{$vo.charge}"></td><td><input style="width:80px" name="renewal2[]" type="text" maxlength="5" value="{$vo.renewal}"></td><td><input style="width:80px" name="renew2[]" type="text" maxlength="5" value="{$vo.renew}"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist2[]" type="hidden"  value="{$vo.shipto}"></tr>
+                            </foreach>
+                            </thead></table>
+                        </div>
+                        <div class="kuaidiadd">
+                            <a href="javascript:void(0)" onclick="addway(this,1)">为指定地区城市设置运费</a>
+                        </div>
+                        <else/>
+                        <div class="kuaidi"></div>
+                        <div class="kuaidiadd"></div>
+                    </if>
+                </div>
+                <div class="list" value="3">
+                    <div class="title">
+                        <label class="radio"><input type="checkbox" name="snailmail" value="1" onclick="addway(this)"  <neq name="logistics.freightway.snailmail" value="">checked</neq>/> 平邮</label>
+                    </div>
+                    <if condition="$logistics['freightway']['snailmail'] neq ''">
+                        <div class="kuaidi">
+                            <table class="table table-bordered "><caption class="caption"><div class="left"><label>默认运费</label></div><div class="left"><input style="width:80px" name="piece3" type="text" maxlength="5" value="{$logistics.freightway.snailmail.default.piece}"><label>件内</label></div><div class="left"><input style="width:80px" name="cost3" type="text" maxlength="5"  value="{$logistics.freightway.snailmail.default.cost}"><label>元，</label></div><div class="left"><label>每增加</label><input style="width:80px" name="addpiece3" type="text" maxlength="5"  value="{$logistics.freightway.snailmail.default.addpiece}"><label>件，</label></div><div class="left"><label>增加运费</label><input style="width:80px" name="addcost3" type="text" maxlength="5"  value="{$logistics.freightway.snailmail.default.addcost}"><label>元</label></div></caption><thead class="thead"><tr><th style="width:40%">运送到</th><th>首件数(件)</th><th>首费（元）</th><th>续件数(件)</th><th>续费（元）</th><th>操作</th></tr>
+                            <php>unset($logistics['freightway']['snailmail']['default']);</php>
+                            <foreach name="logistics.freightway.snailmail" item="vo">
+                                <tr class="index3"><td><div>{$vo.shiptos}</div><div><a data-toggle="modal" href="#editlocation" onclick="editlocation(this,3)">编辑</a></div></td><td><input style="width:80px" name="number3[]" type="text" maxlength="5" value="{$vo.number}"></td><td><input style="width:80px" name="charge3[]" type="text" maxlength="5"  value="{$vo.charge}"></td><td><input style="width:80px" name="renewal3[]" type="text" maxlength="5" value="{$vo.renewal}"></td><td><input style="width:80px" name="renew3[]" type="text" maxlength="5" value="{$vo.renew}"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist3[]" type="hidden"  value="{$vo.shipto}"></tr>
+                            </foreach>
+                            </thead></table>
+                        </div>
+                        <div class="kuaidiadd">
+                            <a href="javascript:void(0)" onclick="addway(this,1)">为指定地区城市设置运费</a>
+                        </div>
+                        <else/>
+                        <div class="kuaidi"></div>
+                        <div class="kuaidiadd"></div>
+                    </if>
+                </div>
+                <div class="list" value="4">
+                    <div class="title">
+                        <label class="radio"><input type="checkbox" name="logistics" value="1" onclick="addway(this)"  <neq name="logistics.freightway.logistics" value="">checked</neq>/> 物流</label>
+                    </div>
+                    <if condition="$logistics['freightway']['logistics'] neq ''">
+                        <div class="kuaidi">
+                            <table class="table table-bordered "><caption class="caption"><div class="left"><label>默认运费</label></div><div class="left"><input style="width:80px" name="piece4" type="text" maxlength="5" value="{$logistics.freightway.logistics.default.piece}"><label>件内</label></div><div class="left"><input style="width:80px" name="cost4" type="text" maxlength="5"  value="{$logistics.freightway.logistics.default.cost}"><label>元，</label></div><div class="left"><label>每增加</label><input style="width:80px" name="addpiece4" type="text" maxlength="5"  value="{$logistics.freightway.logistics.default.addpiece}"><label>件，</label></div><div class="left"><label>增加运费</label><input style="width:80px" name="addcost4" type="text" maxlength="5"  value="{$logistics.freightway.logistics.default.addcost}"><label>元</label></div></caption><thead class="thead"><tr><th style="width:40%">运送到</th><th>首件数(件)</th><th>首费（元）</th><th>续件数(件)</th><th>续费（元）</th><th>操作</th></tr>
+                            <php>unset($logistics['freightway']['logistics']['default']);</php>
+                            <foreach name="logistics.freightway.logistics" item="vo">
+                                <tr class="index4"><td><div>{$vo.shiptos}</div><div><a data-toggle="modal" href="#editlocation" onclick="editlocation(this,4)">编辑</a></div></td><td><input style="width:80px" name="number4[]" type="text" maxlength="5" value="{$vo.number}"></td><td><input style="width:80px" name="charge4[]" type="text" maxlength="5"  value="{$vo.charge}"></td><td><input style="width:80px" name="renewal4[]" type="text" maxlength="5" value="{$vo.renewal}"></td><td><input style="width:80px" name="renew4[]" type="text" maxlength="5" value="{$vo.renew}"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist4[]" type="hidden"  value="{$vo.shipto}"></tr>
+                            </foreach>
+                            </thead></table>
+                        </div>
+                        <div class="kuaidiadd">
+                            <a href="javascript:void(0)" onclick="addway(this,1)">为指定地区城市设置运费</a>
+                        </div>
+                        <else/>
+                        <div class="kuaidi"></div>
+                        <div class="kuaidiadd"></div>
+                    </if>
+                </div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+<div class="span4">
+
+</div>
+<div class="span5">
+          <button class="btn btn-primary" type="submit">
+              保存
+          </button>
+</div>
+</div>
+</form>
+<!--底部 -->
+<include file="Index:footer" />
+<div id="editlocation" class="modal hide fade">
+    
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+      <h3>选择区域</h3>
+    </div>
+    
+    <ul id="ajaxlogistics"></ul>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="locationdeit()">保存</button>
+        <a href="javascript:void(0)" class="btn" data-dismiss="modal">取消</a>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    //获取城市
+    $("#location").change(function(){
+
+        $.ajax({
+            type: "POST",
+            url: '__APP__/TIFAWEB_DSWJCMS/Goods/ajaxCity.html',
+            data:{'mid':$(this).val()},
+            success: function (msg) {
+                if(msg.status ==1){
+                    var data='<option value="" >请选择</option>';
+                    $.each(msg.info,function(i,val){
+                       data+='<option value="'+val.id+'" >'+val.city+'</option>';
+                    })
+                    $('#city').html(data);
+                }else{
+                    alert(msg.info);
+                }
+
+            }
+        })
+    })
+})
+//添加地区
+//t     this
+//id    区分快递：1、EMS：2、平邮：3、物流：4
+//sid   区分每个ID下的子类
+var checkedarr=$("input[name='checkedarr']").val()?JSON.parse($("input[name='checkedarr']").val()):[],checkedlist=$("input[name='checkedlist']").val()?JSON.parse($("input[name='checkedlist']").val()):[],checkedid=0,checkedsid=0;
+function editlocation(t,id){
+    var sid=$(t).parents('.index'+id).index();
+    checkedid=id;
+    checkedsid=sid-1;
+    $.ajax({
+        type: "POST",
+        url: '__APP__/TIFAWEB_DSWJCMS/Goods/ajaxlogistics.html',
+        success: function(msg){
+            if(msg.status==1){
+                var data=msg.info,msgdata='';
+                $.each(data,function(i,val){
+
+                    if(checkedarr[checkedid]){ //缓存中是否有数据
+                        if(checkedarr[checkedid][checkedsid]){  //获取当前区域
+                            if(checkedarr[checkedid][checkedsid].indexOf(String(val['id'])) !==-1){ //自动勾选已选中的省份
+                                msgdata+='<li><input type="checkbox" checked title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                            }else{
+                                if(checkedlist[checkedid].indexOf(String(val['id'])) !==-1){ //已勾选的禁止掉
+                                    msgdata+='<li><input type="checkbox" disabled title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                                }else{
+                                    msgdata+='<li><input type="checkbox" title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                                }
+                            }
+                        }else{
+                            if(checkedlist[checkedid].indexOf(String(val['id'])) !==-1){ //已勾选的禁止掉
+                                msgdata+='<li><input type="checkbox" disabled title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                            }else{
+                                msgdata+='<li><input type="checkbox" title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                            }
+                        }
+
+                    }else{
+                        msgdata+='<li><input type="checkbox" title="'+val.city+'" mid="0" name="city'+id+'[]" value="'+val['id']+'" onclick="allchecked(this)"/><span onclick="$(this).parent().children(\'dl\').toggle()">'+val['city']+'</span><span class="red">('+Object.keys(val.subclass).length+')</span></span>';
+                    }
+
+                    if(Object.keys(val.subclass).length>0){
+                        msgdata+='<dl>';
+                        $.each(val.subclass,function(j,vals){
+                            if(checkedarr[checkedid]){ //缓存中是否有数据
+                                if(checkedarr[checkedid][checkedsid]){  //获取当前区域
+
+                                    if(checkedarr[checkedid][checkedsid].indexOf(String(vals['id'])) !==-1){ //自动勾选已选中的市
+
+                                        msgdata+='<dd><label>|-<input checked  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                                    }else{
+                                        if(checkedlist[checkedid].indexOf(String(vals['id'])) !==-1){ //已勾选的禁止掉
+                                            msgdata+='<dd><label>|-<input disabled  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                                        }else{
+                                            msgdata+='<dd><label>|-<input  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                                        }
+                                    }
+                                }else{
+                                    if(checkedlist[checkedid].indexOf(String(vals['id'])) !==-1){ //已勾选的禁止掉
+                                        msgdata+='<dd><label>|-<input disabled  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                                    }else{
+                                        msgdata+='<dd><label>|-<input  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                                    }
+                                }
+
+                            }else{
+                                msgdata+='<dd><label>|-<input  mid="'+val.id+'" title="'+vals.city+'" onclick="allchecked(this,1)" type="checkbox" name="twocity'+id+'[]" value="'+vals['id']+'"/>'+vals['city']+'</label></dd>';
+                            }
+                        })
+                        msgdata+='</dl>';
+                    }
+                    msgdata+='</li>';
+                })
+
+                $('#ajaxlogistics').html(msgdata);
+            }else{
+                alert('数据获取失败');
+            }
+
+        }
+    });
+}
+
+Array.prototype.distinct = function(){
+    var arr = this,
+        result = [],
+        i,
+        j,
+        len = arr.length;
+    for(i = 0; i < len; i++){
+        for(j = i + 1; j < len; j++){
+            if(arr[i] === arr[j]){
+                j = ++i;
+            }
+        }
+        result.push(arr[i]);
+    }
+    return result;
+}
+
+//全选全不选
+function allchecked(t,type){
+    if(type ==1){
+        if($(t).parents('li').find('dl input:checkbox').length === $(t).parents('li').find('dl input:checked').length) {
+            $(t).parents('li').find('input:eq(0)').prop("checked", true);
+        } else {
+            $(t).parents('li').find('input:eq(0)').prop("checked", false);
+        }
+    }else{
+        if(t.checked) {
+            if($(t).parent().find('dl input').attr('disabled')){
+                $(t).attr('checked',false);
+            }else{
+                $(t).parent().find('dl input').attr('checked',true);
+            }
+        }else {
+            $(t).parent().find('dl input').attr('checked',false);
+        }
+    }
+
+}
+
+//地址保存
+function locationdeit(){
+    var midarr=[];
+    if(!checkedarr[checkedid]){
+        checkedarr[checkedid]=[];
+    }
+
+    if(!checkedarr[checkedid][checkedsid]){
+
+        checkedarr[checkedid][checkedsid]=[]
+    }
+    var lochostname='',lochostvalue='';
+
+    $.each($('#ajaxlogistics input:checkbox'),function(i,val){
+        if($(val).prop('checked')){
+            if($(val).attr('mid')==0){  //选择所省
+                lochostname+=$(val).attr('title')+',';
+                lochostvalue+=$(val).attr('value')+',';
+                midarr.push($(val).val());
+            }else{
+                if(midarr.indexOf(String($(val).attr('mid'))) ===-1){
+                    lochostname+=$(val).attr('title')+',';
+                    lochostvalue+=$(val).attr('value')+',';
+                }
+            }
+
+            checkedarr[checkedid][checkedsid].push($(val).val());
+
+        }
+    })
+    if(!checkedlist[checkedid]){
+        checkedlist[checkedid]=[];
+    }
+    checkedlist[checkedid]=checkedlist[checkedid].concat(checkedarr[checkedid][checkedsid]).distinct()
+    //console.log(JSON.stringify(checkedarr))
+    $("input[name='checkedlist']").val(JSON.stringify(checkedlist));
+    $("input[name='checkedarr']").val(JSON.stringify(checkedarr));
+    if(checkedarr[checkedid][checkedsid].length>0){
+        $('.index'+checkedid+':eq('+checkedsid+')').find('td:eq(0)').find('div:eq(0)').html(lochostname.slice(0,lochostname.length-1));
+        $('.index'+checkedid+':eq('+checkedsid+') .citylist').val(lochostvalue.slice(0,lochostvalue.length-1));
+    }else{
+        $('.index'+checkedid+':eq('+checkedsid+')').find('td:eq(0)').find('div:eq(0)').html('未添加地区');
+        $('.index'+checkedid+':eq('+checkedsid+') .citylist').val('');
+    }
+
+    //显示已经可以了，只需要改变运送到的内容就可以
+    //需要实现再次点击编辑时，能把已经被选择不可点击
+    //console.log(lochostname)
+    // console.log(checkedarr)
+}
+
+//t     this
+//type  1为子类添加2删除
+function addway(t,type){
+    var value=$(t).parents('.list').attr('value');
+    if(type==1) {
+        $(t).parents('.list').find('.kuaidi thead').append('<tr class="index'+value+'"><td><div>未添加地区</div><div><a data-toggle="modal"  href="#editlocation" onclick="editlocation(this,'+value+')">编辑</a></div></td><td><input style="width:80px" name="number'+value+'[]" type="text"  maxlength="5"></td><td><input style="width:80px" name="charge'+value+'[]" type="text" maxlength="5"></td><td><input style="width:80px" name="renewal'+value+'[]" type="text" maxlength="5"></td><td><input style="width:80px" name="renew'+value+'[]" type="text" maxlength="5"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist'+value+'[]" type="hidden"></tr>');
+    }else if(type==2){
+        $(t).parent().parent('tr').remove();
+    }else{
+        if($(t).prop('checked')){
+            if(!$(t).parents('.list').find('.kuaidi').html()){
+                $(t).parents('.list').find('.kuaidi').html('<table class="table table-bordered "><caption  class="caption"><div class="left"><label>默认运费</label></div><div class="left"><input style="width:80px" name="piece'+value+'" type="text" maxlength="5"><label>件内</label></div><div class="left"><input style="width:80px" name="cost'+value+'" type="text" maxlength="5"><label>元，</label></div><div class="left"><label>每增加</label><input style="width:80px" name="addpiece'+value+'" type="text" maxlength="5"><label>件，</label></div><div class="left"><label>增加运费</label><input style="width:80px" name="addcost'+value+'" type="text" maxlength="5"><label>元</label></div></caption><thead class="thead"><tr><th style="width:40%">运送到</th><th>首件数(件)</th><th>首费（元）</th><th>续件数(件)</th><th>续费（元）</th><th>操作</th></tr><tr class="index'+value+'"><td><div>未添加地区</div><div><a data-toggle="modal"  href="#editlocation" onclick="editlocation(this,'+value+')">编辑</a></div></td><td><input style="width:80px" name="number'+value+'[]" type="text"  maxlength="5"></td><td><input style="width:80px" name="charge'+value+'[]" type="text" maxlength="5"></td><td><input style="width:80px" name="renewal'+value+'[]" type="text" maxlength="5"></td><td><input style="width:80px" name="renew'+value+'[]" type="text" maxlength="5"></td><td><a href="javascript:void(0)" onclick="addway(this,2)">删除</a></td><input class="citylist" name="citylist'+value+'[]" type="hidden"></tr></thead></table>');
+                $(t).parents('.list').find('.kuaidiadd').html('<a href="javascript:void(0)" onclick="addway(this,1)">为指定地区城市设置运费</a>');
+            }else{
+                $(t).parents('.list').find('.kuaidi').show();
+            }
+        }else{
+            $(t).parents('.list').find('.kuaidi').hide();
+        }
+    }
+
+}
+
+//表单提交验证
+function checkForm(){
+    if(!$("input[name='title']").val()){
+        alert('请输入模板名称');
+        return false
+    }
+    if(!$("select[name='location']").val()){
+        alert('请选择宝贝地址所在省');
+        return false
+    }
+    if(!$("select[name='city']").val()){
+        alert('请选择宝贝地址所在市');
+        return false
+    }
+    //运费方式被选中
+    var state=1;
+    if($("input[name='pinkage']:checked").val()==1){
+        if($("input[name='express']").attr('checked') || $("input[name='ems']").attr('checked') || $("input[name='snailmail']").attr('checked') || $("input[name='logistics']").attr('checked')){
+            $.each($('.kuaidi input'),function(i,t){
+                if(!$(t).val()){
+                    state=0;
+                    alert('运费方式不能存在空值');
+                    return false
+                }
+            })
+            if(state===0){
+                return false
+            }
+        }else{
+            alert('运费方式至少添加一种');
+            return false
+        }
+    }
+
+}
+
+</script>

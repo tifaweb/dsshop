@@ -1,0 +1,120 @@
+<include file="Index:header" />
+<style>
+.caption{
+    background-color: darkorange;
+    line-height: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+}
+.caption .left{
+float:left;
+
+}
+.caption .right{
+    float:right;
+}
+.caption .right .time{
+    float:left;
+    margin-right:20px;
+}
+.caption .right .operate{
+    float:left;
+}
+td{
+    word-wrap: break-word;word-break: break-all;overflow: hidden;
+}
+    .thead td,.thead th{
+        text-align: center;
+    }
+</style>
+<!--头部 end -->
+<!--左栏 starts -->
+<div class="container-fluid">
+		<div class="row-fluid">
+			<include file="left" />
+
+			<div id="content" class="span10">
+			<!-- content starts -->
+<!--左栏 end -->
+<ul class="breadcrumb">
+      <li>
+        <a href="__APP__/TIFAWEB_DSWJCMS.html">首页</a> <span class="divider">/</span>
+      </li>
+      <li class="active">物流管理</li>
+    <div  class="pull-right">
+        <a href="__APP__/TIFAWEB_DSWJCMS/Goods/editLogistics.html">新增物流模板</a>
+    </div>
+</ul>
+<volist name="list" id="vo">
+<table class="table table-bordered" id="table">
+    <caption  class="caption">
+        <div class="left">{$vo.title}</div>
+        <div class="right">
+            <div class="time">最后修改时间：{$vo.time|date="Y-m-d H:i:s",###}</div>
+            <div class="operate">
+                <a href="__APP__/TIFAWEB_DSWJCMS/Goods/editLogistics/id/{$vo.id}/copy/1.html">复制</a>
+                <a href="__APP__/TIFAWEB_DSWJCMS/Goods/editLogistics/id/{$vo.id}.html">修改</a>
+                <a href="#" onclick="if(confirm('是否要删除？'))window.location.href='__APP__/TIFAWEB_DSWJCMS/Goods/deleteLogistics/id/{$vo.id}'">删除</a>
+            </div>
+        </div>
+    </caption>
+    <if condition="$vo.pinkage eq 2">
+        <thead class="thead">
+            <tr><th  colspan="6">卖家承担运费</th></tr>
+        </thead>
+    <else/>
+    <thead class="thead">
+      <tr>
+        <th style="width:8%">运费方式</th>
+        <th style="text-align: left;">运送到</th>
+        <th style="width:8%">首件（个）</th>
+        <th style="width:8%">运费(元)</th>
+        <th style="width:8%">续件（个）</th>
+        <th style="width:8%">运费（元）</th>
+      </tr>
+      <foreach name="vo.freightway" item="v">
+          <foreach name="v" item="lst" key="k">
+          <tr>
+              <td>
+                  <switch name="key" >
+                      <case value="express">快递</case>
+                      <case value="ems">EMS</case>
+                      <case value="snailmail">平邮</case>
+                      <case value="logistics">物流</case>
+                  </switch>
+              </td>
+              <if condition="$lst.piece gt 0">
+                  <td style="text-align: left;">默认</td>
+                  <td>{$lst.piece}</td>
+                  <td>{$lst.cost}</td>
+                  <td>{$lst.addpiece}</td>
+                  <td>{$lst.addcost}</td>
+                  <else/>
+                  <td style="text-align: left;">{$lst.shipto}</td>
+                  <td>{$lst.number}</td>
+                  <td>{$lst.charge}</td>
+                  <td>{$lst.renewal}</td>
+                  <td>{$lst.renew}</td>
+              </if>
+
+          </tr>
+          </foreach>
+      </foreach>
+    </thead>
+    </if>
+</table>
+</volist>
+
+<div>
+</div>
+<!--底部 -->
+<include file="Index:footer" />
+<!-- 日期选择器 -->
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/jquery.datetimepicker.css">
+  <script src="__PUBLIC__/js/jquery.datetimepicker.js"></script>
+<script>
+$('#starttime').datetimepicker({lang:'ch',timepicker:false,format:'Y-m-d',});
+$('#endtime').datetimepicker({lang:'ch',timepicker:false,format:'Y/m/d'});
+</script>
+
