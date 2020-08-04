@@ -1,5 +1,5 @@
 # 重要
-## 该项目不再维护，重构项目访问[dspurl/dsshop](https://github.com/dspurl/dsshop "dspurl/dsshop")
+## 该项目不再维护，项目已重构，重构的项目性能更佳，效果更好，关键完全免费可商用，需要的访问[dspurl/dsshop](https://github.com/dspurl/dsshop "dspurl/dsshop")
 ------------
 ------------
 ------------
